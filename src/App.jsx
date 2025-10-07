@@ -197,14 +197,16 @@ function App() {
                 >
                   {t.hero.contact}
                 </Button>
-                <Button 
-                  size="lg"
-                  variant="outline"
-                  className="border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900"
-                >
-                  <Download className="mr-2" size={20} />
-                  {t.hero.downloadCV}
-                </Button>
+                <a href="/CV_Mikail_Lekesiz.pdf" download>
+                  <Button 
+                    size="lg"
+                    variant="outline"
+                    className="border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900"
+                  >
+                    <Download className="mr-2" size={20} />
+                    {t.hero.downloadCV}
+                  </Button>
+                </a>
               </div>
 
               {/* Social Links */}
