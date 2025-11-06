@@ -52,7 +52,54 @@ export const translations = {
       ]
     },
     skills: {
-      title: "Compétences Techniques"
+      title: "Compétences Techniques",
+      subtitle: "Technologies et outils que j'utilise pour créer des expériences numériques exceptionnelles",
+      languages: "Langages",
+      frontend: "Frontend",
+      backend: "Backend",
+      databases: "Bases de données",
+      devops: "DevOps",
+      tools: "Outils"
+    },
+    stats: {
+      title: "En Chiffres",
+      subtitle: "Un aperçu de mon parcours professionnel et de mes réalisations",
+      yearsExperience: "Années d'Expérience",
+      yearsDesc: "En DevOps & Développement",
+      projects: "Projets Réalisés",
+      projectsDesc: "Livrés avec Succès",
+      clients: "Clients Satisfaits",
+      clientsDesc: "Clients Heureux",
+      certifications: "Certifications",
+      certificationsDesc: "Certifications Professionnelles"
+    },
+    testimonials: {
+      title: "Témoignages Clients",
+      subtitle: "Ce que mes clients disent de leur collaboration avec moi",
+      cta: "Vous souhaitez partager votre expérience ?",
+      list: [
+        {
+          name: "Jean Dupont",
+          role: "CEO, TechStartup",
+          company: "Paris, France",
+          text: "Mikail a transformé notre infrastructure avec son expertise DevOps. Notre temps de déploiement a diminué de 70% et la stabilité du système s'est considérablement améliorée.",
+          rating: 5
+        },
+        {
+          name: "Sarah Martin",
+          role: "CTO, DigitalCorp",
+          company: "Strasbourg, France",
+          text: "Travailler avec Mikail a été une révélation. Ses compétences en développement full-stack et son approche de résolution de problèmes ont fourni exactement ce dont nous avions besoin.",
+          rating: 5
+        },
+        {
+          name: "Ahmet Yılmaz",
+          role: "Chef de Produit",
+          company: "Istanbul, Turquie",
+          text: "Professionnel, fiable et innovant. Mikail a apporté des solutions IA de pointe à notre plateforme qui ont dépassé nos attentes.",
+          rating: 5
+        }
+      ]
     },
     experience: {
       title: "Expérience Professionnelle",
@@ -183,7 +230,20 @@ export const translations = {
       france: "France",
       turkey: "Turquie",
       followMe: "Suivez-moi",
-      sendMessage: "Envoyer un message"
+      sendMessage: "Envoyer un message",
+      form: {
+        name: "Nom",
+        namePlaceholder: "Votre nom",
+        email: "E-mail",
+        emailPlaceholder: "votre@email.com",
+        subject: "Sujet",
+        subjectPlaceholder: "Sujet de votre message",
+        message: "Message",
+        messagePlaceholder: "Votre message...",
+        sending: "Envoi en cours...",
+      },
+      successMessage: "Message envoyé avec succès !",
+      errorMessage: "Échec de l'envoi. Veuillez réessayer."
     },
     footer: {
       rights: "Tous droits réservés",
@@ -244,7 +304,54 @@ export const translations = {
       ]
     },
     skills: {
-      title: "Technical Skills"
+      title: "Technical Skills",
+      subtitle: "Technologies and tools I work with to build exceptional digital experiences",
+      languages: "Languages",
+      frontend: "Frontend",
+      backend: "Backend",
+      databases: "Databases",
+      devops: "DevOps",
+      tools: "Tools"
+    },
+    stats: {
+      title: "By The Numbers",
+      subtitle: "A glimpse into my professional journey and achievements",
+      yearsExperience: "Years Experience",
+      yearsDesc: "In DevOps & Development",
+      projects: "Projects Completed",
+      projectsDesc: "Successful Deliveries",
+      clients: "Happy Clients",
+      clientsDesc: "Satisfied Customers",
+      certifications: "Certifications",
+      certificationsDesc: "Professional Credentials"
+    },
+    testimonials: {
+      title: "Client Testimonials",
+      subtitle: "What clients say about working with me",
+      cta: "Want to share your experience?",
+      list: [
+        {
+          name: "Jean Dupont",
+          role: "CEO, TechStartup",
+          company: "Paris, France",
+          text: "Mikail transformed our infrastructure with his DevOps expertise. Our deployment time decreased by 70% and system stability improved dramatically.",
+          rating: 5
+        },
+        {
+          name: "Sarah Martin",
+          role: "CTO, DigitalCorp",
+          company: "Strasbourg, France",
+          text: "Working with Mikail was a game-changer. His full-stack development skills and problem-solving approach delivered exactly what we needed.",
+          rating: 5
+        },
+        {
+          name: "Ahmet Yılmaz",
+          role: "Product Manager",
+          company: "Istanbul, Turkey",
+          text: "Professional, reliable, and innovative. Mikail brought cutting-edge AI solutions to our platform that exceeded our expectations.",
+          rating: 5
+        }
+      ]
     },
     experience: {
       title: "Professional Experience",
@@ -375,7 +482,20 @@ export const translations = {
       france: "France",
       turkey: "Turkey",
       followMe: "Follow me",
-      sendMessage: "Send message"
+      sendMessage: "Send message",
+      form: {
+        name: "Name",
+        namePlaceholder: "Your name",
+        email: "Email",
+        emailPlaceholder: "your@email.com",
+        subject: "Subject",
+        subjectPlaceholder: "Subject of your message",
+        message: "Message",
+        messagePlaceholder: "Your message...",
+        sending: "Sending...",
+      },
+      successMessage: "Message sent successfully!",
+      errorMessage: "Failed to send. Please try again."
     },
     footer: {
       rights: "All rights reserved",
@@ -436,7 +556,54 @@ export const translations = {
       ]
     },
     skills: {
-      title: "Teknik Yetenekler"
+      title: "Teknik Yetenekler",
+      subtitle: "Olağanüstü dijital deneyimler oluşturmak için kullandığım teknolojiler ve araçlar",
+      languages: "Diller",
+      frontend: "Frontend",
+      backend: "Backend",
+      databases: "Veritabanları",
+      devops: "DevOps",
+      tools: "Araçlar"
+    },
+    stats: {
+      title: "Rakamlarla",
+      subtitle: "Profesyonel yolculuğum ve başarılarıma bir bakış",
+      yearsExperience: "Yıl Deneyim",
+      yearsDesc: "DevOps ve Geliştirme",
+      projects: "Tamamlanan Proje",
+      projectsDesc: "Başarılı Teslimatlar",
+      clients: "Mutlu Müşteri",
+      clientsDesc: "Memnun Müşteriler",
+      certifications: "Sertifika",
+      certificationsDesc: "Profesyonel Sertifikalar"
+    },
+    testimonials: {
+      title: "Müşteri Yorumları",
+      subtitle: "Müşterilerin benimle çalışma deneyimleri",
+      cta: "Deneyiminizi paylaşmak ister misiniz?",
+      list: [
+        {
+          name: "Jean Dupont",
+          role: "CEO, TechStartup",
+          company: "Paris, Fransa",
+          text: "Mikail, DevOps uzmanlığı ile altyapımızı dönüştürdü. Dağıtım süremiz %70 azaldı ve sistem istikrarı önemli ölçüde iyileşti.",
+          rating: 5
+        },
+        {
+          name: "Sarah Martin",
+          role: "CTO, DigitalCorp",
+          company: "Strasbourg, Fransa",
+          text: "Mikail ile çalışmak oyunun kurallarını değiştirdi. Full-stack geliştirme becerileri ve problem çözme yaklaşımı tam ihtiyacımız olanı sağladı.",
+          rating: 5
+        },
+        {
+          name: "Ahmet Yılmaz",
+          role: "Ürün Müdürü",
+          company: "İstanbul, Türkiye",
+          text: "Profesyonel, güvenilir ve yenilikçi. Mikail platformumuza beklentilerimizi aşan son teknoloji AI çözümleri getirdi.",
+          rating: 5
+        }
+      ]
     },
     experience: {
       title: "Profesyonel Deneyim",
@@ -567,7 +734,20 @@ export const translations = {
       france: "Fransa",
       turkey: "Türkiye",
       followMe: "Takip et",
-      sendMessage: "Mesaj gönder"
+      sendMessage: "Mesaj gönder",
+      form: {
+        name: "İsim",
+        namePlaceholder: "Adınız",
+        email: "E-posta",
+        emailPlaceholder: "email@adresiniz.com",
+        subject: "Konu",
+        subjectPlaceholder: "Mesajınızın konusu",
+        message: "Mesaj",
+        messagePlaceholder: "Mesajınız...",
+        sending: "Gönderiliyor...",
+      },
+      successMessage: "Mesaj başarıyla gönderildi!",
+      errorMessage: "Gönderme başarısız. Lütfen tekrar deneyin."
     },
     footer: {
       rights: "Tüm hakları saklıdır",
