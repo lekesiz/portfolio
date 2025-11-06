@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input.jsx'
 import { Textarea } from '@/components/ui/textarea.jsx'
 import { Label } from '@/components/ui/label.jsx'
 import { analytics } from '@/lib/analytics'
+import { sendContactEmail } from '@/lib/email'
 
 // Validation schema
 const contactFormSchema = z.object({
@@ -35,34 +36,35 @@ export function ContactForm({ t }) {
     setSubmitStatus(null)
 
     try {
-      // TODO: Implement actual form submission
-      // Options:
-      // 1. EmailJS: https://www.emailjs.com/
-      // 2. Formspree: https://formspree.io/
-      // 3. Your own backend API
-      // 4. Serverless function (Vercel/Netlify)
+      // Send email using configured provider (EmailJS, Formspree, or mailto fallback)
+      const result = await sendContactEmail(data)
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 2000))
-
-      // For now, open mailto as fallback
-      const mailtoLink = `mailto:mikail@lekesiz.fr?subject=${encodeURIComponent(
-        data.subject
-      )}&body=${encodeURIComponent(
-        `From: ${data.name} (${data.email})\n\n${data.message}`
-      )}`
-
-      window.location.href = mailtoLink
-
+      // Track successful submission
       analytics.submitContactForm(true)
-      setSubmitStatus({ type: 'success', message: t.contact.successMessage || 'Message sent successfully!' })
+
+      // Show success message
+      setSubmitStatus({
+        type: 'success',
+        message: t.contact.successMessage || 'Message sent successfully! I will get back to you soon.',
+      })
+
+      // Reset form after successful submission
       reset()
+
+      // Log provider used (for debugging)
+      if (import.meta.env.DEV) {
+        console.log('Email sent via:', result.provider)
+      }
     } catch (error) {
       console.error('Form submission error:', error)
+
+      // Track failed submission
       analytics.submitContactForm(false)
+
+      // Show error message
       setSubmitStatus({
         type: 'error',
-        message: t.contact.errorMessage || 'Failed to send message. Please try again.',
+        message: t.contact.errorMessage || 'Failed to send message. Please try again or contact me directly at mikail@lekesiz.fr',
       })
     } finally {
       setIsSubmitting(false)
