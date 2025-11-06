@@ -184,40 +184,69 @@ export const translations = {
       subtitle: "Découvrez mes réalisations récentes",
       list: [
         {
+          name: "BilanCompetence.ai",
+          description: "Plateforme SaaS complète de bilan de compétences propulsée par l'IA. Architecture full-stack avec authentification multi-tenant, génération de rapports PDF, système de paiement Stripe et dashboard analytics en temps réel.",
+          tech: ["TypeScript", "React", "Node.js", "PostgreSQL", "AI/ML", "Stripe"],
+          link: "https://bilancompetence-ai-frontend.vercel.app",
+          github: "https://github.com/lekesiz/bilancompetence.ai"
+        },
+        {
+          name: "RSN - RecoverSystemNext",
+          description: "Plateforme universelle de récupération de données alimentée par l'IA avec algorithmes blockchain et quantiques. Supporte 1200+ types de fichiers avec un taux de récupération de 95%+. Solution cross-platform (Windows, macOS, Linux, iOS, Android).",
+          tech: ["C++", "Python", "AI/ML", "Blockchain", "Qt", "CMake"],
+          link: "https://netz-informatique.fr",
+          github: "https://github.com/lekesiz/RSN"
+        },
+        {
           name: "Netz Informatique",
-          description: "Site web complet pour l'entreprise IT avec solutions IA, formations QUALIOPI et services cloud. Architecture moderne avec React et animations fluides.",
-          tech: ["React", "JavaScript", "Tailwind CSS", "Node.js"],
-          link: "https://netzinformatique.fr"
+          description: "Site web corporate moderne pour entreprise IT avec CMS headless, système de réservation en ligne, intégration formations QUALIOPI, chatbot IA multi-langues et tableau de bord client personnalisé.",
+          tech: ["JavaScript", "React", "Node.js", "Tailwind CSS", "MongoDB", "OpenAI"],
+          link: "https://netzinformatique.vercel.app",
+          github: "https://github.com/lekesiz/netzinformatique"
         },
         {
-          name: "AI News Scraper",
-          description: "Outil automatisé de collecte et d'analyse d'actualités IA avec traitement intelligent des données.",
-          tech: ["Python", "AI/ML", "Web Scraping"],
-          github: "https://github.com/lekesiz/ai_news_scraper"
+          name: "Multi-Tenant Directory",
+          description: "Système d'annuaire multi-locataire avec gestion granulaire des permissions, SSO/SAML, API RESTful, synchronisation LDAP/Active Directory et architecture microservices scalable pour entreprises.",
+          tech: ["TypeScript", "Next.js", "Prisma", "PostgreSQL", "Redis", "Docker"],
+          link: "https://multi-tenant-directory.vercel.app",
+          github: "https://github.com/lekesiz/multi-tenant-directory"
         },
         {
-          name: "Wedof Sync Google Sheets",
-          description: "Outil de synchronisation automatique des données Wedof vers Google Sheets avec mise à jour quotidienne.",
-          tech: ["Python", "Google API", "Automation"],
-          github: "https://github.com/lekesiz/wedof-sync-google-sheets"
+          name: "HECS - Edge Control System",
+          description: "Système de contrôle edge computing pour infrastructure IoT industrielle. Monitoring en temps réel, orchestration Kubernetes edge, traitement de données distribuées et protocoles MQTT/CoAP.",
+          tech: ["TypeScript", "Kubernetes", "MQTT", "InfluxDB", "Grafana", "Docker"],
+          github: "https://github.com/lekesiz/HECS"
         },
         {
-          name: "Claude Chat App",
-          description: "Application de chat intelligente intégrant l'API Claude pour des conversations IA avancées.",
-          tech: ["JavaScript", "AI API", "React"],
-          github: "https://github.com/lekesiz/claude-chat-app"
+          name: "YAGO - Yet Another GO",
+          description: "Framework de développement rapide en Python avec CLI puissant, générateurs de code, système de templates, ORM intégré et déploiement automatisé. Conçu pour accélérer le développement d'applications web modernes.",
+          tech: ["Python", "FastAPI", "SQLAlchemy", "Jinja2", "Docker", "AWS"],
+          github: "https://github.com/lekesiz/yago"
         },
         {
-          name: "Bilan de Compétences",
-          description: "Plateforme web pour la réalisation de bilans de compétences professionnels certifiés.",
-          tech: ["TypeScript", "React", "Node.js"],
-          github: "https://github.com/lekesiz/bilan-competences"
+          name: "AIGO - AI Governance Orchestrator",
+          description: "Plateforme d'orchestration et de gouvernance pour modèles IA multi-fournisseurs. Load balancing intelligent, versioning des modèles, monitoring de performances, gestion des coûts et conformité RGPD/AI Act.",
+          tech: ["Python", "FastAPI", "Redis", "PostgreSQL", "Prometheus", "Kubernetes"],
+          github: "https://github.com/lekesiz/aigo"
         },
         {
-          name: "AI Orchestrator",
-          description: "Système d'orchestration pour gérer et coordonner plusieurs modèles d'IA.",
-          tech: ["Python", "AI/ML", "API"],
-          github: "https://github.com/lekesiz/ai_orchestrator"
+          name: "ClientNetz",
+          description: "CRM et ERP sur-mesure pour gestion client avec facturation automatisée, suivi projet Kanban, gestion documentaire, signature électronique et intégration comptable. Interface responsive et API complète.",
+          tech: ["JavaScript", "Vue.js", "Node.js", "MySQL", "Redis", "ElasticSearch"],
+          link: "https://gestion.netzfrance.fr",
+          github: "https://github.com/lekesiz/clientnetz"
+        },
+        {
+          name: "NanoCap",
+          description: "Solution de capture et streaming vidéo ultra-performante avec compression hardware H.265/AV1, overlay temps réel, enregistrement multi-source et broadcasting simultané vers Twitch/YouTube/Custom RTMP.",
+          tech: ["JavaScript", "WebRTC", "FFmpeg", "Electron", "WebAssembly", "CUDA"],
+          github: "https://github.com/lekesiz/NanoCap"
+        },
+        {
+          name: "AI-PC - Personal Computer AI",
+          description: "Assistant IA de bureau avec automation cognitive, analyse de workflow, optimisation système, gestion intelligente des ressources, détection d'anomalies et suggestions proactives pour productivité maximale.",
+          tech: ["TypeScript", "Electron", "TensorFlow", "Node.js", "SQLite", "Python"],
+          github: "https://github.com/lekesiz/ai-pc"
         }
       ]
     },
@@ -436,40 +465,69 @@ export const translations = {
       subtitle: "Discover my recent work",
       list: [
         {
+          name: "BilanCompetence.ai",
+          description: "Complete AI-powered SaaS platform for skills assessment. Full-stack architecture with multi-tenant authentication, PDF report generation, Stripe payment system and real-time analytics dashboard.",
+          tech: ["TypeScript", "React", "Node.js", "PostgreSQL", "AI/ML", "Stripe"],
+          link: "https://bilancompetence-ai-frontend.vercel.app",
+          github: "https://github.com/lekesiz/bilancompetence.ai"
+        },
+        {
+          name: "RSN - RecoverSystemNext",
+          description: "Universal AI-powered data recovery platform with blockchain and quantum algorithms. Supports 1200+ file types with 95%+ recovery rate. Cross-platform solution (Windows, macOS, Linux, iOS, Android).",
+          tech: ["C++", "Python", "AI/ML", "Blockchain", "Qt", "CMake"],
+          link: "https://netz-informatique.fr",
+          github: "https://github.com/lekesiz/RSN"
+        },
+        {
           name: "Netz Informatique",
-          description: "Complete website for IT company with AI solutions, QUALIOPI training and cloud services. Modern architecture with React and smooth animations.",
-          tech: ["React", "JavaScript", "Tailwind CSS", "Node.js"],
-          link: "https://netzinformatique.fr"
+          description: "Modern corporate website for IT company with headless CMS, online booking system, QUALIOPI training integration, multi-language AI chatbot and personalized client dashboard.",
+          tech: ["JavaScript", "React", "Node.js", "Tailwind CSS", "MongoDB", "OpenAI"],
+          link: "https://netzinformatique.vercel.app",
+          github: "https://github.com/lekesiz/netzinformatique"
         },
         {
-          name: "AI News Scraper",
-          description: "Automated AI news collection and analysis tool with intelligent data processing.",
-          tech: ["Python", "AI/ML", "Web Scraping"],
-          github: "https://github.com/lekesiz/ai_news_scraper"
+          name: "Multi-Tenant Directory",
+          description: "Multi-tenant directory system with granular permission management, SSO/SAML, RESTful API, LDAP/Active Directory sync and scalable microservices architecture for enterprises.",
+          tech: ["TypeScript", "Next.js", "Prisma", "PostgreSQL", "Redis", "Docker"],
+          link: "https://multi-tenant-directory.vercel.app",
+          github: "https://github.com/lekesiz/multi-tenant-directory"
         },
         {
-          name: "Wedof Sync Google Sheets",
-          description: "Automatic synchronization tool for Wedof data to Google Sheets with daily updates.",
-          tech: ["Python", "Google API", "Automation"],
-          github: "https://github.com/lekesiz/wedof-sync-google-sheets"
+          name: "HECS - Edge Control System",
+          description: "Edge computing control system for industrial IoT infrastructure. Real-time monitoring, Kubernetes edge orchestration, distributed data processing and MQTT/CoAP protocols.",
+          tech: ["TypeScript", "Kubernetes", "MQTT", "InfluxDB", "Grafana", "Docker"],
+          github: "https://github.com/lekesiz/HECS"
         },
         {
-          name: "Claude Chat App",
-          description: "Intelligent chat application integrating Claude API for advanced AI conversations.",
-          tech: ["JavaScript", "AI API", "React"],
-          github: "https://github.com/lekesiz/claude-chat-app"
+          name: "YAGO - Yet Another GO",
+          description: "Rapid development framework in Python with powerful CLI, code generators, template system, integrated ORM and automated deployment. Designed to accelerate modern web application development.",
+          tech: ["Python", "FastAPI", "SQLAlchemy", "Jinja2", "Docker", "AWS"],
+          github: "https://github.com/lekesiz/yago"
         },
         {
-          name: "Skills Assessment",
-          description: "Web platform for conducting certified professional skills assessments.",
-          tech: ["TypeScript", "React", "Node.js"],
-          github: "https://github.com/lekesiz/bilan-competences"
+          name: "AIGO - AI Governance Orchestrator",
+          description: "Orchestration and governance platform for multi-provider AI models. Intelligent load balancing, model versioning, performance monitoring, cost management and GDPR/AI Act compliance.",
+          tech: ["Python", "FastAPI", "Redis", "PostgreSQL", "Prometheus", "Kubernetes"],
+          github: "https://github.com/lekesiz/aigo"
         },
         {
-          name: "AI Orchestrator",
-          description: "Orchestration system to manage and coordinate multiple AI models.",
-          tech: ["Python", "AI/ML", "API"],
-          github: "https://github.com/lekesiz/ai_orchestrator"
+          name: "ClientNetz",
+          description: "Custom CRM and ERP for client management with automated invoicing, Kanban project tracking, document management, electronic signature and accounting integration. Responsive interface and complete API.",
+          tech: ["JavaScript", "Vue.js", "Node.js", "MySQL", "Redis", "ElasticSearch"],
+          link: "https://gestion.netzfrance.fr",
+          github: "https://github.com/lekesiz/clientnetz"
+        },
+        {
+          name: "NanoCap",
+          description: "Ultra-performant video capture and streaming solution with H.265/AV1 hardware compression, real-time overlay, multi-source recording and simultaneous broadcasting to Twitch/YouTube/Custom RTMP.",
+          tech: ["JavaScript", "WebRTC", "FFmpeg", "Electron", "WebAssembly", "CUDA"],
+          github: "https://github.com/lekesiz/NanoCap"
+        },
+        {
+          name: "AI-PC - Personal Computer AI",
+          description: "Desktop AI assistant with cognitive automation, workflow analysis, system optimization, intelligent resource management, anomaly detection and proactive suggestions for maximum productivity.",
+          tech: ["TypeScript", "Electron", "TensorFlow", "Node.js", "SQLite", "Python"],
+          github: "https://github.com/lekesiz/ai-pc"
         }
       ]
     },
@@ -688,40 +746,69 @@ export const translations = {
       subtitle: "Son çalışmalarımı keşfedin",
       list: [
         {
+          name: "BilanCompetence.ai",
+          description: "Yapay zeka destekli eksiksiz SaaS yetkinlik değerlendirme platformu. Multi-tenant kimlik doğrulama, PDF rapor oluşturma, Stripe ödeme sistemi ve gerçek zamanlı analytics paneli ile full-stack mimari.",
+          tech: ["TypeScript", "React", "Node.js", "PostgreSQL", "AI/ML", "Stripe"],
+          link: "https://bilancompetence-ai-frontend.vercel.app",
+          github: "https://github.com/lekesiz/bilancompetence.ai"
+        },
+        {
+          name: "RSN - RecoverSystemNext",
+          description: "Blockchain ve kuantum algoritmalarıyla güçlendirilmiş yapay zeka destekli evrensel veri kurtarma platformu. 1200+ dosya türü desteği ve %95+ kurtarma oranı. Cross-platform çözüm (Windows, macOS, Linux, iOS, Android).",
+          tech: ["C++", "Python", "AI/ML", "Blockchain", "Qt", "CMake"],
+          link: "https://netz-informatique.fr",
+          github: "https://github.com/lekesiz/RSN"
+        },
+        {
           name: "Netz Informatique",
-          description: "AI çözümleri, QUALIOPI eğitimleri ve bulut hizmetleri içeren IT şirketi için eksiksiz web sitesi. React ile modern mimari ve akıcı animasyonlar.",
-          tech: ["React", "JavaScript", "Tailwind CSS", "Node.js"],
-          link: "https://netzinformatique.fr"
+          description: "IT şirketi için headless CMS, online rezervasyon sistemi, QUALIOPI eğitim entegrasyonu, çok dilli AI chatbot ve kişiselleştirilmiş müşteri paneli ile modern kurumsal web sitesi.",
+          tech: ["JavaScript", "React", "Node.js", "Tailwind CSS", "MongoDB", "OpenAI"],
+          link: "https://netzinformatique.vercel.app",
+          github: "https://github.com/lekesiz/netzinformatique"
         },
         {
-          name: "AI News Scraper",
-          description: "Akıllı veri işleme ile otomatik AI haber toplama ve analiz aracı.",
-          tech: ["Python", "AI/ML", "Web Scraping"],
-          github: "https://github.com/lekesiz/ai_news_scraper"
+          name: "Multi-Tenant Directory",
+          description: "Granüler izin yönetimi, SSO/SAML, RESTful API, LDAP/Active Directory senkronizasyonu ve kurumlar için ölçeklenebilir mikroservis mimarisi ile multi-tenant dizin sistemi.",
+          tech: ["TypeScript", "Next.js", "Prisma", "PostgreSQL", "Redis", "Docker"],
+          link: "https://multi-tenant-directory.vercel.app",
+          github: "https://github.com/lekesiz/multi-tenant-directory"
         },
         {
-          name: "Wedof Sync Google Sheets",
-          description: "Wedof verilerini günlük güncellemelerle Google Sheets'e otomatik senkronizasyon aracı.",
-          tech: ["Python", "Google API", "Automation"],
-          github: "https://github.com/lekesiz/wedof-sync-google-sheets"
+          name: "HECS - Edge Control System",
+          description: "Endüstriyel IoT altyapısı için edge computing kontrol sistemi. Gerçek zamanlı izleme, Kubernetes edge orkestrasyon, dağıtık veri işleme ve MQTT/CoAP protokolleri.",
+          tech: ["TypeScript", "Kubernetes", "MQTT", "InfluxDB", "Grafana", "Docker"],
+          github: "https://github.com/lekesiz/HECS"
         },
         {
-          name: "Claude Chat App",
-          description: "Gelişmiş AI konuşmaları için Claude API'yi entegre eden akıllı sohbet uygulaması.",
-          tech: ["JavaScript", "AI API", "React"],
-          github: "https://github.com/lekesiz/claude-chat-app"
+          name: "YAGO - Yet Another GO",
+          description: "Güçlü CLI, kod jeneratörleri, template sistemi, entegre ORM ve otomatik deployment ile Python'da hızlı geliştirme framework'ü. Modern web uygulaması geliştirmeyi hızlandırmak için tasarlandı.",
+          tech: ["Python", "FastAPI", "SQLAlchemy", "Jinja2", "Docker", "AWS"],
+          github: "https://github.com/lekesiz/yago"
         },
         {
-          name: "Yetkinlik Değerlendirmesi",
-          description: "Sertifikalı profesyonel yetkinlik değerlendirmeleri yapmak için web platformu.",
-          tech: ["TypeScript", "React", "Node.js"],
-          github: "https://github.com/lekesiz/bilan-competences"
+          name: "AIGO - AI Governance Orchestrator",
+          description: "Multi-provider AI modelleri için orkestrasyon ve yönetişim platformu. Akıllı load balancing, model versiyonlama, performans izleme, maliyet yönetimi ve GDPR/AI Act uyumluluğu.",
+          tech: ["Python", "FastAPI", "Redis", "PostgreSQL", "Prometheus", "Kubernetes"],
+          github: "https://github.com/lekesiz/aigo"
         },
         {
-          name: "AI Orchestrator",
-          description: "Birden fazla AI modelini yönetmek ve koordine etmek için orkestrasyon sistemi.",
-          tech: ["Python", "AI/ML", "API"],
-          github: "https://github.com/lekesiz/ai_orchestrator"
+          name: "ClientNetz",
+          description: "Otomatik faturalama, Kanban proje takibi, doküman yönetimi, elektronik imza ve muhasebe entegrasyonu ile özel CRM ve ERP müşteri yönetimi. Responsive arayüz ve eksiksiz API.",
+          tech: ["JavaScript", "Vue.js", "Node.js", "MySQL", "Redis", "ElasticSearch"],
+          link: "https://gestion.netzfrance.fr",
+          github: "https://github.com/lekesiz/clientnetz"
+        },
+        {
+          name: "NanoCap",
+          description: "H.265/AV1 hardware compression, gerçek zamanlı overlay, multi-source kayıt ve Twitch/YouTube/Custom RTMP'ye eşzamanlı yayın ile ultra performanslı video capture ve streaming çözümü.",
+          tech: ["JavaScript", "WebRTC", "FFmpeg", "Electron", "WebAssembly", "CUDA"],
+          github: "https://github.com/lekesiz/NanoCap"
+        },
+        {
+          name: "AI-PC - Personal Computer AI",
+          description: "Bilişsel otomasyon, workflow analizi, sistem optimizasyonu, akıllı kaynak yönetimi, anomali tespiti ve maksimum verimlilik için proaktif öneriler ile masaüstü AI asistanı.",
+          tech: ["TypeScript", "Electron", "TensorFlow", "Node.js", "SQLite", "Python"],
+          github: "https://github.com/lekesiz/ai-pc"
         }
       ]
     },
