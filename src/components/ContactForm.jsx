@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button.jsx'
 import { Input } from '@/components/ui/input.jsx'
 import { Textarea } from '@/components/ui/textarea.jsx'
 import { Label } from '@/components/ui/label.jsx'
+import { analytics } from '@/lib/analytics'
 
 // Validation schema
 const contactFormSchema = z.object({
@@ -53,10 +54,12 @@ export function ContactForm({ t }) {
 
       window.location.href = mailtoLink
 
+      analytics.submitContactForm(true)
       setSubmitStatus({ type: 'success', message: t.contact.successMessage || 'Message sent successfully!' })
       reset()
     } catch (error) {
       console.error('Form submission error:', error)
+      analytics.submitContactForm(false)
       setSubmitStatus({
         type: 'error',
         message: t.contact.errorMessage || 'Failed to send message. Please try again.',

@@ -9,6 +9,7 @@ import {
 import { Button } from '@/components/ui/button.jsx'
 import { translations } from '@/lib/translations'
 import { useThrottle } from '@/hooks/use-throttle'
+import { analytics, initAnalytics } from '@/lib/analytics'
 import profileImage from './assets/mikail_lekesiz.png'
 import './App.css'
 
@@ -44,6 +45,22 @@ function App() {
     return () => window.removeEventListener('scroll', throttledHandleScroll)
   }, [throttledHandleScroll])
 
+  // Initialize analytics on mount
+  useEffect(() => {
+    initAnalytics()
+  }, [])
+
+  const changeLanguage = (lang) => {
+    setLanguage(lang)
+    analytics.changeLanguage(lang)
+  }
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark'
+    setTheme(newTheme)
+    analytics.toggleTheme(newTheme)
+  }
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
     if (element) {
@@ -68,6 +85,7 @@ function App() {
       .then(response => {
         if (response.ok) {
           // CV dosyası mevcut, indir
+          analytics.downloadCV(language)
           const link = document.createElement('a')
           link.href = cvPath
           link.download = `Mikail_Lekesiz_CV_${language.toUpperCase()}.pdf`
@@ -141,7 +159,7 @@ function App() {
               {['fr', 'en', 'tr'].map((lang) => (
                 <button
                   key={lang}
-                  onClick={() => setLanguage(lang)}
+                  onClick={() => changeLanguage(lang)}
                   className={`px-2 py-1 text-xs font-medium rounded transition-colors ${
                     language === lang
                       ? 'bg-gray-900 dark:bg-white text-white dark:text-black'
@@ -155,7 +173,7 @@ function App() {
 
             {/* Theme Toggle */}
             <button
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              onClick={toggleTheme}
               className="ml-4 p-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
               aria-label="Toggle theme"
             >
@@ -195,7 +213,7 @@ function App() {
                   {['fr', 'en', 'tr'].map((lang) => (
                     <button
                       key={lang}
-                      onClick={() => setLanguage(lang)}
+                      onClick={() => changeLanguage(lang)}
                       className={`px-3 py-1 text-sm rounded ${
                         language === lang
                           ? 'bg-gray-900 dark:bg-white text-white dark:text-black'
@@ -209,7 +227,7 @@ function App() {
 
                 {/* Theme Toggle Mobile */}
                 <button
-                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                  onClick={toggleTheme}
                   className="flex items-center gap-2 p-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
                   aria-label="Toggle theme"
                 >
@@ -283,6 +301,7 @@ function App() {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => analytics.clickSocialLink(label)}
                     className="p-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
                     aria-label={label}
                   >
@@ -571,6 +590,7 @@ function App() {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => analytics.clickProjectLink(project.name, 'demo')}
                       className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                     >
                       <ExternalLink size={16} />
@@ -582,6 +602,7 @@ function App() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => analytics.clickProjectLink(project.name, 'github')}
                       className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                     >
                       <Github size={16} />
@@ -709,6 +730,7 @@ function App() {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => analytics.clickSocialLink(label)}
                     className="p-3 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
                     aria-label={label}
                   >
