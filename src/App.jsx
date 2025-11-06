@@ -10,6 +10,11 @@ import { Button } from '@/components/ui/button.jsx'
 import { translations } from '@/lib/translations'
 import { useThrottle } from '@/hooks/use-throttle'
 import { analytics, initAnalytics } from '@/lib/analytics'
+import { InteractiveTerminal } from '@/components/InteractiveTerminal'
+import { GitHubActivity } from '@/components/GitHubActivity'
+import { TechStackVisualization } from '@/components/TechStackVisualization'
+import { CaseStudies } from '@/components/CaseStudies'
+import { Timeline } from '@/components/Timeline'
 import profileImage from './assets/mikail_lekesiz.png'
 import './App.css'
 
@@ -613,6 +618,58 @@ function App() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Interactive Terminal Section */}
+      <section id="terminal" className="py-20 bg-gray-50 dark:bg-gray-950">
+        <div className="container mx-auto px-4">
+          <InteractiveTerminal
+            t={t}
+            language={language}
+            onLanguageChange={changeLanguage}
+            onThemeChange={toggleTheme}
+            theme={theme}
+          />
+        </div>
+      </section>
+
+      {/* Tech Stack Visualization Section */}
+      <section id="techstack" className="py-20">
+        <div className="container mx-auto px-4">
+          <TechStackVisualization t={t} />
+        </div>
+      </section>
+
+      {/* GitHub Activity Section */}
+      <section id="github" className="py-20 bg-gray-50 dark:bg-gray-950">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center space-y-4 mb-12"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold">GitHub Activity</h2>
+            <p className="text-gray-600 dark:text-gray-400 text-lg">
+              Live updates from my GitHub profile showing recent work and contributions
+            </p>
+          </motion.div>
+          <GitHubActivity t={t} />
+        </div>
+      </section>
+
+      {/* Case Studies Section */}
+      <section id="casestudies" className="py-20">
+        <div className="container mx-auto px-4">
+          <CaseStudies t={t} />
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section id="timeline" className="py-20 bg-gray-50 dark:bg-gray-950">
+        <div className="container mx-auto px-4">
+          <Timeline t={t} />
         </div>
       </section>
 
