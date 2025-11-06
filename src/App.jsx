@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { 
-  Github, Linkedin, Mail, Phone, MapPin, Download, 
+import { useTheme } from 'next-themes'
+import {
+  Github, Linkedin, Mail, Phone, MapPin, Download,
   ChevronDown, Menu, X, ExternalLink, Twitter, Instagram, Youtube,
-  Code, Server, Cloud, Shield, Sparkles, GraduationCap
+  Code, Server, Cloud, Shield, Sparkles, GraduationCap, Moon, Sun
 } from 'lucide-react'
 import { Button } from '@/components/ui/button.jsx'
 import { translations } from '@/lib/translations'
@@ -15,6 +16,7 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const [scrolled, setScrolled] = useState(false)
+  const { theme, setTheme } = useTheme()
 
   const t = translations[language]
 
@@ -44,6 +46,39 @@ function App() {
       element.scrollIntoView({ behavior: 'smooth' })
       setIsMenuOpen(false)
     }
+  }
+
+  const downloadCV = () => {
+    // CV dosyaları public/cv/ klasöründe olmalı
+    // Örnek: public/cv/cv-fr.pdf, public/cv/cv-en.pdf, public/cv/cv-tr.pdf
+    const cvFiles = {
+      fr: '/cv/cv-fr.pdf',
+      en: '/cv/cv-en.pdf',
+      tr: '/cv/cv-tr.pdf'
+    }
+
+    const cvPath = cvFiles[language] || cvFiles.fr
+
+    // CV dosyası mevcut değilse, email ile CV isteği gönder
+    fetch(cvPath, { method: 'HEAD' })
+      .then(response => {
+        if (response.ok) {
+          // CV dosyası mevcut, indir
+          const link = document.createElement('a')
+          link.href = cvPath
+          link.download = `Mikail_Lekesiz_CV_${language.toUpperCase()}.pdf`
+          document.body.appendChild(link)
+          link.click()
+          document.body.removeChild(link)
+        } else {
+          // CV dosyası mevcut değil, email gönder
+          window.location.href = 'mailto:mikail@lekesiz.fr?subject=CV Request&body=Hello, I would like to request your CV.'
+        }
+      })
+      .catch(() => {
+        // Hata durumunda email gönder
+        window.location.href = 'mailto:mikail@lekesiz.fr?subject=CV Request&body=Hello, I would like to request your CV.'
+      })
   }
 
   const skills = {
@@ -113,6 +148,15 @@ function App() {
                 </button>
               ))}
             </div>
+
+            {/* Theme Toggle */}
+            <button
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="ml-4 p-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -158,6 +202,25 @@ function App() {
                     </button>
                   ))}
                 </div>
+
+                {/* Theme Toggle Mobile */}
+                <button
+                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                  className="flex items-center gap-2 p-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+                  aria-label="Toggle theme"
+                >
+                  {theme === 'dark' ? (
+                    <>
+                      <Sun size={18} />
+                      <span className="text-sm">Light Mode</span>
+                    </>
+                  ) : (
+                    <>
+                      <Moon size={18} />
+                      <span className="text-sm">Dark Mode</span>
+                    </>
+                  )}
+                </button>
               </div>
             </motion.div>
           )}
@@ -197,10 +260,11 @@ function App() {
                 >
                   {t.hero.contact}
                 </Button>
-                <Button 
+                <Button
                   size="lg"
                   variant="outline"
                   className="border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900"
+                  onClick={downloadCV}
                 >
                   <Download className="mr-2" size={20} />
                   {t.hero.downloadCV}
