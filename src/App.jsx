@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import {
@@ -8,6 +8,7 @@ import {
 } from 'lucide-react'
 import { Button } from '@/components/ui/button.jsx'
 import { translations } from '@/lib/translations'
+import { useThrottle } from '@/hooks/use-throttle'
 import profileImage from './assets/mikail_lekesiz.png'
 import './App.css'
 
@@ -20,25 +21,28 @@ function App() {
 
   const t = translations[language]
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-      
-      const sections = ['home', 'about', 'services', 'skills', 'experience', 'education', 'certifications', 'projects', 'contact']
-      const current = sections.find(section => {
-        const element = document.getElementById(section)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          return rect.top <= 100 && rect.bottom >= 100
-        }
-        return false
-      })
-      if (current) setActiveSection(current)
-    }
+  // Optimize scroll handler with throttling
+  const handleScroll = useCallback(() => {
+    setScrolled(window.scrollY > 50)
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    const sections = ['home', 'about', 'services', 'skills', 'experience', 'education', 'certifications', 'projects', 'contact']
+    const current = sections.find(section => {
+      const element = document.getElementById(section)
+      if (element) {
+        const rect = element.getBoundingClientRect()
+        return rect.top <= 100 && rect.bottom >= 100
+      }
+      return false
+    })
+    if (current) setActiveSection(current)
   }, [])
+
+  const throttledHandleScroll = useThrottle(handleScroll, 100)
+
+  useEffect(() => {
+    window.addEventListener('scroll', throttledHandleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', throttledHandleScroll)
+  }, [throttledHandleScroll])
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
@@ -299,7 +303,11 @@ function App() {
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-400 dark:from-gray-800 dark:to-gray-600 rounded-full blur-3xl opacity-30"></div>
                 <img
                   src={profileImage}
-                  alt="Mikail Lekesiz"
+                  alt="Mikail Lekesiz - DevOps Engineer & Full Stack Developer"
+                  width="384"
+                  height="384"
+                  loading="lazy"
+                  decoding="async"
                   className="relative w-80 h-80 md:w-96 md:h-96 object-cover rounded-full border-4 border-gray-200 dark:border-gray-800 shadow-2xl"
                 />
               </div>

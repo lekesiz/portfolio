@@ -183,7 +183,20 @@ export const translations = {
       france: "France",
       turkey: "Turquie",
       followMe: "Suivez-moi",
-      sendMessage: "Envoyer un message"
+      sendMessage: "Envoyer un message",
+      form: {
+        name: "Nom",
+        namePlaceholder: "Votre nom",
+        email: "E-mail",
+        emailPlaceholder: "votre@email.com",
+        subject: "Sujet",
+        subjectPlaceholder: "Sujet de votre message",
+        message: "Message",
+        messagePlaceholder: "Votre message...",
+        sending: "Envoi en cours...",
+      },
+      successMessage: "Message envoyé avec succès !",
+      errorMessage: "Échec de l'envoi. Veuillez réessayer."
     },
     footer: {
       rights: "Tous droits réservés",
@@ -375,7 +388,20 @@ export const translations = {
       france: "France",
       turkey: "Turkey",
       followMe: "Follow me",
-      sendMessage: "Send message"
+      sendMessage: "Send message",
+      form: {
+        name: "Name",
+        namePlaceholder: "Your name",
+        email: "Email",
+        emailPlaceholder: "your@email.com",
+        subject: "Subject",
+        subjectPlaceholder: "Subject of your message",
+        message: "Message",
+        messagePlaceholder: "Your message...",
+        sending: "Sending...",
+      },
+      successMessage: "Message sent successfully!",
+      errorMessage: "Failed to send. Please try again."
     },
     footer: {
       rights: "All rights reserved",
@@ -567,7 +593,20 @@ export const translations = {
       france: "Fransa",
       turkey: "Türkiye",
       followMe: "Takip et",
-      sendMessage: "Mesaj gönder"
+      sendMessage: "Mesaj gönder",
+      form: {
+        name: "İsim",
+        namePlaceholder: "Adınız",
+        email: "E-posta",
+        emailPlaceholder: "email@adresiniz.com",
+        subject: "Konu",
+        subjectPlaceholder: "Mesajınızın konusu",
+        message: "Mesaj",
+        messagePlaceholder: "Mesajınız...",
+        sending: "Gönderiliyor...",
+      },
+      successMessage: "Mesaj başarıyla gönderildi!",
+      errorMessage: "Gönderme başarısız. Lütfen tekrar deneyin."
     },
     footer: {
       rights: "Tüm hakları saklıdır",
