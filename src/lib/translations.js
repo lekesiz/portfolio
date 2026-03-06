@@ -19,7 +19,7 @@ export const translations = {
     },
     about: {
       title: "Qui suis-je ?",
-      content: "En tant que CEO de Netz Informatique, je repousse les limites de l'innovation en transformation digitale. Mon parcours professionnel chez Microsoft et IBM m'a permis d'acquérir une expertise solide en architecture de systèmes et en solutions cloud. Aujourd'hui, je mets en œuvre des stratégies numériques audacieuses, toujours alignées sur les objectifs de l'entreprise, tout en favorisant un environnement où le développement et l'innovation sont au cœur de chaque projet."
+      content: "En tant que Fondateur de Netz Informatique, je repousse les limites de l'innovation en transformation digitale. Mon parcours professionnel chez Microsoft et IBM m'a permis d'acquérir une expertise solide en architecture de systèmes et en solutions cloud. Aujourd'hui, je mets en œuvre des stratégies numériques audacieuses, toujours alignées sur les objectifs de l'entreprise, tout en favorisant un environnement où le développement et l'innovation sont au cœur de chaque projet."
     },
     services: {
       title: "Services",
@@ -105,7 +105,7 @@ export const translations = {
       title: "Expérience Professionnelle",
       jobs: [
         {
-          title: "PDG",
+          title: "Fondateur",
           company: "Netz Informatique",
           period: "Jan 2016 - Présent",
           location: "Haguenau, Grand Est, France",
@@ -218,6 +218,12 @@ export const translations = {
           description: "Système d'orchestration pour gérer et coordonner plusieurs modèles d'IA.",
           tech: ["Python", "AI/ML", "API"],
           github: "https://github.com/lekesiz/ai_orchestrator"
+        },
+        {
+          name: "Reflektif.net",
+          description: "Plateforme d'orientation professionnelle et d'évaluation des compétences basée sur l'IA pour le marché turc. Fondateur Turquie.",
+          tech: ["TypeScript", "React", "Node.js", "AI/ML"],
+          link: "https://reflektif.net"
         }
       ]
     },
@@ -271,7 +277,7 @@ export const translations = {
     },
     about: {
       title: "About Me",
-      content: "As CEO of Netz Informatique, I push the boundaries of innovation in digital transformation. My professional experience at Microsoft and IBM has allowed me to acquire solid expertise in system architecture and cloud solutions. Today, I implement bold digital strategies, always aligned with business objectives, while fostering an environment where development and innovation are at the heart of every project."
+      content: "As Founder of Netz Informatique, I push the boundaries of innovation in digital transformation. My professional experience at Microsoft and IBM has allowed me to acquire solid expertise in system architecture and cloud solutions. Today, I implement bold digital strategies, always aligned with business objectives, while fostering an environment where development and innovation are at the heart of every project."
     },
     services: {
       title: "Services",
@@ -357,7 +363,7 @@ export const translations = {
       title: "Professional Experience",
       jobs: [
         {
-          title: "CEO",
+          title: "Founder",
           company: "Netz Informatique",
           period: "Jan 2016 - Present",
           location: "Haguenau, Grand Est, France",
@@ -470,6 +476,12 @@ export const translations = {
           description: "Orchestration system to manage and coordinate multiple AI models.",
           tech: ["Python", "AI/ML", "API"],
           github: "https://github.com/lekesiz/ai_orchestrator"
+        },
+        {
+          name: "Reflektif.net",
+          description: "AI-powered professional orientation and skills assessment platform for the Turkish market. Founder Turkey.",
+          tech: ["TypeScript", "React", "Node.js", "AI/ML"],
+          link: "https://reflektif.net"
         }
       ]
     },
@@ -523,7 +535,7 @@ export const translations = {
     },
     about: {
       title: "Hakkımda",
-      content: "Netz Informatique CEO'su olarak, dijital dönüşümde inovasyonun sınırlarını zorluyorum. Microsoft ve IBM'deki profesyonel deneyimim, sistem mimarisi ve bulut çözümlerinde sağlam bir uzmanlık kazanmamı sağladı. Bugün, her zaman iş hedefleriyle uyumlu cesur dijital stratejiler uygularken, gelişim ve inovasyonun her projenin merkezinde olduğu bir ortamı teşvik ediyorum."
+      content: "Netz Informatique Kurucusu olarak, dijital dönüşümde inovasyonun sınırlarını zorluyorum. Microsoft ve IBM'deki profesyonel deneyimim, sistem mimarisi ve bulut çözümlerinde sağlam bir uzmanlık kazanmamı sağladı. Bugün, her zaman iş hedefleriyle uyumlu cesur dijital stratejiler uygularken, gelişim ve inovasyonun her projenin merkezinde olduğu bir ortamı teşvik ediyorum."
     },
     services: {
       title: "Hizmetler",
@@ -609,7 +621,7 @@ export const translations = {
       title: "Profesyonel Deneyim",
       jobs: [
         {
-          title: "CEO",
+          title: "Kurucu",
           company: "Netz Informatique",
           period: "Oca 2016 - Günümüz",
           location: "Haguenau, Grand Est, Fransa",
@@ -722,6 +734,12 @@ export const translations = {
           description: "Birden fazla AI modelini yönetmek ve koordine etmek için orkestrasyon sistemi.",
           tech: ["Python", "AI/ML", "API"],
           github: "https://github.com/lekesiz/ai_orchestrator"
+        },
+        {
+          name: "Reflektif.net",
+          description: "Türkiye pazarı için AI destekli profesyonel yönelim ve yetkinlik değerlendirme platformu. Türkiye Kurucusu.",
+          tech: ["TypeScript", "React", "Node.js", "AI/ML"],
+          link: "https://reflektif.net"
         }
       ]
     },

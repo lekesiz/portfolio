@@ -13,7 +13,7 @@ const timelineEvents = [
   {
     id: 1,
     year: '2024-Present',
-    title: 'CEO & Founder',
+    title: 'Founder',
     organization: 'Netz Informatique',
     location: 'Haguenau, France',
     type: 'career',
