@@ -35,6 +35,36 @@ export const translations = {
         riasec: "Profil RIASEC : Investigateur · Social · Artistique",
         bigfive: "Big Five : Consciencieux · Extraverti · Ouvert à l'expérience",
         tagline: "\"Catalyseur de changement qualitatif\" — Pont entre technologie et humanité"
+      },
+      methodology: {
+        title: "Méthodologie d'Évaluation",
+        subtitle: "Comment ce profil a été construit",
+        description: "Ce profil est issu d'une évaluation psychométrique structurée combinant les modèles RIASEC, Big Five et les valeurs professionnelles de Schwartz. L'évaluation a été réalisée sur Reflektif, plateforme dont je suis le fondateur.",
+        disclosure: "Note de transparence : je ne suis pas neutre — j'ai fondé Reflektif. Mais la méthodologie repose sur la littérature psychométrique académique validée.",
+        source: "Évaluation réalisée via",
+        sourceLink: "Reflektif",
+        sourceNote: "(plateforme fondée par Mikail Lekesiz)",
+        frameworks: [
+          { label: "RIASEC", desc: "Modèle d'intérêts professionnels de Holland" },
+          { label: "Big Five / OCEAN", desc: "Cinq grands facteurs de personnalité" },
+          { label: "Valeurs de Schwartz", desc: "Analyse des valeurs professionnelles" },
+          { label: "Synthèse IA", desc: "Interprétation qualitative assistée par IA" },
+          { label: "Correspondance de rôles", desc: "Alignement avec les métiers et directions de carrière" }
+        ]
+      },
+      dataProfile: {
+        title: "Données de Mon Profil",
+        subtitle: "Insights issus d'une évaluation psychométrique structurée",
+        source: "Ces données ont été extraites d'un processus d'évaluation réflexive structurée utilisant",
+        sourceLink: "Reflektif",
+        sourceNote: "et transformées en un cadre de positionnement professionnel.",
+        table: [
+          { dimension: "Intérêts professionnels", insight: "Investigateur · Social · Artistique (RIASEC)" },
+          { dimension: "Personnalité", insight: "Ouvert · Consciencieux · Extraverti · Collaboratif" },
+          { dimension: "Valeurs fondamentales", insight: "Altruisme · Créativité · Relations humaines" },
+          { dimension: "Direction professionnelle", insight: "IA centrée sur l'humain & transformation digitale" },
+          { dimension: "Style de leadership", insight: "Catalyseur de changement · Pont technologie-humanité" }
+        ]
       }
     },
     services: {
@@ -270,7 +300,8 @@ export const translations = {
     footer: {
       rights: "Tous droits réservés",
       madeWith: "Réalisé avec",
-      by: "par"
+      by: "par",
+      colophon: "Données de personnalité : Reflektif (plateforme propre) · Stack : React, Vite, Tailwind CSS"
     }
   },
   en: {
@@ -309,6 +340,36 @@ export const translations = {
         riasec: "RIASEC Profile: Investigative · Social · Artistic",
         bigfive: "Big Five: Conscientious · Extraverted · Open to Experience",
         tagline: "\"Catalyst for qualitative change\" — Bridge between technology and humanity"
+      },
+      methodology: {
+        title: "Assessment Methodology",
+        subtitle: "How this profile was built",
+        description: "This profile is derived from a structured psychometric assessment combining the RIASEC, Big Five, and Schwartz professional values models. The assessment was completed on Reflektif, a platform I founded.",
+        disclosure: "Transparency note: I am not neutral — I founded Reflektif. But the methodology is grounded in validated academic psychometric literature.",
+        source: "Assessment completed via",
+        sourceLink: "Reflektif",
+        sourceNote: "(platform founded by Mikail Lekesiz)",
+        frameworks: [
+          { label: "RIASEC", desc: "Holland's professional interest model" },
+          { label: "Big Five / OCEAN", desc: "Five-factor personality model" },
+          { label: "Schwartz Values", desc: "Professional values analysis" },
+          { label: "AI Synthesis", desc: "AI-assisted qualitative interpretation" },
+          { label: "Role Matching", desc: "Alignment with careers and professional directions" }
+        ]
+      },
+      dataProfile: {
+        title: "Data Behind My Profile",
+        subtitle: "Insights from a structured psychometric assessment",
+        source: "These insights were extracted from a structured reflective assessment process using",
+        sourceLink: "Reflektif",
+        sourceNote: "and transformed into a professional positioning framework.",
+        table: [
+          { dimension: "Career Interests", insight: "Investigative · Social · Artistic (RIASEC)" },
+          { dimension: "Personality", insight: "Open · Disciplined · Extroverted · Collaborative" },
+          { dimension: "Core Values", insight: "Altruism · Creativity · Human Relationships" },
+          { dimension: "Professional Direction", insight: "Human-centered AI & digital transformation" },
+          { dimension: "Leadership Style", insight: "Change catalyst · Bridge between technology & humanity" }
+        ]
       }
     },
     services: {
@@ -544,7 +605,8 @@ export const translations = {
     footer: {
       rights: "All rights reserved",
       madeWith: "Made with",
-      by: "by"
+      by: "by",
+      colophon: "Personality data: Reflektif (own platform) · Stack: React, Vite, Tailwind CSS"
     }
   },
   tr: {
@@ -583,6 +645,36 @@ export const translations = {
         riasec: "RIASEC Profili: Araştırmacı · Sosyal · Sanatsal",
         bigfive: "Big Five: Vicdanlı · Dışadönük · Deneyime Açık",
         tagline: "\"Nitelikli değişim katalizörü\" — Teknoloji ile insanlık arasında köprü"
+      },
+      methodology: {
+        title: "Değerlendirme Metodolojisi",
+        subtitle: "Bu profil nasıl oluşturuldu",
+        description: "Bu profil, RIASEC, Big Five ve Schwartz mesleki değerler modellerini birleştiren yapılandırılmış bir psikometrik değerlendirmeden çıkarılmıştır. Değerlendirme, kurucusu olduğum Reflektif platformunda tamamlandı.",
+        disclosure: "Şeffaflık notu: tarafsız değilim — Reflektif'i ben kurdum. Ancak metodoloji, akademik psikometri literatürüne dayanmaktadır.",
+        source: "Değerlendirme şu platform aracılığıyla tamamlandı:",
+        sourceLink: "Reflektif",
+        sourceNote: "(Mikail Lekesiz tarafından kurulan platform)",
+        frameworks: [
+          { label: "RIASEC", desc: "Holland mesleki ilgi modeli" },
+          { label: "Big Five / OCEAN", desc: "Beş faktör kişilik modeli" },
+          { label: "Schwartz Değerleri", desc: "Mesleki değerler analizi" },
+          { label: "YZ Sentezi", desc: "YZ destekli nitel yorum" },
+          { label: "Rol Eşleştirme", desc: "Kariyer ve mesleki yönlerle uyum" }
+        ]
+      },
+      dataProfile: {
+        title: "Profil Verilerim",
+        subtitle: "Yapılandırılmış psikometrik değerlendirmeden çıkan bulgular",
+        source: "Bu bulgular,",
+        sourceLink: "Reflektif",
+        sourceNote: "kullanılarak yapılandırılmış bir yansımalı değerlendirme sürecinden çıkarılmış ve profesyonel bir konumlandırma çerçevesine dönüştürülmüştür.",
+        table: [
+          { dimension: "Kariyer İlgileri", insight: "Araştırmacı · Sosyal · Sanatsal (RIASEC)" },
+          { dimension: "Kişilik", insight: "Açık · Disiplinli · Dışadönük · İşbirlikçi" },
+          { dimension: "Temel Değerler", insight: "Fedakarlık · Yaratıcılık · İnsan İlişkileri" },
+          { dimension: "Mesleki Yön", insight: "İnsan odaklı YZ ve dijital dönüşüm" },
+          { dimension: "Liderlik Tarzı", insight: "Değişim katalizörü · Teknoloji-insanlık köprüsü" }
+        ]
       }
     },
     services: {
@@ -818,7 +910,8 @@ export const translations = {
     footer: {
       rights: "Tüm hakları saklıdır",
       madeWith: "ile yapıldı",
-      by: "tarafından"
+      by: "tarafından",
+      colophon: "Kişilik verileri: Reflektif (kendi platform) · Stack: React, Vite, Tailwind CSS"
     }
   }
 };
