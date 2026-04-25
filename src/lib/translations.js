@@ -36,6 +36,11 @@ export const translations = {
         bigfive: "Big Five : Consciencieux · Extraverti · Ouvert à l'expérience",
         tagline: "\"Catalyseur de changement qualitatif\" — Pont entre technologie et humanité"
       },
+      reportLink: {
+        label: "Voir mon rapport Reflektif complet",
+        download: "Télécharger le rapport PDF",
+        note: "Rapport psychométrique complet (RIASEC · Big Five · Valeurs de Schwartz)"
+      },
       methodology: {
         title: "Méthodologie d'Évaluation",
         subtitle: "Comment ce profil a été construit",
@@ -341,6 +346,11 @@ export const translations = {
         bigfive: "Big Five: Conscientious · Extraverted · Open to Experience",
         tagline: "\"Catalyst for qualitative change\" — Bridge between technology and humanity"
       },
+      reportLink: {
+        label: "View my full Reflektif report",
+        download: "Download PDF report",
+        note: "Full psychometric report (RIASEC · Big Five · Schwartz Values)"
+      },
       methodology: {
         title: "Assessment Methodology",
         subtitle: "How this profile was built",
@@ -645,6 +655,11 @@ export const translations = {
         riasec: "RIASEC Profili: Araştırmacı · Sosyal · Sanatsal",
         bigfive: "Big Five: Vicdanlı · Dışadönük · Deneyime Açık",
         tagline: "\"Nitelikli değişim katalizörü\" — Teknoloji ile insanlık arasında köprü"
+      },
+      reportLink: {
+        label: "Tam Reflektif raporumu görüntüle",
+        download: "PDF raporu indir",
+        note: "Tam psikometrik rapor (RIASEC · Big Five · Schwartz Değerleri)"
       },
       methodology: {
         title: "Değerlendirme Metodolojisi",
