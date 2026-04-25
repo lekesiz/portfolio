@@ -12,42 +12,58 @@ export const translations = {
     },
     hero: {
       greeting: "Bonjour, je suis",
-      title: "DevOps Engineer & Full Stack Developer",
-      description: "Passionné par l'innovation technologique et la transformation digitale, je dirige Netz Informatique en intégrant les technologies de pointe pour optimiser les processus et créer des solutions IT performantes.",
+      title: "Innovateur Technologique & Leader Humain",
+      subtitle: "DevOps · Intelligence Artificielle · Transformation Digitale",
+      description: "Je construis des ponts entre la technologie et l'humain. Fondateur de Netz Informatique, j'intègre l'IA et les solutions cloud pour créer des systèmes durables qui simplifient la vie des gens et génèrent un impact social positif.",
       downloadCV: "Télécharger le CV",
       contact: "Me Contacter"
     },
     about: {
       title: "Qui suis-je ?",
-      content: "En tant que Fondateur de Netz Informatique, je repousse les limites de l'innovation en transformation digitale. Mon parcours professionnel chez Microsoft et IBM m'a permis d'acquérir une expertise solide en architecture de systèmes et en solutions cloud. Aujourd'hui, je mets en œuvre des stratégies numériques audacieuses, toujours alignées sur les objectifs de l'entreprise, tout en favorisant un environnement où le développement et l'innovation sont au cœur de chaque projet."
+      content: "Je suis un innovateur technologique animé par une mission profonde : faire de la technologie un levier d'épanouissement humain. En tant que Fondateur de Netz Informatique, je ne me contente pas de livrer des solutions IT — je construis des ponts entre la complexité technique et les besoins humains réels.",
+      content2: "Mon parcours chez Microsoft et IBM m'a forgé une expertise solide en architecture de systèmes et solutions cloud. Mais ce qui me distingue véritablement, c'est ma capacité à combiner rigueur technique et vision humaine : je planifie avec précision, j'exécute avec discipline, et je ne laisse jamais un projet inachevé.",
+      content3: "Je crois profondément que la réussite d'une solution ne se mesure pas seulement à sa perfection technique, mais aussi à la valeur qu'elle apporte aux personnes qui l'utilisent. C'est cette conviction qui guide chaque projet que j'entreprends — créer des systèmes durables, évolutifs, et centrés sur l'humain.",
+      values: {
+        title: "Mes Valeurs Fondamentales",
+        altruism: { label: "Altruisme", value: 100, desc: "Aider les autres est ma motivation première" },
+        creativity: { label: "Créativité", value: 100, desc: "Innover pour créer de la valeur durable" },
+        relations: { label: "Relations", value: 92, desc: "La confiance comme fondation de tout projet" },
+        achievement: { label: "Accomplissement", value: 80, desc: "Viser l'excellence dans chaque livraison" }
+      },
+      personality: {
+        title: "Profil de Personnalité (Reflektif)",
+        riasec: "Profil RIASEC : Investigateur · Social · Artistique",
+        bigfive: "Big Five : Consciencieux · Extraverti · Ouvert à l'expérience",
+        tagline: "\"Catalyseur de changement qualitatif\" — Pont entre technologie et humanité"
+      }
     },
     services: {
       title: "Services",
-      subtitle: "Solutions IT complètes pour particuliers et entreprises",
+      subtitle: "Des solutions IT centrées sur l'humain pour particuliers et entreprises",
       list: [
         {
           title: "DevOps & Cloud Solutions",
-          description: "Architecture cloud, CI/CD, automatisation et optimisation des infrastructures"
+          description: "Architecture cloud évolutive, pipelines CI/CD, automatisation et optimisation des infrastructures pour des systèmes durables et performants"
         },
         {
           title: "Développement Full Stack",
-          description: "Applications web modernes avec React, Node.js, Python et PHP"
+          description: "Applications web modernes et intuitives avec React, Node.js, Python et PHP — conçues pour l'utilisateur final"
         },
         {
           title: "Intelligence Artificielle",
-          description: "Solutions IA Offline, automatisation et conseil stratégique"
+          description: "Solutions IA centrées sur l'humain : automatisation intelligente, conseil stratégique et intégration d'outils IA pour simplifier vos processus métier"
         },
         {
           title: "Cybersécurité",
-          description: "Audit de sécurité, conformité RGPD et protection des données"
+          description: "Audit de sécurité, conformité RGPD et protection des données — parce que la confiance est la base de toute relation digitale"
         },
         {
           title: "Transformation Digitale",
-          description: "Migration cloud, Microsoft 365 et accompagnement stratégique"
+          description: "Accompagnement stratégique sur mesure : migration cloud, Microsoft 365 et conduite du changement avec une approche humaine et collaborative"
         },
         {
           title: "Formation Professionnelle",
-          description: "Formations certifiées QUALIOPI en IT, IA et outils numériques"
+          description: "Formations certifiées QUALIOPI en IT, IA et outils numériques — transmettre le savoir pour autonomiser les équipes"
         }
       ]
     },
@@ -65,11 +81,11 @@ export const translations = {
       title: "En Chiffres",
       subtitle: "Un aperçu de mon parcours professionnel et de mes réalisations",
       yearsExperience: "Années d'Expérience",
-      yearsDesc: "En DevOps & Développement",
+      yearsDesc: "En DevOps, IA & Développement",
       projects: "Projets Réalisés",
       projectsDesc: "Livrés avec Succès",
       clients: "Clients Satisfaits",
-      clientsDesc: "Clients Heureux",
+      clientsDesc: "Relations de Confiance",
       certifications: "Certifications",
       certificationsDesc: "Certifications Professionnelles"
     },
@@ -82,21 +98,21 @@ export const translations = {
           name: "Jean Dupont",
           role: "CEO, TechStartup",
           company: "Paris, France",
-          text: "Mikail a transformé notre infrastructure avec son expertise DevOps. Notre temps de déploiement a diminué de 70% et la stabilité du système s'est considérablement améliorée.",
+          text: "Mikail a transformé notre infrastructure avec son expertise DevOps. Notre temps de déploiement a diminué de 70% et la stabilité du système s'est considérablement améliorée. Ce qui m'a le plus impressionné, c'est sa capacité à comprendre nos besoins humains avant de proposer des solutions techniques.",
           rating: 5
         },
         {
           name: "Sarah Martin",
           role: "CTO, DigitalCorp",
           company: "Strasbourg, France",
-          text: "Travailler avec Mikail a été une révélation. Ses compétences en développement full-stack et son approche de résolution de problèmes ont fourni exactement ce dont nous avions besoin.",
+          text: "Travailler avec Mikail a été une révélation. Ses compétences techniques sont impressionnantes, mais c'est son approche humaine et collaborative qui fait vraiment la différence. Il ne livre pas juste un projet — il s'assure que toute l'équipe comprend et adopte les solutions.",
           rating: 5
         },
         {
           name: "Ahmet Yılmaz",
           role: "Chef de Produit",
           company: "Istanbul, Turquie",
-          text: "Professionnel, fiable et innovant. Mikail a apporté des solutions IA de pointe à notre plateforme qui ont dépassé nos attentes.",
+          text: "Professionnel, fiable et véritablement innovant. Mikail a apporté des solutions IA de pointe à notre plateforme tout en veillant à ce que chaque membre de l'équipe soit embarqué dans la transformation. Un vrai catalyseur de changement.",
           rating: 5
         }
       ]
@@ -105,25 +121,25 @@ export const translations = {
       title: "Expérience Professionnelle",
       jobs: [
         {
-          title: "Fondateur",
+          title: "Fondateur & Directeur Technique",
           company: "Netz Informatique",
           period: "Jan 2016 - Présent",
           location: "Haguenau, Grand Est, France",
-          description: "Direction de la transformation digitale et de l'innovation technologique. Développement de solutions IT & IA pour particuliers et entreprises."
+          description: "Direction de la transformation digitale et de l'innovation technologique avec une approche centrée sur l'humain. Développement de solutions IT & IA sur mesure pour particuliers et entreprises. Construction d'une équipe soudée autour de valeurs de créativité, d'altruisme et d'excellence. Accompagnement stratégique des clients dans leur évolution numérique avec un suivi personnalisé et des systèmes durables."
         },
         {
-          title: "Spécialiste de l'architecture",
+          title: "Spécialiste Architecture Systèmes",
           company: "IBM",
           period: "Jan 2014 - Déc 2014",
           location: "Paris, Île-de-France, France",
-          description: "Architecture de systèmes et solutions d'entreprise."
+          description: "Architecture de systèmes d'entreprise complexes et conception de solutions scalables. Collaboration avec des équipes pluridisciplinaires pour traduire les besoins métier en architectures techniques robustes. Développement de l'expertise en intégration de systèmes à grande échelle."
         },
         {
-          title: "Spécialiste de l'architecture",
+          title: "Spécialiste Architecture Cloud",
           company: "Microsoft",
           period: "Jan 2010 - Jan 2014",
           location: "Paris, Île-de-France, France",
-          description: "Conception et mise en œuvre de solutions cloud et d'architecture système."
+          description: "Conception et mise en œuvre de solutions cloud innovantes et d'architectures système performantes. Accompagnement des clients dans leur migration vers le cloud avec une approche pédagogique et collaborative. Développement d'une expertise approfondie en Azure et en solutions d'entreprise Microsoft."
         }
       ]
     },
@@ -131,22 +147,22 @@ export const translations = {
       title: "Formation",
       list: [
         {
-          degree: "LP DWCA",
+          degree: "LP DWCA — Licence Professionnelle",
           school: "Université de Strasbourg",
           period: "Sep 2025",
-          description: "Licence Professionnelle Développeur Web et Conception d'Applications"
+          description: "Licence Professionnelle Développeur Web et Conception d'Applications — Formation avancée en développement web moderne et architecture d'applications"
         },
         {
-          degree: "Certificat de formation - Programmation (Java, Oracle)",
+          degree: "Certificat de formation — Programmation Java & Oracle",
           school: "Sakarya Üniversitesi UZEM",
-          period: "2014 - Présent",
-          description: "Formation intensive en programmation Java et gestion de bases de données Oracle"
+          period: "2014",
+          description: "Formation intensive en programmation Java et gestion de bases de données Oracle — Maîtrise des fondamentaux du développement orienté objet"
         },
         {
-          degree: "Certificat de formation - Programmation (C#, ASP.NET, SQL Server)",
+          degree: "Certificat de formation — C#, ASP.NET & SQL Server",
           school: "Sakarya Üniversitesi UZEM",
-          period: "2013 - Présent",
-          description: "Développement de logiciels en C# et création de sites web dynamiques avec ASP.NET"
+          period: "2013",
+          description: "Développement de logiciels en C# et création de sites web dynamiques avec ASP.NET — Expertise en développement .NET et gestion de données"
         }
       ]
     },
@@ -181,55 +197,55 @@ export const translations = {
     },
     projects: {
       title: "Projets",
-      subtitle: "Découvrez mes réalisations récentes",
+      subtitle: "Des réalisations qui allient innovation technique et impact humain",
       list: [
         {
           name: "Netz Informatique",
-          description: "Site web complet pour l'entreprise IT avec solutions IA, formations QUALIOPI et services cloud. Architecture moderne avec React et animations fluides.",
+          description: "Site web complet pour l'entreprise IT avec solutions IA, formations QUALIOPI et services cloud. Architecture moderne avec React et animations fluides — vitrine d'une vision technologique centrée sur l'humain.",
           tech: ["React", "JavaScript", "Tailwind CSS", "Node.js"],
           link: "https://netzinformatique.fr"
         },
         {
+          name: "Reflektif.net",
+          description: "Plateforme d'orientation professionnelle et d'évaluation des compétences basée sur l'IA pour le marché turc. Un projet qui incarne parfaitement ma vision : utiliser la technologie pour aider les gens à découvrir leur potentiel. Fondateur Turquie.",
+          tech: ["TypeScript", "React", "Node.js", "AI/ML"],
+          link: "https://reflektif.net"
+        },
+        {
+          name: "AI Orchestrator",
+          description: "Système d'orchestration intelligent pour gérer et coordonner plusieurs modèles d'IA — architecture évolutive permettant d'automatiser des workflows complexes tout en gardant l'humain au centre.",
+          tech: ["Python", "AI/ML", "API"],
+          github: "https://github.com/lekesiz/ai_orchestrator"
+        },
+        {
+          name: "Bilan de Compétences",
+          description: "Plateforme web pour la réalisation de bilans de compétences professionnels certifiés — outil qui aide les individus à mieux se connaître et à orienter leur carrière avec confiance.",
+          tech: ["TypeScript", "React", "Node.js"],
+          github: "https://github.com/lekesiz/bilan-competences"
+        },
+        {
+          name: "Claude Chat App",
+          description: "Application de chat intelligente intégrant l'API Claude pour des conversations IA avancées — interface intuitive qui rend l'IA accessible à tous.",
+          tech: ["JavaScript", "AI API", "React"],
+          github: "https://github.com/lekesiz/claude-chat-app"
+        },
+        {
           name: "AI News Scraper",
-          description: "Outil automatisé de collecte et d'analyse d'actualités IA avec traitement intelligent des données.",
+          description: "Outil automatisé de collecte et d'analyse d'actualités IA avec traitement intelligent des données — rester à la pointe de l'innovation pour mieux servir ses clients.",
           tech: ["Python", "AI/ML", "Web Scraping"],
           github: "https://github.com/lekesiz/ai_news_scraper"
         },
         {
           name: "Wedof Sync Google Sheets",
-          description: "Outil de synchronisation automatique des données Wedof vers Google Sheets avec mise à jour quotidienne.",
+          description: "Outil de synchronisation automatique des données Wedof vers Google Sheets — automatisation intelligente qui libère du temps pour se concentrer sur l'essentiel.",
           tech: ["Python", "Google API", "Automation"],
           github: "https://github.com/lekesiz/wedof-sync-google-sheets"
-        },
-        {
-          name: "Claude Chat App",
-          description: "Application de chat intelligente intégrant l'API Claude pour des conversations IA avancées.",
-          tech: ["JavaScript", "AI API", "React"],
-          github: "https://github.com/lekesiz/claude-chat-app"
-        },
-        {
-          name: "Bilan de Compétences",
-          description: "Plateforme web pour la réalisation de bilans de compétences professionnels certifiés.",
-          tech: ["TypeScript", "React", "Node.js"],
-          github: "https://github.com/lekesiz/bilan-competences"
-        },
-        {
-          name: "AI Orchestrator",
-          description: "Système d'orchestration pour gérer et coordonner plusieurs modèles d'IA.",
-          tech: ["Python", "AI/ML", "API"],
-          github: "https://github.com/lekesiz/ai_orchestrator"
-        },
-        {
-          name: "Reflektif.net",
-          description: "Plateforme d'orientation professionnelle et d'évaluation des compétences basée sur l'IA pour le marché turc. Fondateur Turquie.",
-          tech: ["TypeScript", "React", "Node.js", "AI/ML"],
-          link: "https://reflektif.net"
         }
       ]
     },
     contact: {
       title: "Contact",
-      subtitle: "Discutons de votre projet",
+      subtitle: "Construisons ensemble quelque chose qui a du sens",
       email: "E-mail",
       phone: "Téléphone",
       location: "Localisation",
@@ -270,42 +286,58 @@ export const translations = {
     },
     hero: {
       greeting: "Hello, I'm",
-      title: "DevOps Engineer & Full Stack Developer",
-      description: "Passionate about technological innovation and digital transformation, I lead Netz Informatique by integrating cutting-edge technologies to optimize processes and create high-performance IT solutions.",
+      title: "Tech Innovator & Human-Centered Leader",
+      subtitle: "DevOps · Artificial Intelligence · Digital Transformation",
+      description: "I build bridges between technology and humanity. As Founder of Netz Informatique, I integrate AI and cloud solutions to create sustainable systems that simplify people's lives and generate positive social impact.",
       downloadCV: "Download CV",
       contact: "Contact Me"
     },
     about: {
       title: "About Me",
-      content: "As Founder of Netz Informatique, I push the boundaries of innovation in digital transformation. My professional experience at Microsoft and IBM has allowed me to acquire solid expertise in system architecture and cloud solutions. Today, I implement bold digital strategies, always aligned with business objectives, while fostering an environment where development and innovation are at the heart of every project."
+      content: "I am a technology innovator driven by a deep mission: making technology a lever for human flourishing. As Founder of Netz Informatique, I don't just deliver IT solutions — I build bridges between technical complexity and real human needs.",
+      content2: "My journey at Microsoft and IBM forged solid expertise in system architecture and cloud solutions. But what truly sets me apart is my ability to combine technical rigor with human vision: I plan with precision, execute with discipline, and never leave a project unfinished.",
+      content3: "I deeply believe that the success of a solution is measured not only by its technical perfection, but also by the value it brings to the people who use it. This conviction guides every project I undertake — building sustainable, scalable, and human-centered systems.",
+      values: {
+        title: "My Core Values",
+        altruism: { label: "Altruism", value: 100, desc: "Helping others is my primary motivation" },
+        creativity: { label: "Creativity", value: 100, desc: "Innovating to create lasting value" },
+        relations: { label: "Relationships", value: 92, desc: "Trust as the foundation of every project" },
+        achievement: { label: "Achievement", value: 80, desc: "Pursuing excellence in every delivery" }
+      },
+      personality: {
+        title: "Personality Profile (Reflektif)",
+        riasec: "RIASEC Profile: Investigative · Social · Artistic",
+        bigfive: "Big Five: Conscientious · Extraverted · Open to Experience",
+        tagline: "\"Catalyst for qualitative change\" — Bridge between technology and humanity"
+      }
     },
     services: {
       title: "Services",
-      subtitle: "Complete IT solutions for individuals and businesses",
+      subtitle: "Human-centered IT solutions for individuals and businesses",
       list: [
         {
           title: "DevOps & Cloud Solutions",
-          description: "Cloud architecture, CI/CD, automation and infrastructure optimization"
+          description: "Scalable cloud architecture, CI/CD pipelines, automation and infrastructure optimization for sustainable, high-performance systems"
         },
         {
           title: "Full Stack Development",
-          description: "Modern web applications with React, Node.js, Python and PHP"
+          description: "Modern, intuitive web applications with React, Node.js, Python and PHP — designed with the end user in mind"
         },
         {
           title: "Artificial Intelligence",
-          description: "Offline AI solutions, automation and strategic consulting"
+          description: "Human-centered AI solutions: intelligent automation, strategic consulting and AI tool integration to simplify your business processes"
         },
         {
           title: "Cybersecurity",
-          description: "Security audit, GDPR compliance and data protection"
+          description: "Security audit, GDPR compliance and data protection — because trust is the foundation of every digital relationship"
         },
         {
           title: "Digital Transformation",
-          description: "Cloud migration, Microsoft 365 and strategic support"
+          description: "Tailored strategic support: cloud migration, Microsoft 365 and change management with a human and collaborative approach"
         },
         {
           title: "Professional Training",
-          description: "QUALIOPI certified training in IT, AI and digital tools"
+          description: "QUALIOPI certified training in IT, AI and digital tools — sharing knowledge to empower teams"
         }
       ]
     },
@@ -323,11 +355,11 @@ export const translations = {
       title: "By The Numbers",
       subtitle: "A glimpse into my professional journey and achievements",
       yearsExperience: "Years Experience",
-      yearsDesc: "In DevOps & Development",
+      yearsDesc: "In DevOps, AI & Development",
       projects: "Projects Completed",
       projectsDesc: "Successful Deliveries",
       clients: "Happy Clients",
-      clientsDesc: "Satisfied Customers",
+      clientsDesc: "Trusted Relationships",
       certifications: "Certifications",
       certificationsDesc: "Professional Credentials"
     },
@@ -340,21 +372,21 @@ export const translations = {
           name: "Jean Dupont",
           role: "CEO, TechStartup",
           company: "Paris, France",
-          text: "Mikail transformed our infrastructure with his DevOps expertise. Our deployment time decreased by 70% and system stability improved dramatically.",
+          text: "Mikail transformed our infrastructure with his DevOps expertise. Our deployment time decreased by 70% and system stability improved dramatically. What impressed me most was his ability to understand our human needs before proposing technical solutions.",
           rating: 5
         },
         {
           name: "Sarah Martin",
           role: "CTO, DigitalCorp",
           company: "Strasbourg, France",
-          text: "Working with Mikail was a game-changer. His full-stack development skills and problem-solving approach delivered exactly what we needed.",
+          text: "Working with Mikail was a revelation. His technical skills are impressive, but it's his human and collaborative approach that truly makes the difference. He doesn't just deliver a project — he ensures the entire team understands and adopts the solutions.",
           rating: 5
         },
         {
           name: "Ahmet Yılmaz",
           role: "Product Manager",
           company: "Istanbul, Turkey",
-          text: "Professional, reliable, and innovative. Mikail brought cutting-edge AI solutions to our platform that exceeded our expectations.",
+          text: "Professional, reliable and genuinely innovative. Mikail brought cutting-edge AI solutions to our platform while ensuring every team member was on board with the transformation. A true catalyst for change.",
           rating: 5
         }
       ]
@@ -363,25 +395,25 @@ export const translations = {
       title: "Professional Experience",
       jobs: [
         {
-          title: "Founder",
+          title: "Founder & CTO",
           company: "Netz Informatique",
           period: "Jan 2016 - Present",
           location: "Haguenau, Grand Est, France",
-          description: "Leading digital transformation and technological innovation. Development of IT & AI solutions for individuals and businesses."
+          description: "Leading digital transformation and technological innovation with a human-centered approach. Developing custom IT & AI solutions for individuals and businesses. Building a cohesive team around values of creativity, altruism and excellence. Strategically supporting clients in their digital evolution with personalized follow-up and sustainable systems."
         },
         {
-          title: "Architecture Specialist",
+          title: "Systems Architecture Specialist",
           company: "IBM",
           period: "Jan 2014 - Dec 2014",
           location: "Paris, Île-de-France, France",
-          description: "System architecture and enterprise solutions."
+          description: "Architecture of complex enterprise systems and design of scalable solutions. Collaboration with multidisciplinary teams to translate business needs into robust technical architectures. Development of expertise in large-scale system integration."
         },
         {
-          title: "Architecture Specialist",
+          title: "Cloud Architecture Specialist",
           company: "Microsoft",
           period: "Jan 2010 - Jan 2014",
           location: "Paris, Île-de-France, France",
-          description: "Design and implementation of cloud solutions and system architecture."
+          description: "Design and implementation of innovative cloud solutions and high-performance system architectures. Supporting clients in their cloud migration with a pedagogical and collaborative approach. Development of deep expertise in Azure and Microsoft enterprise solutions."
         }
       ]
     },
@@ -389,22 +421,22 @@ export const translations = {
       title: "Education",
       list: [
         {
-          degree: "LP DWCA",
+          degree: "LP DWCA — Professional License",
           school: "University of Strasbourg",
           period: "Sep 2025",
-          description: "Professional License in Web Development and Application Design"
+          description: "Professional License in Web Development and Application Design — Advanced training in modern web development and application architecture"
         },
         {
-          degree: "Programming Certificate (Java, Oracle)",
+          degree: "Programming Certificate — Java & Oracle",
           school: "Sakarya University UZEM",
-          period: "2014 - Present",
-          description: "Intensive training in Java programming and Oracle database management"
+          period: "2014",
+          description: "Intensive training in Java programming and Oracle database management — Mastery of object-oriented development fundamentals"
         },
         {
-          degree: "Programming Certificate (C#, ASP.NET, SQL Server)",
+          degree: "Programming Certificate — C#, ASP.NET & SQL Server",
           school: "Sakarya University UZEM",
-          period: "2013 - Present",
-          description: "Software development in C# and dynamic website creation with ASP.NET"
+          period: "2013",
+          description: "Software development in C# and dynamic website creation with ASP.NET — Expertise in .NET development and data management"
         }
       ]
     },
@@ -439,55 +471,55 @@ export const translations = {
     },
     projects: {
       title: "Projects",
-      subtitle: "Discover my recent work",
+      subtitle: "Achievements that combine technical innovation with human impact",
       list: [
         {
           name: "Netz Informatique",
-          description: "Complete website for IT company with AI solutions, QUALIOPI training and cloud services. Modern architecture with React and smooth animations.",
+          description: "Complete website for IT company with AI solutions, QUALIOPI training and cloud services. Modern architecture with React and smooth animations — showcase of a human-centered technological vision.",
           tech: ["React", "JavaScript", "Tailwind CSS", "Node.js"],
           link: "https://netzinformatique.fr"
         },
         {
+          name: "Reflektif.net",
+          description: "AI-powered professional orientation and skills assessment platform for the Turkish market. A project that perfectly embodies my vision: using technology to help people discover their potential. Founder Turkey.",
+          tech: ["TypeScript", "React", "Node.js", "AI/ML"],
+          link: "https://reflektif.net"
+        },
+        {
+          name: "AI Orchestrator",
+          description: "Intelligent orchestration system to manage and coordinate multiple AI models — scalable architecture enabling automation of complex workflows while keeping humans at the center.",
+          tech: ["Python", "AI/ML", "API"],
+          github: "https://github.com/lekesiz/ai_orchestrator"
+        },
+        {
+          name: "Skills Assessment",
+          description: "Web platform for conducting certified professional skills assessments — a tool that helps individuals better understand themselves and navigate their career with confidence.",
+          tech: ["TypeScript", "React", "Node.js"],
+          github: "https://github.com/lekesiz/bilan-competences"
+        },
+        {
+          name: "Claude Chat App",
+          description: "Intelligent chat application integrating Claude API for advanced AI conversations — intuitive interface that makes AI accessible to everyone.",
+          tech: ["JavaScript", "AI API", "React"],
+          github: "https://github.com/lekesiz/claude-chat-app"
+        },
+        {
           name: "AI News Scraper",
-          description: "Automated AI news collection and analysis tool with intelligent data processing.",
+          description: "Automated AI news collection and analysis tool with intelligent data processing — staying at the cutting edge of innovation to better serve clients.",
           tech: ["Python", "AI/ML", "Web Scraping"],
           github: "https://github.com/lekesiz/ai_news_scraper"
         },
         {
           name: "Wedof Sync Google Sheets",
-          description: "Automatic synchronization tool for Wedof data to Google Sheets with daily updates.",
+          description: "Automatic synchronization tool for Wedof data to Google Sheets — intelligent automation that frees up time to focus on what matters.",
           tech: ["Python", "Google API", "Automation"],
           github: "https://github.com/lekesiz/wedof-sync-google-sheets"
-        },
-        {
-          name: "Claude Chat App",
-          description: "Intelligent chat application integrating Claude API for advanced AI conversations.",
-          tech: ["JavaScript", "AI API", "React"],
-          github: "https://github.com/lekesiz/claude-chat-app"
-        },
-        {
-          name: "Skills Assessment",
-          description: "Web platform for conducting certified professional skills assessments.",
-          tech: ["TypeScript", "React", "Node.js"],
-          github: "https://github.com/lekesiz/bilan-competences"
-        },
-        {
-          name: "AI Orchestrator",
-          description: "Orchestration system to manage and coordinate multiple AI models.",
-          tech: ["Python", "AI/ML", "API"],
-          github: "https://github.com/lekesiz/ai_orchestrator"
-        },
-        {
-          name: "Reflektif.net",
-          description: "AI-powered professional orientation and skills assessment platform for the Turkish market. Founder Turkey.",
-          tech: ["TypeScript", "React", "Node.js", "AI/ML"],
-          link: "https://reflektif.net"
         }
       ]
     },
     contact: {
       title: "Contact",
-      subtitle: "Let's discuss your project",
+      subtitle: "Let's build something meaningful together",
       email: "Email",
       phone: "Phone",
       location: "Location",
@@ -528,42 +560,58 @@ export const translations = {
     },
     hero: {
       greeting: "Merhaba, ben",
-      title: "DevOps Mühendisi & Full Stack Developer",
-      description: "Teknolojik inovasyon ve dijital dönüşüm konusunda tutkulu, Netz Informatique'i yöneterek süreçleri optimize etmek ve yüksek performanslı IT çözümleri oluşturmak için en son teknolojileri entegre ediyorum.",
+      title: "Teknoloji İnovasyoncusu & İnsan Odaklı Lider",
+      subtitle: "DevOps · Yapay Zeka · Dijital Dönüşüm",
+      description: "Teknoloji ile insanlık arasında köprüler kuruyorum. Netz Informatique'in Kurucusu olarak, insanların hayatını kolaylaştıran ve olumlu sosyal etki yaratan sürdürülebilir sistemler oluşturmak için yapay zeka ve bulut çözümlerini entegre ediyorum.",
       downloadCV: "CV İndir",
       contact: "İletişime Geç"
     },
     about: {
       title: "Hakkımda",
-      content: "Netz Informatique Kurucusu olarak, dijital dönüşümde inovasyonun sınırlarını zorluyorum. Microsoft ve IBM'deki profesyonel deneyimim, sistem mimarisi ve bulut çözümlerinde sağlam bir uzmanlık kazanmamı sağladı. Bugün, her zaman iş hedefleriyle uyumlu cesur dijital stratejiler uygularken, gelişim ve inovasyonun her projenin merkezinde olduğu bir ortamı teşvik ediyorum."
+      content: "Derin bir misyonla hareket eden bir teknoloji inovasyoncusuyum: teknolojiyi insanın gelişimi için bir kaldıraç haline getirmek. Netz Informatique'in Kurucusu olarak sadece IT çözümleri sunmuyorum — teknik karmaşıklık ile gerçek insan ihtiyaçları arasında köprüler kuruyorum.",
+      content2: "Microsoft ve IBM'deki yolculuğum, sistem mimarisi ve bulut çözümlerinde sağlam bir uzmanlık kazandırdı. Ama beni gerçekten farklı kılan şey, teknik titizliği insan vizyonuyla birleştirme kapasitem: hassasiyetle planlıyor, disiplinle uyguluyorum ve hiçbir projeyi yarım bırakmıyorum.",
+      content3: "Bir çözümün başarısının sadece teknik mükemmelliğiyle değil, aynı zamanda onu kullanan insanlara kattığı değerle ölçüldüğüne derinden inanıyorum. Bu inanç, üstlendiğim her projeye rehberlik ediyor — sürdürülebilir, ölçeklenebilir ve insan odaklı sistemler inşa etmek.",
+      values: {
+        title: "Temel Değerlerim",
+        altruism: { label: "Fedakarlık", value: 100, desc: "Başkalarına yardım etmek birincil motivasyonum" },
+        creativity: { label: "Yaratıcılık", value: 100, desc: "Kalıcı değer yaratmak için inovasyon" },
+        relations: { label: "İlişkiler", value: 92, desc: "Her projenin temeli olarak güven" },
+        achievement: { label: "Başarı", value: 80, desc: "Her teslimatda mükemmelliği hedeflemek" }
+      },
+      personality: {
+        title: "Kişilik Profili (Reflektif)",
+        riasec: "RIASEC Profili: Araştırmacı · Sosyal · Sanatsal",
+        bigfive: "Big Five: Vicdanlı · Dışadönük · Deneyime Açık",
+        tagline: "\"Nitelikli değişim katalizörü\" — Teknoloji ile insanlık arasında köprü"
+      }
     },
     services: {
       title: "Hizmetler",
-      subtitle: "Bireyler ve işletmeler için eksiksiz IT çözümleri",
+      subtitle: "Bireyler ve işletmeler için insan odaklı IT çözümleri",
       list: [
         {
           title: "DevOps & Bulut Çözümleri",
-          description: "Bulut mimarisi, CI/CD, otomasyon ve altyapı optimizasyonu"
+          description: "Sürdürülebilir, yüksek performanslı sistemler için ölçeklenebilir bulut mimarisi, CI/CD pipeline'ları, otomasyon ve altyapı optimizasyonu"
         },
         {
           title: "Full Stack Geliştirme",
-          description: "React, Node.js, Python ve PHP ile modern web uygulamaları"
+          description: "Son kullanıcı gözetilerek tasarlanmış React, Node.js, Python ve PHP ile modern, sezgisel web uygulamaları"
         },
         {
           title: "Yapay Zeka",
-          description: "Offline AI çözümleri, otomasyon ve stratejik danışmanlık"
+          description: "İnsan odaklı yapay zeka çözümleri: iş süreçlerinizi sadeleştirmek için akıllı otomasyon, stratejik danışmanlık ve yapay zeka araçları entegrasyonu"
         },
         {
           title: "Siber Güvenlik",
-          description: "Güvenlik denetimi, GDPR uyumluluğu ve veri koruma"
+          description: "Güvenlik denetimi, GDPR uyumluluğu ve veri koruma — çünkü güven her dijital ilişkinin temelidir"
         },
         {
           title: "Dijital Dönüşüm",
-          description: "Bulut göçü, Microsoft 365 ve stratejik destek"
+          description: "Kişiselleştirilmiş stratejik destek: insan odaklı ve işbirlikçi bir yaklaşımla bulut göçü, Microsoft 365 ve değişim yönetimi"
         },
         {
           title: "Profesyonel Eğitim",
-          description: "IT, AI ve dijital araçlarda QUALIOPI sertifikalı eğitimler"
+          description: "IT, yapay zeka ve dijital araçlarda QUALIOPI sertifikalı eğitimler — ekipleri güçlendirmek için bilgiyi paylaşmak"
         }
       ]
     },
@@ -581,11 +629,11 @@ export const translations = {
       title: "Rakamlarla",
       subtitle: "Profesyonel yolculuğum ve başarılarıma bir bakış",
       yearsExperience: "Yıl Deneyim",
-      yearsDesc: "DevOps ve Geliştirme",
+      yearsDesc: "DevOps, YZ ve Geliştirme",
       projects: "Tamamlanan Proje",
       projectsDesc: "Başarılı Teslimatlar",
       clients: "Mutlu Müşteri",
-      clientsDesc: "Memnun Müşteriler",
+      clientsDesc: "Güven Temelli İlişkiler",
       certifications: "Sertifika",
       certificationsDesc: "Profesyonel Sertifikalar"
     },
@@ -598,21 +646,21 @@ export const translations = {
           name: "Jean Dupont",
           role: "CEO, TechStartup",
           company: "Paris, Fransa",
-          text: "Mikail, DevOps uzmanlığı ile altyapımızı dönüştürdü. Dağıtım süremiz %70 azaldı ve sistem istikrarı önemli ölçüde iyileşti.",
+          text: "Mikail, DevOps uzmanlığı ile altyapımızı dönüştürdü. Dağıtım süremiz %70 azaldı ve sistem istikrarı önemli ölçüde iyileşti. En çok etkilendiğim şey, teknik çözümler önermeden önce insan ihtiyaçlarımızı anlama kapasitesiydi.",
           rating: 5
         },
         {
           name: "Sarah Martin",
           role: "CTO, DigitalCorp",
           company: "Strasbourg, Fransa",
-          text: "Mikail ile çalışmak oyunun kurallarını değiştirdi. Full-stack geliştirme becerileri ve problem çözme yaklaşımı tam ihtiyacımız olanı sağladı.",
+          text: "Mikail ile çalışmak bir aydınlanmaydı. Teknik becerileri etkileyici, ancak gerçek farkı yaratan insan odaklı ve işbirlikçi yaklaşımı. Sadece bir proje teslim etmiyor — tüm ekibin çözümleri anlamasını ve benimsemesini sağlıyor.",
           rating: 5
         },
         {
           name: "Ahmet Yılmaz",
           role: "Ürün Müdürü",
           company: "İstanbul, Türkiye",
-          text: "Profesyonel, güvenilir ve yenilikçi. Mikail platformumuza beklentilerimizi aşan son teknoloji AI çözümleri getirdi.",
+          text: "Profesyonel, güvenilir ve gerçekten yenilikçi. Mikail platformumuza son teknoloji yapay zeka çözümleri getirirken her ekip üyesinin dönüşüme dahil olmasını sağladı. Gerçek bir değişim katalizörü.",
           rating: 5
         }
       ]
@@ -621,25 +669,25 @@ export const translations = {
       title: "Profesyonel Deneyim",
       jobs: [
         {
-          title: "Kurucu",
+          title: "Kurucu & Teknik Direktör",
           company: "Netz Informatique",
           period: "Oca 2016 - Günümüz",
           location: "Haguenau, Grand Est, Fransa",
-          description: "Dijital dönüşüm ve teknolojik inovasyon liderliği. Bireyler ve işletmeler için IT & AI çözümleri geliştirme."
+          description: "İnsan odaklı bir yaklaşımla dijital dönüşüm ve teknolojik inovasyon liderliği. Bireyler ve işletmeler için özel IT ve yapay zeka çözümleri geliştirme. Yaratıcılık, fedakarlık ve mükemmellik değerleri etrafında uyumlu bir ekip kurma. Kişiselleştirilmiş takip ve sürdürülebilir sistemlerle müşterilerin dijital evrimini stratejik olarak destekleme."
         },
         {
-          title: "Mimari Uzmanı",
+          title: "Sistem Mimarisi Uzmanı",
           company: "IBM",
           period: "Oca 2014 - Ara 2014",
           location: "Paris, Île-de-France, Fransa",
-          description: "Sistem mimarisi ve kurumsal çözümler."
+          description: "Karmaşık kurumsal sistemlerin mimarisi ve ölçeklenebilir çözümlerin tasarımı. İş ihtiyaçlarını sağlam teknik mimarilere dönüştürmek için çok disiplinli ekiplerle işbirliği. Büyük ölçekli sistem entegrasyonunda uzmanlık geliştirme."
         },
         {
-          title: "Mimari Uzmanı",
+          title: "Bulut Mimarisi Uzmanı",
           company: "Microsoft",
           period: "Oca 2010 - Oca 2014",
           location: "Paris, Île-de-France, Fransa",
-          description: "Bulut çözümleri ve sistem mimarisi tasarımı ve uygulaması."
+          description: "Yenilikçi bulut çözümleri ve yüksek performanslı sistem mimarilerinin tasarımı ve uygulanması. Pedagojik ve işbirlikçi bir yaklaşımla müşterilerin buluta geçişini destekleme. Azure ve Microsoft kurumsal çözümlerinde derin uzmanlık geliştirme."
         }
       ]
     },
@@ -647,22 +695,22 @@ export const translations = {
       title: "Eğitim",
       list: [
         {
-          degree: "LP DWCA",
+          degree: "LP DWCA — Profesyonel Lisans",
           school: "Strasbourg Üniversitesi",
           period: "Eyl 2025",
-          description: "Web Geliştirme ve Uygulama Tasarımı Profesyonel Lisansı"
+          description: "Web Geliştirme ve Uygulama Tasarımı Profesyonel Lisansı — Modern web geliştirme ve uygulama mimarisinde ileri düzey eğitim"
         },
         {
-          degree: "Programlama Sertifikası (Java, Oracle)",
+          degree: "Programlama Sertifikası — Java & Oracle",
           school: "Sakarya Üniversitesi UZEM",
-          period: "2014 - Günümüz",
-          description: "Java programlama ve Oracle veritabanı yönetiminde yoğun eğitim"
+          period: "2014",
+          description: "Java programlama ve Oracle veritabanı yönetiminde yoğun eğitim — Nesne yönelimli geliştirme temellerinde ustalık"
         },
         {
-          degree: "Programlama Sertifikası (C#, ASP.NET, SQL Server)",
+          degree: "Programlama Sertifikası — C#, ASP.NET & SQL Server",
           school: "Sakarya Üniversitesi UZEM",
-          period: "2013 - Günümüz",
-          description: "C# ile yazılım geliştirme ve ASP.NET ile dinamik web sitesi oluşturma"
+          period: "2013",
+          description: "C# ile yazılım geliştirme ve ASP.NET ile dinamik web sitesi oluşturma — .NET geliştirme ve veri yönetiminde uzmanlık"
         }
       ]
     },
@@ -697,55 +745,55 @@ export const translations = {
     },
     projects: {
       title: "Projeler",
-      subtitle: "Son çalışmalarımı keşfedin",
+      subtitle: "Teknik inovasyon ile insani etkiyi birleştiren çalışmalar",
       list: [
         {
           name: "Netz Informatique",
-          description: "AI çözümleri, QUALIOPI eğitimleri ve bulut hizmetleri içeren IT şirketi için eksiksiz web sitesi. React ile modern mimari ve akıcı animasyonlar.",
+          description: "Yapay zeka çözümleri, QUALIOPI eğitimleri ve bulut hizmetleri içeren IT şirketi için eksiksiz web sitesi. React ile modern mimari ve akıcı animasyonlar — insan odaklı teknolojik vizyonun vitrini.",
           tech: ["React", "JavaScript", "Tailwind CSS", "Node.js"],
           link: "https://netzinformatique.fr"
         },
         {
+          name: "Reflektif.net",
+          description: "Türkiye pazarı için yapay zeka destekli profesyonel yönelim ve yetkinlik değerlendirme platformu. Vizyonumu mükemmel biçimde somutlaştıran bir proje: insanların potansiyellerini keşfetmelerine yardımcı olmak için teknolojiyi kullanmak. Türkiye Kurucusu.",
+          tech: ["TypeScript", "React", "Node.js", "AI/ML"],
+          link: "https://reflektif.net"
+        },
+        {
+          name: "AI Orchestrator",
+          description: "Birden fazla yapay zeka modelini yönetmek ve koordine etmek için akıllı orkestrasyon sistemi — insanı merkeze alırken karmaşık iş akışlarının otomasyonunu sağlayan ölçeklenebilir mimari.",
+          tech: ["Python", "AI/ML", "API"],
+          github: "https://github.com/lekesiz/ai_orchestrator"
+        },
+        {
+          name: "Yetkinlik Değerlendirmesi",
+          description: "Sertifikalı profesyonel yetkinlik değerlendirmeleri yapmak için web platformu — bireylerin kendilerini daha iyi tanımalarına ve kariyerlerini güvenle yönlendirmelerine yardımcı olan bir araç.",
+          tech: ["TypeScript", "React", "Node.js"],
+          github: "https://github.com/lekesiz/bilan-competences"
+        },
+        {
+          name: "Claude Chat App",
+          description: "Gelişmiş yapay zeka konuşmaları için Claude API'yi entegre eden akıllı sohbet uygulaması — yapay zekayı herkese erişilebilir kılan sezgisel arayüz.",
+          tech: ["JavaScript", "AI API", "React"],
+          github: "https://github.com/lekesiz/claude-chat-app"
+        },
+        {
           name: "AI News Scraper",
-          description: "Akıllı veri işleme ile otomatik AI haber toplama ve analiz aracı.",
+          description: "Akıllı veri işleme ile otomatik yapay zeka haber toplama ve analiz aracı — müşterilere daha iyi hizmet vermek için inovasyonun ön saflarında kalmak.",
           tech: ["Python", "AI/ML", "Web Scraping"],
           github: "https://github.com/lekesiz/ai_news_scraper"
         },
         {
           name: "Wedof Sync Google Sheets",
-          description: "Wedof verilerini günlük güncellemelerle Google Sheets'e otomatik senkronizasyon aracı.",
+          description: "Wedof verilerini günlük güncellemelerle Google Sheets'e otomatik senkronizasyon aracı — önemli olana odaklanmak için zaman kazandıran akıllı otomasyon.",
           tech: ["Python", "Google API", "Automation"],
           github: "https://github.com/lekesiz/wedof-sync-google-sheets"
-        },
-        {
-          name: "Claude Chat App",
-          description: "Gelişmiş AI konuşmaları için Claude API'yi entegre eden akıllı sohbet uygulaması.",
-          tech: ["JavaScript", "AI API", "React"],
-          github: "https://github.com/lekesiz/claude-chat-app"
-        },
-        {
-          name: "Yetkinlik Değerlendirmesi",
-          description: "Sertifikalı profesyonel yetkinlik değerlendirmeleri yapmak için web platformu.",
-          tech: ["TypeScript", "React", "Node.js"],
-          github: "https://github.com/lekesiz/bilan-competences"
-        },
-        {
-          name: "AI Orchestrator",
-          description: "Birden fazla AI modelini yönetmek ve koordine etmek için orkestrasyon sistemi.",
-          tech: ["Python", "AI/ML", "API"],
-          github: "https://github.com/lekesiz/ai_orchestrator"
-        },
-        {
-          name: "Reflektif.net",
-          description: "Türkiye pazarı için AI destekli profesyonel yönelim ve yetkinlik değerlendirme platformu. Türkiye Kurucusu.",
-          tech: ["TypeScript", "React", "Node.js", "AI/ML"],
-          link: "https://reflektif.net"
         }
       ]
     },
     contact: {
       title: "İletişim",
-      subtitle: "Projenizi konuşalım",
+      subtitle: "Birlikte anlamlı bir şey inşa edelim",
       email: "E-posta",
       phone: "Telefon",
       location: "Konum",

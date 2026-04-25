@@ -273,6 +273,11 @@ function App() {
                 <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-medium">
                   {t.hero.title}
                 </p>
+                {t.hero.subtitle && (
+                  <p className="text-sm md:text-base text-gray-500 dark:text-gray-500 font-medium tracking-wider uppercase">
+                    {t.hero.subtitle}
+                  </p>
+                )}
               </div>
               
               <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
@@ -327,7 +332,7 @@ function App() {
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-400 dark:from-gray-800 dark:to-gray-600 rounded-full blur-3xl opacity-30"></div>
                 <img
                   src={profileImage}
-                  alt="Mikail Lekesiz - DevOps Engineer & Full Stack Developer"
+                  alt="Mikail Lekesiz - Innovateur Technologique & Leader Humain"
                   width="384"
                   height="384"
                   loading="lazy"
@@ -369,6 +374,40 @@ function App() {
             <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
               {t.about.content}
             </p>
+            {t.about.content2 && (
+              <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                {t.about.content2}
+              </p>
+            )}
+            {t.about.content3 && (
+              <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                {t.about.content3}
+              </p>
+            )}
+            {t.about.personality && (
+              <div className="mt-8 p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-800 rounded-xl text-left space-y-4">
+                <h3 className="text-xl font-bold text-center">{t.about.personality.title}</h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="flex items-start gap-3">
+                    <span className="text-2xl">🧠</span>
+                    <div>
+                      <p className="font-semibold text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">RIASEC</p>
+                      <p className="text-gray-700 dark:text-gray-300">{t.about.personality.riasec}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-2xl">⭐</span>
+                    <div>
+                      <p className="font-semibold text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">Big Five</p>
+                      <p className="text-gray-700 dark:text-gray-300">{t.about.personality.bigfive}</p>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-center text-gray-600 dark:text-gray-400 italic border-t border-gray-200 dark:border-gray-800 pt-4">
+                  {t.about.personality.tagline}
+                </p>
+              </div>
+            )}
           </motion.div>
         </div>
       </section>

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import {
   Briefcase, GraduationCap, Award, Rocket, Code, Users,
-  TrendingUp, MapPin, Calendar
+  TrendingUp, MapPin, Calendar, Globe
 } from 'lucide-react'
 
 /**
@@ -12,131 +12,169 @@ import {
 const timelineEvents = [
   {
     id: 1,
-    year: '2024-Present',
-    title: 'Founder',
+    year: '2016 – Présent',
+    title: 'Fondateur & Directeur Technique',
     organization: 'Netz Informatique',
-    location: 'Haguenau, France',
+    location: 'Haguenau, Grand Est, France',
     type: 'career',
     icon: Rocket,
-    description: 'Leading digital transformation projects and IT & AI solutions consulting for enterprise clients.',
+    description: 'Direction de la transformation digitale et de l\'innovation technologique avec une approche centrée sur l\'humain. Développement de solutions IT & IA sur mesure pour particuliers et entreprises.',
     highlights: [
-      'Managing 30+ client projects simultaneously',
-      'Team of 12+ technical professionals',
-      '€2M+ in annual revenue',
-      'Specialized in cloud migration and DevOps',
+      'Solutions IT & IA personnalisées pour 30+ clients',
+      'Formation professionnelle certifiée QUALIOPI',
+      'Co-fondateur de Reflektif.net (Turquie)',
+      'Systèmes durables et évolutifs centrés sur l\'humain',
     ],
     color: 'from-purple-500 to-pink-500',
   },
   {
     id: 2,
-    year: '2023',
-    title: 'AWS Certified Solutions Architect',
-    organization: 'Amazon Web Services',
-    type: 'certification',
-    icon: Award,
-    description: 'Achieved AWS Professional certification, demonstrating expertise in cloud architecture and best practices.',
-    highlights: [
-      'Professional level certification',
-      'Advanced cloud architecture patterns',
-      'Cost optimization strategies',
-      'Security and compliance',
-    ],
-    color: 'from-yellow-500 to-orange-500',
-  },
-  {
-    id: 3,
-    year: '2020-2024',
-    title: 'Senior DevOps Engineer',
-    organization: 'Various Tech Companies',
-    location: 'Remote & France',
-    type: 'career',
-    icon: Code,
-    description: 'Led DevOps transformations for multiple organizations, implementing modern CI/CD practices and cloud infrastructure.',
-    highlights: [
-      'Migrated 50+ applications to Kubernetes',
-      'Reduced deployment time by 80%',
-      'Implemented infrastructure as code',
-      'Mentored 20+ junior engineers',
-    ],
-    color: 'from-blue-500 to-cyan-500',
-  },
-  {
-    id: 4,
-    year: '2022',
-    title: 'Certified Kubernetes Administrator',
-    organization: 'Cloud Native Computing Foundation',
-    type: 'certification',
-    icon: Award,
-    description: 'Earned CKA certification, validating expertise in Kubernetes cluster administration and orchestration.',
-    highlights: [
-      'Hands-on cluster management',
-      'Advanced networking and security',
-      'Troubleshooting and optimization',
-      'Production-ready deployments',
-    ],
-    color: 'from-green-500 to-emerald-500',
-  },
-  {
-    id: 5,
-    year: '2018-2020',
-    title: 'Full Stack Developer',
-    organization: 'Digital Agency',
-    location: 'Strasbourg, France',
-    type: 'career',
-    icon: Code,
-    description: 'Developed complex web applications using modern JavaScript frameworks and cloud technologies.',
-    highlights: [
-      'Built 30+ production applications',
-      'React, Vue.js, Node.js specialist',
-      'Implemented real-time features',
-      'Led frontend architecture decisions',
-    ],
-    color: 'from-indigo-500 to-blue-500',
-  },
-  {
-    id: 6,
-    year: '2017',
-    title: 'Master\'s in Computer Science',
-    organization: 'University of Strasbourg',
+    year: '2025',
+    title: 'LP DWCA — Licence Professionnelle',
+    organization: 'Université de Strasbourg',
     location: 'Strasbourg, France',
     type: 'education',
     icon: GraduationCap,
-    description: 'Graduated with honors, specializing in distributed systems and cloud computing.',
+    description: 'Licence Professionnelle Développeur Web et Conception d\'Applications — Formation avancée en développement web moderne et architecture d\'applications.',
     highlights: [
-      'GPA: 3.8/4.0',
-      'Thesis on microservices architecture',
-      'Research in cloud optimization',
-      'Teaching assistant for 2 years',
+      'Développement web moderne (React, Node.js)',
+      'Architecture d\'applications scalables',
+      'Méthodes agiles et DevOps',
+      'Projets professionnels en entreprise',
     ],
     color: 'from-red-500 to-pink-500',
   },
   {
+    id: 3,
+    year: '2024',
+    title: 'ChatGPT + Zapier: Automate Email Replies with AI',
+    organization: 'Vanderbilt University',
+    type: 'certification',
+    icon: Award,
+    description: 'Certification en automatisation des processus métier avec l\'IA — intégration de ChatGPT et Zapier pour des workflows intelligents.',
+    highlights: [
+      'Automatisation IA des réponses email',
+      'Intégration ChatGPT & Zapier',
+      'Workflows intelligents no-code',
+      'ID: CX6R05UJ6FBQ',
+    ],
+    color: 'from-yellow-500 to-orange-500',
+  },
+  {
+    id: 4,
+    year: '2024',
+    title: 'Introduction to Google Workspace Administration',
+    organization: 'Google Cloud',
+    type: 'certification',
+    icon: Award,
+    description: 'Certification Google Cloud en administration de Google Workspace — gestion des environnements de travail collaboratifs en entreprise.',
+    highlights: [
+      'Administration Google Workspace',
+      'Gestion des utilisateurs et groupes',
+      'Sécurité et conformité',
+      'ID: CEOF4A1GG3ND',
+    ],
+    color: 'from-blue-500 to-cyan-500',
+  },
+  {
+    id: 5,
+    year: '2021 – 2026',
+    title: 'Certificat de Compétences en Entreprise',
+    organization: 'CCI France',
+    type: 'certification',
+    icon: Award,
+    description: 'Certification professionnelle CCI France validant les compétences entrepreneuriales et de gestion d\'entreprise.',
+    highlights: [
+      'Gestion et stratégie d\'entreprise',
+      'Compétences entrepreneuriales validées',
+      'Réseau professionnel CCI',
+      'ID: 2021-0011724-5',
+    ],
+    color: 'from-green-500 to-emerald-500',
+  },
+  {
+    id: 6,
+    year: '2014',
+    title: 'Spécialiste Architecture Systèmes',
+    organization: 'IBM',
+    location: 'Paris, Île-de-France, France',
+    type: 'career',
+    icon: Code,
+    description: 'Architecture de systèmes d\'entreprise complexes et conception de solutions scalables. Collaboration avec des équipes pluridisciplinaires pour traduire les besoins métier en architectures techniques robustes.',
+    highlights: [
+      'Architecture de systèmes d\'entreprise complexes',
+      'Conception de solutions scalables',
+      'Collaboration pluridisciplinaire',
+      'Intégration de systèmes à grande échelle',
+    ],
+    color: 'from-blue-600 to-blue-800',
+  },
+  {
     id: 7,
-    year: '2015-2018',
-    title: 'Junior Developer & IT Consultant',
-    organization: 'Freelance',
-    location: 'France',
+    year: '2014',
+    title: 'Certificat Java & Oracle',
+    organization: 'Sakarya Üniversitesi UZEM',
+    type: 'education',
+    icon: GraduationCap,
+    description: 'Formation intensive en programmation Java et gestion de bases de données Oracle — maîtrise des fondamentaux du développement orienté objet.',
+    highlights: [
+      'Programmation Java avancée',
+      'Gestion de bases de données Oracle',
+      'Développement orienté objet',
+      'Applications d\'entreprise',
+    ],
+    color: 'from-orange-500 to-red-500',
+  },
+  {
+    id: 8,
+    year: '2013',
+    title: 'Certificat C#, ASP.NET & SQL Server',
+    organization: 'Sakarya Üniversitesi UZEM',
+    type: 'education',
+    icon: GraduationCap,
+    description: 'Développement de logiciels en C# et création de sites web dynamiques avec ASP.NET — expertise en développement .NET et gestion de données.',
+    highlights: [
+      'Développement C# & .NET',
+      'Applications web ASP.NET',
+      'Gestion SQL Server',
+      'Architecture MVC',
+    ],
+    color: 'from-indigo-500 to-purple-500',
+  },
+  {
+    id: 9,
+    year: '2010 – 2014',
+    title: 'Spécialiste Architecture Cloud',
+    organization: 'Microsoft',
+    location: 'Paris, Île-de-France, France',
     type: 'career',
     icon: Briefcase,
-    description: 'Started professional journey building websites and providing IT consulting for small businesses.',
+    description: 'Conception et mise en œuvre de solutions cloud innovantes et d\'architectures système performantes. Accompagnement des clients dans leur migration vers le cloud avec une approche pédagogique et collaborative.',
     highlights: [
-      'First 50+ satisfied clients',
-      'WordPress, PHP, JavaScript',
-      'Built personal network',
-      'Learned business fundamentals',
+      'Solutions cloud Azure innovantes',
+      'Architectures système haute performance',
+      'Migration cloud avec approche pédagogique',
+      'Expertise Microsoft 365 & Azure',
     ],
-    color: 'from-gray-500 to-slate-500',
+    color: 'from-blue-400 to-blue-600',
+  },
+  {
+    id: 10,
+    year: '2008',
+    title: 'Information Management',
+    organization: 'Anadolu Üniversitesi',
+    type: 'education',
+    icon: GraduationCap,
+    description: 'Formation en gestion de l\'information — fondements de la gestion des données, des systèmes d\'information et de la communication digitale.',
+    highlights: [
+      'Gestion des systèmes d\'information',
+      'Communication digitale',
+      'Fondements de la data management',
+      'ID: 2008-15959',
+    ],
+    color: 'from-gray-500 to-slate-600',
   },
 ]
-
-const getIconForType = (type) => {
-  switch (type) {
-    case 'career': return Briefcase
-    case 'education': return GraduationCap
-    case 'certification': return Award
-    default: return Code
-  }
-}
 
 export function Timeline({ t }) {
   return (
@@ -149,10 +187,10 @@ export function Timeline({ t }) {
         className="text-center space-y-4"
       >
         <h2 className="text-4xl md:text-5xl font-bold">
-          {t?.timeline?.title || 'My Journey'}
+          {t?.timeline?.title || 'Mon Parcours'}
         </h2>
         <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
-          {t?.timeline?.subtitle || 'From code to cloud, here\'s how I built my expertise and grew as a technology leader.'}
+          {t?.timeline?.subtitle || 'De Microsoft à IBM, de la fondation de Netz Informatique à Reflektif.net — un parcours guidé par la passion de la technologie et l\'amour de l\'humain.'}
         </p>
       </motion.div>
 
@@ -252,20 +290,20 @@ export function Timeline({ t }) {
         className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl"
       >
         <div className="text-center">
-          <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">9+</div>
-          <div className="text-sm text-gray-600 dark:text-gray-400">Years Experience</div>
+          <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">15+</div>
+          <div className="text-sm text-gray-600 dark:text-gray-400">Années d'Expérience</div>
         </div>
         <div className="text-center">
           <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">50+</div>
-          <div className="text-sm text-gray-600 dark:text-gray-400">Projects Delivered</div>
+          <div className="text-sm text-gray-600 dark:text-gray-400">Projets Livrés</div>
         </div>
         <div className="text-center">
           <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">30+</div>
-          <div className="text-sm text-gray-600 dark:text-gray-400">Happy Clients</div>
+          <div className="text-sm text-gray-600 dark:text-gray-400">Clients Satisfaits</div>
         </div>
         <div className="text-center">
-          <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">4+</div>
-          <div className="text-sm text-gray-600 dark:text-gray-400">Certifications</div>
+          <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">3</div>
+          <div className="text-sm text-gray-600 dark:text-gray-400">Entreprises Clés</div>
         </div>
       </motion.div>
     </div>
