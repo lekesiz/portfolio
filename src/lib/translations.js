@@ -217,10 +217,12 @@ export const translations = {
           id: "CEOF4A1GG3ND"
         },
         {
-          name: "Certificat de Compétences en Entreprise",
-          issuer: "CCI France",
-          date: "Jan 2021 - Jan 2026",
-          id: "2021-0011724-5"
+          name: "Certificat de Compétences en Entreprise — Exercer la mission de formateur en entreprise (RS 5365)",
+          issuer: "CCI France · CCI Alsace Eurométropole",
+          date: "21 Jan 2021 · Renouvelé le 21 Avr 2026",
+          id: "2021-0011724-5",
+          image: "/cci-france-certificat-rs5365.jpg",
+          viewLabel: "Voir le certificat"
         },
         {
           name: "Information Management",
@@ -527,10 +529,12 @@ export const translations = {
           id: "CEOF4A1GG3ND"
         },
         {
-          name: "Business Skills Certificate",
-          issuer: "CCI France",
-          date: "Jan 2021 - Jan 2026",
-          id: "2021-0011724-5"
+          name: "Certificate of Business Competencies — Corporate Trainer (RS 5365)",
+          issuer: "CCI France · CCI Alsace Eurométropole",
+          date: "21 Jan 2021 · Renewed 21 Apr 2026",
+          id: "2021-0011724-5",
+          image: "/cci-france-certificat-rs5365.jpg",
+          viewLabel: "View certificate"
         },
         {
           name: "Information Management",
@@ -837,10 +841,12 @@ export const translations = {
           id: "CEOF4A1GG3ND"
         },
         {
-          name: "İş Yetkinlikleri Sertifikası",
-          issuer: "CCI France",
-          date: "Oca 2021 - Oca 2026",
-          id: "2021-0011724-5"
+          name: "İşletme Yetkinlikleri Sertifikası — Kurumsal Eğitmen (RS 5365)",
+          issuer: "CCI France · CCI Alsace Eurométropole",
+          date: "21 Oca 2021 · Yenileme: 21 Nis 2026",
+          id: "2021-0011724-5",
+          image: "/cci-france-certificat-rs5365.jpg",
+          viewLabel: "Sertifikayı görüntüle"
         },
         {
           name: "Bilgi Yönetimi",

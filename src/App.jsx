@@ -23,6 +23,7 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const [scrolled, setScrolled] = useState(false)
+  const [certModal, setCertModal] = useState(null)
   const { theme, setTheme } = useTheme()
 
   const t = translations[language]
@@ -675,9 +676,70 @@ function App() {
                 {cert.id && (
                   <p className="text-xs text-gray-400 dark:text-gray-600 mt-2">ID: {cert.id}</p>
                 )}
+                {cert.image && (
+                  <button
+                    onClick={() => setCertModal(cert)}
+                    className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-black dark:text-white border border-black dark:border-white px-3 py-1.5 rounded hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                    {cert.viewLabel}
+                  </button>
+                )}
               </motion.div>
             ))}
           </div>
+
+          {/* Certificate Image Modal */}
+          <AnimatePresence>
+            {certModal && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+                onClick={() => setCertModal(null)}
+              >
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.9, opacity: 0 }}
+                  className="relative max-w-3xl w-full bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-2xl"
+                  onClick={e => e.stopPropagation()}
+                >
+                  <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+                    <div>
+                      <p className="font-bold text-sm">{certModal.name}</p>
+                      <p className="text-xs text-gray-500">{certModal.issuer} · {certModal.date}</p>
+                    </div>
+                    <button
+                      onClick={() => setCertModal(null)}
+                      className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                    >
+                      <X size={18} />
+                    </button>
+                  </div>
+                  <div className="p-4">
+                    <img
+                      src={certModal.image}
+                      alt={certModal.name}
+                      className="w-full h-auto rounded-lg object-contain"
+                    />
+                  </div>
+                  <div className="p-4 border-t border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                    <p className="text-xs text-gray-400">N° {certModal.id}</p>
+                    <a
+                      href={certModal.image}
+                      download
+                      className="inline-flex items-center gap-2 text-sm font-medium bg-black text-white dark:bg-white dark:text-black px-4 py-2 rounded hover:opacity-80 transition-opacity"
+                    >
+                      <Download size={14} />
+                      Télécharger
+                    </a>
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </section>
 
