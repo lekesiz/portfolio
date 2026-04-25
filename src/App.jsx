@@ -1,12 +1,20 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { 
-  Github, Linkedin, Mail, Phone, MapPin, Download, 
+import { useTheme } from 'next-themes'
+import {
+  Github, Linkedin, Mail, Phone, MapPin, Download,
   ChevronDown, Menu, X, ExternalLink, Twitter, Instagram, Youtube,
-  Code, Server, Cloud, Shield, Sparkles, GraduationCap
+  Code, Server, Cloud, Shield, Sparkles, GraduationCap, Moon, Sun
 } from 'lucide-react'
 import { Button } from '@/components/ui/button.jsx'
 import { translations } from '@/lib/translations'
+import { useThrottle } from '@/hooks/use-throttle'
+import { analytics, initAnalytics } from '@/lib/analytics'
+import { InteractiveTerminal } from '@/components/InteractiveTerminal'
+import { GitHubActivity } from '@/components/GitHubActivity'
+import { TechStackVisualization } from '@/components/TechStackVisualization'
+import { CaseStudies } from '@/components/CaseStudies'
+import { Timeline } from '@/components/Timeline'
 import profileImage from './assets/mikail_lekesiz.png'
 import './App.css'
 
@@ -15,28 +23,48 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const [scrolled, setScrolled] = useState(false)
+  const { theme, setTheme } = useTheme()
 
   const t = translations[language]
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-      
-      const sections = ['home', 'about', 'services', 'skills', 'experience', 'education', 'certifications', 'projects', 'contact']
-      const current = sections.find(section => {
-        const element = document.getElementById(section)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          return rect.top <= 100 && rect.bottom >= 100
-        }
-        return false
-      })
-      if (current) setActiveSection(current)
-    }
+  // Optimize scroll handler with throttling
+  const handleScroll = useCallback(() => {
+    setScrolled(window.scrollY > 50)
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    const sections = ['home', 'about', 'services', 'skills', 'experience', 'education', 'certifications', 'projects', 'contact']
+    const current = sections.find(section => {
+      const element = document.getElementById(section)
+      if (element) {
+        const rect = element.getBoundingClientRect()
+        return rect.top <= 100 && rect.bottom >= 100
+      }
+      return false
+    })
+    if (current) setActiveSection(current)
   }, [])
+
+  const throttledHandleScroll = useThrottle(handleScroll, 100)
+
+  useEffect(() => {
+    window.addEventListener('scroll', throttledHandleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', throttledHandleScroll)
+  }, [throttledHandleScroll])
+
+  // Initialize analytics on mount
+  useEffect(() => {
+    initAnalytics()
+  }, [])
+
+  const changeLanguage = (lang) => {
+    setLanguage(lang)
+    analytics.changeLanguage(lang)
+  }
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark'
+    setTheme(newTheme)
+    analytics.toggleTheme(newTheme)
+  }
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
@@ -44,6 +72,40 @@ function App() {
       element.scrollIntoView({ behavior: 'smooth' })
       setIsMenuOpen(false)
     }
+  }
+
+  const downloadCV = () => {
+    // CV dosyaları public/cv/ klasöründe olmalı
+    // Örnek: public/cv/cv-fr.pdf, public/cv/cv-en.pdf, public/cv/cv-tr.pdf
+    const cvFiles = {
+      fr: '/cv/cv-fr.pdf',
+      en: '/cv/cv-en.pdf',
+      tr: '/cv/cv-tr.pdf'
+    }
+
+    const cvPath = cvFiles[language] || cvFiles.fr
+
+    // CV dosyası mevcut değilse, email ile CV isteği gönder
+    fetch(cvPath, { method: 'HEAD' })
+      .then(response => {
+        if (response.ok) {
+          // CV dosyası mevcut, indir
+          analytics.downloadCV(language)
+          const link = document.createElement('a')
+          link.href = cvPath
+          link.download = `Mikail_Lekesiz_CV_${language.toUpperCase()}.pdf`
+          document.body.appendChild(link)
+          link.click()
+          document.body.removeChild(link)
+        } else {
+          // CV dosyası mevcut değil, email gönder
+          window.location.href = 'mailto:mikail@lekesiz.fr?subject=CV Request&body=Hello, I would like to request your CV.'
+        }
+      })
+      .catch(() => {
+        // Hata durumunda email gönder
+        window.location.href = 'mailto:mikail@lekesiz.fr?subject=CV Request&body=Hello, I would like to request your CV.'
+      })
   }
 
   const skills = {
@@ -102,7 +164,7 @@ function App() {
               {['fr', 'en', 'tr'].map((lang) => (
                 <button
                   key={lang}
-                  onClick={() => setLanguage(lang)}
+                  onClick={() => changeLanguage(lang)}
                   className={`px-2 py-1 text-xs font-medium rounded transition-colors ${
                     language === lang
                       ? 'bg-gray-900 dark:bg-white text-white dark:text-black'
@@ -113,6 +175,15 @@ function App() {
                 </button>
               ))}
             </div>
+
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="ml-4 p-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -147,7 +218,7 @@ function App() {
                   {['fr', 'en', 'tr'].map((lang) => (
                     <button
                       key={lang}
-                      onClick={() => setLanguage(lang)}
+                      onClick={() => changeLanguage(lang)}
                       className={`px-3 py-1 text-sm rounded ${
                         language === lang
                           ? 'bg-gray-900 dark:bg-white text-white dark:text-black'
@@ -158,6 +229,25 @@ function App() {
                     </button>
                   ))}
                 </div>
+
+                {/* Theme Toggle Mobile */}
+                <button
+                  onClick={toggleTheme}
+                  className="flex items-center gap-2 p-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+                  aria-label="Toggle theme"
+                >
+                  {theme === 'dark' ? (
+                    <>
+                      <Sun size={18} />
+                      <span className="text-sm">Light Mode</span>
+                    </>
+                  ) : (
+                    <>
+                      <Moon size={18} />
+                      <span className="text-sm">Dark Mode</span>
+                    </>
+                  )}
+                </button>
               </div>
             </motion.div>
           )}
@@ -183,6 +273,11 @@ function App() {
                 <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-medium">
                   {t.hero.title}
                 </p>
+                {t.hero.subtitle && (
+                  <p className="text-sm md:text-base text-gray-500 dark:text-gray-500 font-medium tracking-wider uppercase">
+                    {t.hero.subtitle}
+                  </p>
+                )}
               </div>
               
               <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
@@ -197,16 +292,15 @@ function App() {
                 >
                   {t.hero.contact}
                 </Button>
-                <a href="/CV_Mikail_Lekesiz.pdf" download>
-                  <Button 
-                    size="lg"
-                    variant="outline"
-                    className="border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900"
-                  >
-                    <Download className="mr-2" size={20} />
-                    {t.hero.downloadCV}
-                  </Button>
-                </a>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900"
+                  onClick={downloadCV}
+                >
+                  <Download className="mr-2" size={20} />
+                  {t.hero.downloadCV}
+                </Button>
               </div>
 
               {/* Social Links */}
@@ -217,6 +311,7 @@ function App() {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => analytics.clickSocialLink(label)}
                     className="p-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
                     aria-label={label}
                   >
@@ -237,7 +332,11 @@ function App() {
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-400 dark:from-gray-800 dark:to-gray-600 rounded-full blur-3xl opacity-30"></div>
                 <img
                   src={profileImage}
-                  alt="Mikail Lekesiz"
+                  alt="Mikail Lekesiz - Innovateur Technologique & Leader Humain"
+                  width="384"
+                  height="384"
+                  loading="lazy"
+                  decoding="async"
                   className="relative w-80 h-80 md:w-96 md:h-96 object-cover rounded-full border-4 border-gray-200 dark:border-gray-800 shadow-2xl"
                 />
               </div>
@@ -275,6 +374,40 @@ function App() {
             <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
               {t.about.content}
             </p>
+            {t.about.content2 && (
+              <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                {t.about.content2}
+              </p>
+            )}
+            {t.about.content3 && (
+              <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                {t.about.content3}
+              </p>
+            )}
+            {t.about.personality && (
+              <div className="mt-8 p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-800 rounded-xl text-left space-y-4">
+                <h3 className="text-xl font-bold text-center">{t.about.personality.title}</h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="flex items-start gap-3">
+                    <span className="text-2xl">🧠</span>
+                    <div>
+                      <p className="font-semibold text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">RIASEC</p>
+                      <p className="text-gray-700 dark:text-gray-300">{t.about.personality.riasec}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-2xl">⭐</span>
+                    <div>
+                      <p className="font-semibold text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">Big Five</p>
+                      <p className="text-gray-700 dark:text-gray-300">{t.about.personality.bigfive}</p>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-center text-gray-600 dark:text-gray-400 italic border-t border-gray-200 dark:border-gray-800 pt-4">
+                  {t.about.personality.tagline}
+                </p>
+              </div>
+            )}
           </motion.div>
         </div>
       </section>
@@ -501,6 +634,7 @@ function App() {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => analytics.clickProjectLink(project.name, 'demo')}
                       className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                     >
                       <ExternalLink size={16} />
@@ -512,6 +646,7 @@ function App() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => analytics.clickProjectLink(project.name, 'github')}
                       className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                     >
                       <Github size={16} />
@@ -522,6 +657,58 @@ function App() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Interactive Terminal Section */}
+      <section id="terminal" className="py-20 bg-gray-50 dark:bg-gray-950">
+        <div className="container mx-auto px-4">
+          <InteractiveTerminal
+            t={t}
+            language={language}
+            onLanguageChange={changeLanguage}
+            onThemeChange={toggleTheme}
+            theme={theme}
+          />
+        </div>
+      </section>
+
+      {/* Tech Stack Visualization Section */}
+      <section id="techstack" className="py-20">
+        <div className="container mx-auto px-4">
+          <TechStackVisualization t={t} />
+        </div>
+      </section>
+
+      {/* GitHub Activity Section */}
+      <section id="github" className="py-20 bg-gray-50 dark:bg-gray-950">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center space-y-4 mb-12"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold">GitHub Activity</h2>
+            <p className="text-gray-600 dark:text-gray-400 text-lg">
+              Live updates from my GitHub profile showing recent work and contributions
+            </p>
+          </motion.div>
+          <GitHubActivity t={t} />
+        </div>
+      </section>
+
+      {/* Case Studies Section */}
+      <section id="casestudies" className="py-20">
+        <div className="container mx-auto px-4">
+          <CaseStudies t={t} />
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section id="timeline" className="py-20 bg-gray-50 dark:bg-gray-950">
+        <div className="container mx-auto px-4">
+          <Timeline t={t} />
         </div>
       </section>
 
@@ -639,6 +826,7 @@ function App() {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => analytics.clickSocialLink(label)}
                     className="p-3 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
                     aria-label={label}
                   >

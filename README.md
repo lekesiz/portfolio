@@ -1,322 +1,377 @@
-# Portfolio - Mikail Lekesiz
+# 💼 Mikail Lekesiz - Portfolio
 
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-success)](https://portfolio.lekesiz.fr)
-[![React](https://img.shields.io/badge/React-19.1.0-blue)](https://reactjs.org/)
-[![Vite](https://img.shields.io/badge/Vite-6.3.5-646CFF)](https://vitejs.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.1.7-38B2AC)](https://tailwindcss.com/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
-> Portfolio professionnel moderne et multilingue de Mikail Lekesiz - DevOps Engineer & Full Stack Developer
-
-🌐 **[Voir le site en direct](https://portfolio.lekesiz.fr)**
+[🇬🇧 English](#english) | [🇹🇷 Türkçe](#türkçe)
 
 ---
 
-## 📋 Table des matières
+## 🇬🇧 English
 
-- [À propos](#à-propos)
-- [Fonctionnalités](#fonctionnalités)
-- [Technologies](#technologies)
-- [Installation](#installation)
-- [Utilisation](#utilisation)
-- [Déploiement](#déploiement)
-- [Structure du projet](#structure-du-projet)
-- [Personnalisation](#personnalisation)
-- [Contribuer](#contribuer)
-- [Licence](#licence)
-- [Contact](#contact)
+### 📖 About
 
----
+Personal portfolio website showcasing professional experience, projects, and skills. Features a modern, minimalist design with smooth animations and multi-language support (French, English, Turkish).
 
-## 🎯 À propos
+**Live Demo:** [Coming Soon]
 
-Ce portfolio présente mon parcours professionnel, mes compétences techniques, mes projets et mes réalisations en tant que **DevOps Engineer** et **Full Stack Developer**. 
+### ✨ Features
 
-En tant que CEO de **Netz Informatique**, je me spécialise dans :
-- 🚀 DevOps & Cloud Solutions (AWS, Azure, Google Cloud)
-- 💻 Développement Full Stack (React, Node.js, Python, PHP)
-- 🤖 Intelligence Artificielle & Automatisation
-- 🔒 Cybersécurité & Protection des données
-- 🌐 Transformation Digitale
-- 📚 Formation Professionnelle (Certifié QUALIOPI)
+- 🌍 **Multi-language Support** - French, English, Turkish
+- 🎨 **Modern UI/UX** - Clean, minimalist design with smooth animations
+- 📱 **Fully Responsive** - Works perfectly on all devices
+- ⚡ **Fast Performance** - Built with Vite for optimal loading speed
+- 🎭 **Smooth Animations** - Powered by Framer Motion
+- 🎯 **Sections:**
+  - Hero with profile image
+  - About Me
+  - Services
+  - Technical Skills
+  - Professional Experience
+  - Education & Certifications
+  - Projects Portfolio
+  - Contact Information (France & Turkey)
 
----
+### 🛠️ Tech Stack
 
-## ✨ Fonctionnalités
+- **Framework:** React 19.1.0
+- **Build Tool:** Vite 6.3.5
+- **Styling:** Tailwind CSS 4.1.7
+- **Animations:** Framer Motion 12.15.0
+- **UI Components:** Radix UI
+- **Icons:** Lucide React
+- **Package Manager:** pnpm
 
-### 🌍 Multilingue
-- **Français** (langue par défaut)
-- **Anglais**
-- **Turc**
+### 🚀 Quick Start
 
-### 📱 Responsive Design
-- Optimisé pour tous les appareils (mobile, tablette, desktop)
-- Navigation fluide et intuitive
-- Animations élégantes avec Framer Motion
+#### Prerequisites
 
-### 📄 Sections complètes
-- **Hero** : Présentation avec photo de profil
-- **À propos** : Parcours et philosophie professionnelle
-- **Services** : 6 services proposés avec descriptions détaillées
-- **Compétences** : Technologies organisées par catégories
-- **Expérience** : Historique professionnel (Netz Informatique, IBM, Microsoft)
-- **Formation** : Parcours académique et certifications
-- **Projets** : Portfolio de projets avec liens GitHub et démos
-- **Contact** : Coordonnées France et Turquie
+- Node.js >= 18.0.0
+- pnpm >= 10.0.0
 
-### 🎨 Design moderne
-- Palette de couleurs : Noir, Blanc, Gris
-- Typographie professionnelle
-- Icônes Lucide React
-- Composants shadcn/ui
+#### Installation
 
-### 📥 Téléchargement CV
-- CV au format PDF disponible en téléchargement direct
-- Généré automatiquement avec toutes les informations
-
-### 🔗 Intégrations sociales
-- GitHub
-- LinkedIn
-- Twitter
-- Instagram
-- YouTube
-
----
-
-## 🛠️ Technologies
-
-### Frontend
-- **React 19.1.0** - Bibliothèque JavaScript pour interfaces utilisateur
-- **Vite 6.3.5** - Build tool ultra-rapide
-- **Tailwind CSS 4.1.7** - Framework CSS utility-first
-- **Framer Motion 12.15.0** - Bibliothèque d'animations
-- **Lucide React 0.510.0** - Icônes modernes
-
-### UI Components
-- **shadcn/ui** - Composants React réutilisables
-- **Radix UI** - Primitives UI accessibles
-- **class-variance-authority** - Gestion des variants CSS
-
-### Outils de développement
-- **ESLint** - Linter JavaScript
-- **pnpm** - Gestionnaire de paquets rapide
-- **gh-pages** - Déploiement GitHub Pages
-
-### Hébergement
-- **GitHub Pages** - Hébergement gratuit et fiable
-- **Custom Domain** - portfolio.lekesiz.fr
-- **SSL/TLS** - Certificat Let's Encrypt automatique
-
----
-
-## 🚀 Installation
-
-### Prérequis
-- Node.js 18+ 
-- pnpm (ou npm/yarn)
-- Git
-
-### Étapes
-
-1. **Cloner le repository**
 ```bash
+# Clone the repository
 git clone https://github.com/lekesiz/portfolio.git
+
+# Navigate to project directory
 cd portfolio
-```
 
-2. **Installer les dépendances**
-```bash
+# Install dependencies
 pnpm install
+
+# Start development server
+pnpm dev
 ```
 
-3. **Lancer le serveur de développement**
-```bash
-pnpm run dev
-```
+The application will be available at `http://localhost:5173`
 
-4. **Ouvrir dans le navigateur**
-```
-http://localhost:5173
-```
-
----
-
-## 💻 Utilisation
-
-### Commandes disponibles
+### 📜 Available Scripts
 
 ```bash
-# Développement
-pnpm run dev          # Démarrer le serveur de développement
+# Development
+pnpm dev          # Start development server
 
 # Build
-pnpm run build        # Créer le build de production
+pnpm build        # Build for production
 
 # Preview
-pnpm run preview      # Prévisualiser le build de production
+pnpm preview      # Preview production build
 
 # Lint
-pnpm run lint         # Vérifier le code avec ESLint
-
-# Déploiement
-pnpm run deploy       # Déployer sur GitHub Pages
+pnpm lint         # Run ESLint
 ```
 
----
-
-## 🌐 Déploiement
-
-### GitHub Pages
-
-Le site est automatiquement déployé sur GitHub Pages via la branche `gh-pages`.
-
-**Déploiement manuel :**
-```bash
-pnpm run deploy
-```
-
-**Déploiement automatique :**
-- Chaque push sur la branche `main` peut déclencher un déploiement automatique (via GitHub Actions si configuré)
-
-### Custom Domain
-
-Le site est accessible via le domaine personnalisé : **https://portfolio.lekesiz.fr**
-
-**Configuration DNS :**
-```
-Type: A
-Host: portfolio
-Value: 185.199.108.153
-       185.199.109.153
-       185.199.110.153
-       185.199.111.153
-```
-
----
-
-## 📁 Structure du projet
+### 📁 Project Structure
 
 ```
 portfolio/
-├── public/
-│   ├── CV_Mikail_Lekesiz.pdf    # CV téléchargeable
-│   ├── CNAME                     # Configuration custom domain
-│   └── favicon.ico               # Icône du site
+├── public/              # Static assets
+│   └── favicon.ico
 ├── src/
-│   ├── assets/
-│   │   └── mikail_lekesiz.png   # Photo de profil
-│   ├── components/
-│   │   └── ui/                   # Composants shadcn/ui
-│   ├── lib/
-│   │   └── translations.js       # Contenu multilingue
-│   ├── App.jsx                   # Composant principal
-│   ├── App.css                   # Styles globaux
-│   └── main.jsx                  # Point d'entrée
-├── dist/                         # Build de production (généré)
-├── node_modules/                 # Dépendances (généré)
-├── .gitignore                    # Fichiers ignorés par Git
-├── eslint.config.js              # Configuration ESLint
-├── index.html                    # Template HTML
-├── package.json                  # Dépendances et scripts
-├── pnpm-lock.yaml                # Lockfile pnpm
-├── README.md                     # Ce fichier
-├── tailwind.config.js            # Configuration Tailwind
-└── vite.config.js                # Configuration Vite
+│   ├── assets/         # Images and media
+│   ├── components/     # React components
+│   │   └── ui/        # Radix UI components
+│   ├── hooks/         # Custom React hooks
+│   ├── lib/           # Utilities and translations
+│   │   ├── translations.js  # Multi-language content
+│   │   └── utils.js         # Helper functions
+│   ├── App.jsx        # Main application component
+│   ├── App.css        # Global styles
+│   ├── index.css      # Tailwind CSS config
+│   └── main.jsx       # Application entry point
+├── .gitignore
+├── eslint.config.js   # ESLint configuration
+├── package.json
+├── vite.config.js     # Vite configuration
+└── README.md
 ```
 
----
+### 🌐 Multi-language Support
 
-## 🎨 Personnalisation
+Content is available in three languages:
+- 🇫🇷 French (Default)
+- 🇬🇧 English
+- 🇹🇷 Turkish
 
-### Modifier le contenu
+All translations are managed in `src/lib/translations.js`.
 
-**Traductions et textes :**
-Éditez `src/lib/translations.js` pour modifier le contenu dans chaque langue.
+### 🎨 Customization
 
-**Photo de profil :**
-Remplacez `src/assets/mikail_lekesiz.png` par votre propre photo.
+#### Change Language
 
-**CV :**
-Remplacez `public/CV_Mikail_Lekesiz.pdf` par votre CV.
+Click the language buttons (FR/EN/TR) in the navigation bar.
 
-### Modifier les couleurs
+#### Update Content
 
-**Palette actuelle :** Noir, Blanc, Gris
+Edit translations in `src/lib/translations.js` for each language.
 
-Pour changer les couleurs, éditez les classes Tailwind dans `src/App.jsx` :
-```jsx
-// Exemple : changer la couleur de fond
-className="bg-white dark:bg-black"  // Modifier ici
+#### Modify Styling
+
+- **Colors:** Edit CSS variables in `src/App.css`
+- **Components:** Customize Radix UI components in `src/components/ui/`
+- **Animations:** Adjust Framer Motion configs in `src/App.jsx`
+
+### 📦 Build for Production
+
+```bash
+# Build
+pnpm build
+
+# Preview build
+pnpm preview
 ```
 
-### Ajouter des sections
+Build output will be in the `dist/` directory.
 
-1. Créez une nouvelle section dans `src/App.jsx`
-2. Ajoutez les traductions dans `src/lib/translations.js`
-3. Ajoutez le lien dans la navigation
+### 🚢 Deployment
 
----
+The project is production-ready and can be deployed to:
+- Vercel
+- Netlify
+- GitHub Pages
+- Any static hosting service
 
-## 🤝 Contribuer
+Example deployment to Vercel:
+```bash
+# Install Vercel CLI
+npm i -g vercel
 
-Les contributions sont les bienvenues ! Pour contribuer :
+# Deploy
+vercel
+```
 
-1. **Fork** le projet
-2. Créez une **branche** pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`)
-3. **Commit** vos changements (`git commit -m 'Add some AmazingFeature'`)
-4. **Push** vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrez une **Pull Request**
+### 📊 Performance
 
----
+- **Build Size:** ~1.4 MB
+- **JS Bundle:** 375.57 KB (gzip: 117.65 KB)
+- **CSS Bundle:** 102.06 KB (gzip: 15.96 KB)
+- **Build Time:** ~10 seconds
 
-## 📝 Licence
+### 🤝 Contributing
 
-Ce projet est sous licence **MIT**. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+Contributions, issues, and feature requests are welcome!
 
----
+### 📝 License
 
-## 📧 Contact
+This project is private and proprietary.
 
-**Mikail Lekesiz**  
-DevOps Engineer & Full Stack Developer  
-CEO @ Netz Informatique
+### 👤 Author
 
-### 🇫🇷 France
-- **Email :** [mikail@lekesiz.fr](mailto:mikail@lekesiz.fr)
-- **Téléphone :** [+33 6 63 90 75 27](tel:+33663907527)
-- **Adresse :** 2 rue des Tulipes, 67500 HAGUENAU, France
+**Mikail Lekesiz**
+- Website: [netzinformatique.fr](https://netzinformatique.fr)
+- LinkedIn: [@mikail-lekesiz](https://www.linkedin.com/in/mikail-lekesiz/)
+- GitHub: [@lekesiz](https://github.com/lekesiz)
+- Twitter: [@lekesiz_mikail](https://x.com/lekesiz_mikail)
 
-### 🇹🇷 Turquie
-- **Email :** [mikail@lekesiz.org](mailto:mikail@lekesiz.org)
-- **Téléphone :** [+90 507 43 43 253](tel:+905074343253)
-- **Adresse :** Tepeköy Mahallesi, Çengel Çeşme Caddesi No: 44, 59800 Şarköy / Tekirdağ
+### 📧 Contact
 
-### 🌐 Réseaux sociaux
-- **Website :** [https://lekesiz.fr](https://lekesiz.fr)
-- **Portfolio :** [https://portfolio.lekesiz.fr](https://portfolio.lekesiz.fr)
-- **GitHub :** [@lekesiz](https://github.com/lekesiz)
-- **LinkedIn :** [mikail-lekesiz](https://www.linkedin.com/in/mikail-lekesiz/)
-- **Twitter :** [@lekesiz_mikail](https://x.com/lekesiz_mikail)
-- **Instagram :** [@lekesizmikail](https://www.instagram.com/lekesizmikail)
-- **YouTube :** [@mlekesiz](https://www.youtube.com/@mlekesiz)
+- 🇫🇷 France: mikail@lekesiz.fr | +33 6 63 90 75 27
+- 🇹🇷 Turkey: mikail@lekesiz.org | +90 507 43 43 253
 
 ---
 
-## 🙏 Remerciements
+## 🇹🇷 Türkçe
 
-- Design inspiré de [wholivesonmars.github.io/portfolio](https://wholivesonmars.github.io/portfolio/)
-- Icônes par [Lucide](https://lucide.dev/)
-- Composants UI par [shadcn/ui](https://ui.shadcn.com/)
-- Hébergement par [GitHub Pages](https://pages.github.com/)
+### 📖 Hakkında
+
+Profesyonel deneyim, projeler ve yetenekleri sergileyen kişisel portfolio web sitesi. Modern, minimalist tasarım, akıcı animasyonlar ve çok dilli destek (Fransızca, İngilizce, Türkçe).
+
+**Canlı Demo:** [Yakında]
+
+### ✨ Özellikler
+
+- 🌍 **Çok Dilli Destek** - Fransızca, İngilizce, Türkçe
+- 🎨 **Modern UI/UX** - Temiz, minimalist tasarım ve akıcı animasyonlar
+- 📱 **Tam Responsive** - Tüm cihazlarda mükemmel çalışır
+- ⚡ **Hızlı Performans** - Optimal yükleme hızı için Vite ile geliştirildi
+- 🎭 **Akıcı Animasyonlar** - Framer Motion destekli
+- 🎯 **Bölümler:**
+  - Profil resimli ana sayfa
+  - Hakkımda
+  - Hizmetler
+  - Teknik Yetenekler
+  - Profesyonel Deneyim
+  - Eğitim ve Sertifikalar
+  - Proje Portföyü
+  - İletişim Bilgileri (Fransa ve Türkiye)
+
+### 🛠️ Teknoloji Stack
+
+- **Framework:** React 19.1.0
+- **Build Aracı:** Vite 6.3.5
+- **Styling:** Tailwind CSS 4.1.7
+- **Animasyonlar:** Framer Motion 12.15.0
+- **UI Bileşenleri:** Radix UI
+- **İkonlar:** Lucide React
+- **Paket Yöneticisi:** pnpm
+
+### 🚀 Hızlı Başlangıç
+
+#### Gereksinimler
+
+- Node.js >= 18.0.0
+- pnpm >= 10.0.0
+
+#### Kurulum
+
+```bash
+# Repository'yi klonlayın
+git clone https://github.com/lekesiz/portfolio.git
+
+# Proje dizinine gidin
+cd portfolio
+
+# Bağımlılıkları yükleyin
+pnpm install
+
+# Geliştirme sunucusunu başlatın
+pnpm dev
+```
+
+Uygulama `http://localhost:5173` adresinde çalışacaktır.
+
+### 📜 Kullanılabilir Komutlar
+
+```bash
+# Geliştirme
+pnpm dev          # Geliştirme sunucusunu başlat
+
+# Build
+pnpm build        # Production için build al
+
+# Önizleme
+pnpm preview      # Production build'i önizle
+
+# Lint
+pnpm lint         # ESLint çalıştır
+```
+
+### 📁 Proje Yapısı
+
+```
+portfolio/
+├── public/              # Statik dosyalar
+│   └── favicon.ico
+├── src/
+│   ├── assets/         # Resimler ve medya
+│   ├── components/     # React bileşenleri
+│   │   └── ui/        # Radix UI bileşenleri
+│   ├── hooks/         # Özel React hook'ları
+│   ├── lib/           # Yardımcılar ve çeviriler
+│   │   ├── translations.js  # Çok dilli içerik
+│   │   └── utils.js         # Yardımcı fonksiyonlar
+│   ├── App.jsx        # Ana uygulama bileşeni
+│   ├── App.css        # Global stiller
+│   ├── index.css      # Tailwind CSS yapılandırması
+│   └── main.jsx       # Uygulama giriş noktası
+├── .gitignore
+├── eslint.config.js   # ESLint yapılandırması
+├── package.json
+├── vite.config.js     # Vite yapılandırması
+└── README.md
+```
+
+### 🌐 Çok Dilli Destek
+
+İçerik üç dilde mevcuttur:
+- 🇫🇷 Fransızca (Varsayılan)
+- 🇬🇧 İngilizce
+- 🇹🇷 Türkçe
+
+Tüm çeviriler `src/lib/translations.js` dosyasında yönetilir.
+
+### 🎨 Özelleştirme
+
+#### Dil Değiştirme
+
+Navigasyon çubuğundaki dil butonlarına (FR/EN/TR) tıklayın.
+
+#### İçeriği Güncelleme
+
+Her dil için `src/lib/translations.js` dosyasındaki çevirileri düzenleyin.
+
+#### Stilleri Değiştirme
+
+- **Renkler:** `src/App.css` dosyasındaki CSS değişkenlerini düzenleyin
+- **Bileşenler:** `src/components/ui/` içindeki Radix UI bileşenlerini özelleştirin
+- **Animasyonlar:** `src/App.jsx` içindeki Framer Motion yapılandırmalarını ayarlayın
+
+### 📦 Production Build
+
+```bash
+# Build
+pnpm build
+
+# Build önizlemesi
+pnpm preview
+```
+
+Build çıktısı `dist/` dizininde olacaktır.
+
+### 🚢 Deployment
+
+Proje production-ready ve şu platformlara deploy edilebilir:
+- Vercel
+- Netlify
+- GitHub Pages
+- Herhangi bir statik hosting servisi
+
+Vercel'e deployment örneği:
+```bash
+# Vercel CLI'yi yükleyin
+npm i -g vercel
+
+# Deploy edin
+vercel
+```
+
+### 📊 Performans
+
+- **Build Boyutu:** ~1.4 MB
+- **JS Bundle:** 375.57 KB (gzip: 117.65 KB)
+- **CSS Bundle:** 102.06 KB (gzip: 15.96 KB)
+- **Build Süresi:** ~10 saniye
+
+### 🤝 Katkıda Bulunma
+
+Katkılar, sorun bildirimleri ve özellik istekleri memnuniyetle karşılanır!
+
+### 📝 Lisans
+
+Bu proje özel ve tescillidir.
+
+### 👤 Yazar
+
+**Mikail Lekesiz**
+- Website: [netzinformatique.fr](https://netzinformatique.fr)
+- LinkedIn: [@mikail-lekesiz](https://www.linkedin.com/in/mikail-lekesiz/)
+- GitHub: [@lekesiz](https://github.com/lekesiz)
+- Twitter: [@lekesiz_mikail](https://x.com/lekesiz_mikail)
+
+### 📧 İletişim
+
+- 🇫🇷 Fransa: mikail@lekesiz.fr | +33 6 63 90 75 27
+- 🇹🇷 Türkiye: mikail@lekesiz.org | +90 507 43 43 253
 
 ---
 
-<div align="center">
-
-**⭐ Si ce projet vous plaît, n'hésitez pas à lui donner une étoile ! ⭐**
-
-Made with ❤️ by [Mikail Lekesiz](https://portfolio.lekesiz.fr)
-
-© 2025 Mikail Lekesiz. Tous droits réservés.
-
-</div>
+⭐ Projeyi beğendiyseniz yıldız vermeyi unutmayın!
