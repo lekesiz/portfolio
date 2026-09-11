@@ -12,16 +12,16 @@ export const translations = {
     },
     hero: {
       greeting: "Bonjour, je suis",
-      title: "Innovateur Technologique & Leader Humain",
-      subtitle: "DevOps · Intelligence Artificielle · Transformation Digitale",
-      description: "Je construis des ponts entre la technologie et l'humain. Fondateur de Netz Informatique, j'intègre l'IA et les solutions cloud pour créer des systèmes durables qui simplifient la vie des gens et génèrent un impact social positif.",
+      title: "Formateur & conseiller en IA et logiciels sécurisés",
+      subtitle: "Intelligence artificielle · Logiciel sécurisé · Sensibilisation cyber",
+      description: "Je conçois, sécurise et transmets des solutions numériques en France, en Turquie et en Allemagne. Président de Netz Informatique, j'exerce également des responsabilités de gouvernance et de direction technique chez Reflektif, avec une approche contrôlable, utile et centrée sur l'humain.",
       downloadCV: "Télécharger le CV",
       contact: "Me Contacter"
     },
     about: {
       title: "Qui suis-je ?",
-      content: "Je suis un innovateur technologique animé par une mission profonde : faire de la technologie un levier d'épanouissement humain. En tant que Fondateur de Netz Informatique, je ne me contente pas de livrer des solutions IT — je construis des ponts entre la complexité technique et les besoins humains réels.",
-      content2: "Mon parcours chez Microsoft et IBM m'a forgé une expertise solide en architecture de systèmes et solutions cloud. Mais ce qui me distingue véritablement, c'est ma capacité à combiner rigueur technique et vision humaine : je planifie avec précision, j'exécute avec discipline, et je ne laisse jamais un projet inachevé.",
+      content: "Je suis formateur et conseiller en intelligence artificielle, logiciels sécurisés et sensibilisation cyber. J'associe une pratique technique de long terme à une pédagogie fondée sur l'analyse du besoin, des cas réalistes, la mesure des acquis et le transfert durable des compétences.",
+      content2: "Mon CV décrit des responsabilités informatiques au sein de DİTİB de 2006 à 2016 et, en parallèle, des missions projet dans les environnements Microsoft Paris (2010–2014) et IBM Paris (2014). Ces missions ne sont pas présentées comme des postes salariés chez Microsoft ou IBM.",
       content3: "Je crois profondément que la réussite d'une solution ne se mesure pas seulement à sa perfection technique, mais aussi à la valeur qu'elle apporte aux personnes qui l'utilisent. C'est cette conviction qui guide chaque projet que j'entreprends — créer des systèmes durables, évolutifs, et centrés sur l'humain.",
       values: {
         title: "Mes Valeurs Fondamentales",
@@ -30,12 +30,6 @@ export const translations = {
         relations: { label: "Relations", value: 92, desc: "La confiance comme fondation de tout projet" },
         achievement: { label: "Accomplissement", value: 80, desc: "Viser l'excellence dans chaque livraison" }
       },
-      personality: {
-        title: "Profil de Personnalité (Reflektif)",
-        riasec: "Profil RIASEC : Investigateur · Social · Artistique",
-        bigfive: "Big Five : Consciencieux · Extraverti · Ouvert à l'expérience",
-        tagline: "\"Catalyseur de changement qualitatif\" — Pont entre technologie et humanité"
-      }
     },
     services: {
       title: "Services",
@@ -89,57 +83,29 @@ export const translations = {
       certifications: "Certifications",
       certificationsDesc: "Certifications Professionnelles"
     },
-    testimonials: {
-      title: "Témoignages Clients",
-      subtitle: "Ce que mes clients disent de leur collaboration avec moi",
-      cta: "Vous souhaitez partager votre expérience ?",
-      list: [
-        {
-          name: "Jean Dupont",
-          role: "CEO, TechStartup",
-          company: "Paris, France",
-          text: "Mikail a transformé notre infrastructure avec son expertise DevOps. Notre temps de déploiement a diminué de 70% et la stabilité du système s'est considérablement améliorée. Ce qui m'a le plus impressionné, c'est sa capacité à comprendre nos besoins humains avant de proposer des solutions techniques.",
-          rating: 5
-        },
-        {
-          name: "Sarah Martin",
-          role: "CTO, DigitalCorp",
-          company: "Strasbourg, France",
-          text: "Travailler avec Mikail a été une révélation. Ses compétences techniques sont impressionnantes, mais c'est son approche humaine et collaborative qui fait vraiment la différence. Il ne livre pas juste un projet — il s'assure que toute l'équipe comprend et adopte les solutions.",
-          rating: 5
-        },
-        {
-          name: "Ahmet Yılmaz",
-          role: "Chef de Produit",
-          company: "Istanbul, Turquie",
-          text: "Professionnel, fiable et véritablement innovant. Mikail a apporté des solutions IA de pointe à notre plateforme tout en veillant à ce que chaque membre de l'équipe soit embarqué dans la transformation. Un vrai catalyseur de changement.",
-          rating: 5
-        }
-      ]
-    },
     experience: {
       title: "Expérience Professionnelle",
       jobs: [
         {
-          title: "Fondateur & Directeur Technique",
+          title: "Président & Responsable technique",
           company: "Netz Informatique",
           period: "Jan 2016 - Présent",
           location: "Haguenau, Grand Est, France",
           description: "Direction de la transformation digitale et de l'innovation technologique avec une approche centrée sur l'humain. Développement de solutions IT & IA sur mesure pour particuliers et entreprises. Construction d'une équipe soudée autour de valeurs de créativité, d'altruisme et d'excellence. Accompagnement stratégique des clients dans leur évolution numérique avec un suivi personnalisé et des systèmes durables."
         },
         {
-          title: "Spécialiste Architecture Systèmes",
-          company: "IBM",
-          period: "Jan 2014 - Déc 2014",
-          location: "Paris, Île-de-France, France",
-          description: "Architecture de systèmes d'entreprise complexes et conception de solutions scalables. Collaboration avec des équipes pluridisciplinaires pour traduire les besoins métier en architectures techniques robustes. Développement de l'expertise en intégration de systèmes à grande échelle."
+          title: "Responsable informatique",
+          company: "DİTİB",
+          period: "2006 - 2016",
+          location: "Strasbourg · Paris · Cologne",
+          description: "Responsabilité des applications métier, systèmes d'inscription et de paiement, applications web, infrastructures et continuité de service. Missions projet parallèles dans les environnements Microsoft Paris (2010–2014) et IBM Paris (2014)."
         },
         {
-          title: "Spécialiste Architecture Cloud",
-          company: "Microsoft",
-          period: "Jan 2010 - Jan 2014",
-          location: "Paris, Île-de-France, France",
-          description: "Conception et mise en œuvre de solutions cloud innovantes et d'architectures système performantes. Accompagnement des clients dans leur migration vers le cloud avec une approche pédagogique et collaborative. Développement d'une expertise approfondie en Azure et en solutions d'entreprise Microsoft."
+          title: "Développeur logiciel & service technique",
+          company: "Karizma Bilgisayar · Arda Bilgisayar · Denge Bilgi İşlem · Hospital GSM Computer",
+          period: "2000 - 2005",
+          location: "Türkiye",
+          description: "Développement logiciel, matériel, maintenance, assistance technique et solutions clients, avec responsabilité de livraison de bout en bout."
         }
       ]
     },
@@ -147,9 +113,15 @@ export const translations = {
       title: "Formation",
       list: [
         {
+          degree: "M2 GPI — Gestion de projets informatiques",
+          school: "Université de Strasbourg",
+          period: "2026 - 2027",
+          description: "Parcours de deuxième année de master consacré au pilotage des projets informatiques."
+        },
+        {
           degree: "LP DWCA — Licence Professionnelle",
           school: "Université de Strasbourg",
-          period: "Sep 2025",
+          period: "2025 - 2026",
           description: "Licence Professionnelle Développeur Web et Conception d'Applications — Formation avancée en développement web moderne et architecture d'applications"
         },
         {
@@ -170,6 +142,12 @@ export const translations = {
       title: "Certifications",
       list: [
         {
+          name: "TOSA Expert — Web Developer & Salesforce",
+          issuer: "ISOGRAD",
+          date: "Août 2026",
+          id: "Scores déclarés dans le CV 2026 · vérification sur demande"
+        },
+        {
           name: "ChatGPT + Zapier: Automate Email Replies with AI",
           issuer: "Vanderbilt University",
           date: "Déc 2024",
@@ -182,10 +160,10 @@ export const translations = {
           id: "CEOF4A1GG3ND"
         },
         {
-          name: "Certificat de Compétences en Entreprise",
+          name: "CCE — Exercer la mission de formateur en entreprise",
           issuer: "CCI France",
-          date: "Jan 2021 - Jan 2026",
-          id: "2021-0011724-5"
+          date: "2021 · RS5365 ; successeur actuel RS7379",
+          id: "Vérification individuelle sur demande"
         },
         {
           name: "Information Management",
@@ -207,7 +185,7 @@ export const translations = {
         },
         {
           name: "Reflektif.net",
-          description: "Plateforme d'orientation professionnelle et d'évaluation des compétences basée sur l'IA pour le marché turc. Un projet qui incarne parfaitement ma vision : utiliser la technologie pour aider les gens à découvrir leur potentiel. Fondateur Turquie.",
+          description: "Plateforme multilingue d'orientation professionnelle assistée par l'IA, combinant RIASEC, Big Five, valeurs et accompagnement humain. Président du conseil d'administration et responsable technique selon la notice légale publique.",
           tech: ["TypeScript", "React", "Node.js", "AI/ML"],
           link: "https://reflektif.net"
         },
@@ -286,16 +264,16 @@ export const translations = {
     },
     hero: {
       greeting: "Hello, I'm",
-      title: "Tech Innovator & Human-Centered Leader",
-      subtitle: "DevOps · Artificial Intelligence · Digital Transformation",
-      description: "I build bridges between technology and humanity. As Founder of Netz Informatique, I integrate AI and cloud solutions to create sustainable systems that simplify people's lives and generate positive social impact.",
+      title: "AI, Secure Software & Cyber Awareness Trainer",
+      subtitle: "Artificial Intelligence · Secure Software · Cyber Awareness",
+      description: "I design, secure and teach digital solutions across France, Turkey and Germany. As president of Netz Informatique, I also hold governance and technical-leadership responsibilities at Reflektif, turning AI into controlled, useful and human-centred practice.",
       downloadCV: "Download CV",
       contact: "Contact Me"
     },
     about: {
       title: "About Me",
-      content: "I am a technology innovator driven by a deep mission: making technology a lever for human flourishing. As Founder of Netz Informatique, I don't just deliver IT solutions — I build bridges between technical complexity and real human needs.",
-      content2: "My journey at Microsoft and IBM forged solid expertise in system architecture and cloud solutions. But what truly sets me apart is my ability to combine technical rigor with human vision: I plan with precision, execute with discipline, and never leave a project unfinished.",
+      content: "I am a trainer and consultant in artificial intelligence, secure software and cyber awareness. I combine long-term technical practice with a teaching method based on needs analysis, realistic cases, measurable outcomes and lasting knowledge transfer.",
+      content2: "My CV describes IT responsibilities within DİTİB from 2006 to 2016 and, in parallel, project assignments in Microsoft Paris (2010–2014) and IBM Paris (2014) environments. These assignments are not presented as salaried positions at Microsoft or IBM.",
       content3: "I deeply believe that the success of a solution is measured not only by its technical perfection, but also by the value it brings to the people who use it. This conviction guides every project I undertake — building sustainable, scalable, and human-centered systems.",
       values: {
         title: "My Core Values",
@@ -304,12 +282,6 @@ export const translations = {
         relations: { label: "Relationships", value: 92, desc: "Trust as the foundation of every project" },
         achievement: { label: "Achievement", value: 80, desc: "Pursuing excellence in every delivery" }
       },
-      personality: {
-        title: "Personality Profile (Reflektif)",
-        riasec: "RIASEC Profile: Investigative · Social · Artistic",
-        bigfive: "Big Five: Conscientious · Extraverted · Open to Experience",
-        tagline: "\"Catalyst for qualitative change\" — Bridge between technology and humanity"
-      }
     },
     services: {
       title: "Services",
@@ -363,57 +335,29 @@ export const translations = {
       certifications: "Certifications",
       certificationsDesc: "Professional Credentials"
     },
-    testimonials: {
-      title: "Client Testimonials",
-      subtitle: "What clients say about working with me",
-      cta: "Want to share your experience?",
-      list: [
-        {
-          name: "Jean Dupont",
-          role: "CEO, TechStartup",
-          company: "Paris, France",
-          text: "Mikail transformed our infrastructure with his DevOps expertise. Our deployment time decreased by 70% and system stability improved dramatically. What impressed me most was his ability to understand our human needs before proposing technical solutions.",
-          rating: 5
-        },
-        {
-          name: "Sarah Martin",
-          role: "CTO, DigitalCorp",
-          company: "Strasbourg, France",
-          text: "Working with Mikail was a revelation. His technical skills are impressive, but it's his human and collaborative approach that truly makes the difference. He doesn't just deliver a project — he ensures the entire team understands and adopts the solutions.",
-          rating: 5
-        },
-        {
-          name: "Ahmet Yılmaz",
-          role: "Product Manager",
-          company: "Istanbul, Turkey",
-          text: "Professional, reliable and genuinely innovative. Mikail brought cutting-edge AI solutions to our platform while ensuring every team member was on board with the transformation. A true catalyst for change.",
-          rating: 5
-        }
-      ]
-    },
     experience: {
       title: "Professional Experience",
       jobs: [
         {
-          title: "Founder & CTO",
+          title: "President & Technical Lead",
           company: "Netz Informatique",
           period: "Jan 2016 - Present",
           location: "Haguenau, Grand Est, France",
           description: "Leading digital transformation and technological innovation with a human-centered approach. Developing custom IT & AI solutions for individuals and businesses. Building a cohesive team around values of creativity, altruism and excellence. Strategically supporting clients in their digital evolution with personalized follow-up and sustainable systems."
         },
         {
-          title: "Systems Architecture Specialist",
-          company: "IBM",
-          period: "Jan 2014 - Dec 2014",
-          location: "Paris, Île-de-France, France",
-          description: "Architecture of complex enterprise systems and design of scalable solutions. Collaboration with multidisciplinary teams to translate business needs into robust technical architectures. Development of expertise in large-scale system integration."
+          title: "IT Manager",
+          company: "DİTİB",
+          period: "2006 - 2016",
+          location: "Strasbourg · Paris · Cologne",
+          description: "Responsible for business applications, registration and payment systems, web applications, infrastructure and service continuity. Concurrent project assignments in Microsoft Paris (2010–2014) and IBM Paris (2014) environments."
         },
         {
-          title: "Cloud Architecture Specialist",
-          company: "Microsoft",
-          period: "Jan 2010 - Jan 2014",
-          location: "Paris, Île-de-France, France",
-          description: "Design and implementation of innovative cloud solutions and high-performance system architectures. Supporting clients in their cloud migration with a pedagogical and collaborative approach. Development of deep expertise in Azure and Microsoft enterprise solutions."
+          title: "Software Developer & Technical Services",
+          company: "Karizma Bilgisayar · Arda Bilgisayar · Denge Bilgi İşlem · Hospital GSM Computer",
+          period: "2000 - 2005",
+          location: "Türkiye",
+          description: "Software, hardware, maintenance, technical support and customer solutions, with end-to-end delivery responsibility."
         }
       ]
     },
@@ -421,9 +365,15 @@ export const translations = {
       title: "Education",
       list: [
         {
+          degree: "M2 GPI — IT Project Management",
+          school: "University of Strasbourg",
+          period: "2026 - 2027",
+          description: "Second-year master's programme focused on information-technology project management."
+        },
+        {
           degree: "LP DWCA — Professional License",
           school: "University of Strasbourg",
-          period: "Sep 2025",
+          period: "2025 - 2026",
           description: "Professional License in Web Development and Application Design — Advanced training in modern web development and application architecture"
         },
         {
@@ -444,6 +394,12 @@ export const translations = {
       title: "Certifications",
       list: [
         {
+          name: "TOSA Expert — Web Developer & Salesforce",
+          issuer: "ISOGRAD",
+          date: "Aug 2026",
+          id: "Scores stated in the 2026 CV · verification on request"
+        },
+        {
           name: "ChatGPT + Zapier: Automate Email Replies with AI",
           issuer: "Vanderbilt University",
           date: "Dec 2024",
@@ -456,10 +412,10 @@ export const translations = {
           id: "CEOF4A1GG3ND"
         },
         {
-          name: "Business Skills Certificate",
+          name: "CCE — Deliver in-company training",
           issuer: "CCI France",
-          date: "Jan 2021 - Jan 2026",
-          id: "2021-0011724-5"
+          date: "2021 · RS5365; current successor RS7379",
+          id: "Vérification individuelle sur demande"
         },
         {
           name: "Information Management",
@@ -481,7 +437,7 @@ export const translations = {
         },
         {
           name: "Reflektif.net",
-          description: "AI-powered professional orientation and skills assessment platform for the Turkish market. A project that perfectly embodies my vision: using technology to help people discover their potential. Founder Turkey.",
+          description: "Multilingual AI-assisted career-guidance platform combining RIASEC, Big Five, values and human oversight. Board chair and technical lead according to the public legal notice.",
           tech: ["TypeScript", "React", "Node.js", "AI/ML"],
           link: "https://reflektif.net"
         },
@@ -560,16 +516,16 @@ export const translations = {
     },
     hero: {
       greeting: "Merhaba, ben",
-      title: "Teknoloji İnovasyoncusu & İnsan Odaklı Lider",
-      subtitle: "DevOps · Yapay Zeka · Dijital Dönüşüm",
-      description: "Teknoloji ile insanlık arasında köprüler kuruyorum. Netz Informatique'in Kurucusu olarak, insanların hayatını kolaylaştıran ve olumlu sosyal etki yaratan sürdürülebilir sistemler oluşturmak için yapay zeka ve bulut çözümlerini entegre ediyorum.",
+      title: "Yapay Zekâ, Güvenli Yazılım ve Siber Farkındalık Eğitmeni",
+      subtitle: "Yapay Zekâ · Güvenli Yazılım · Siber Farkındalık",
+      description: "Fransa, Türkiye ve Almanya'da dijital çözümler tasarlıyor, güvenli hâle getiriyor ve aktarıyorum. Netz Informatique'in başkanı olarak görev yapıyor; Reflektif'te yönetim ve teknik liderlik sorumlulukları üstleniyorum. Yapay zekâyı denetlenebilir, faydalı ve insan odaklı uygulamalara dönüştürmeye odaklanıyorum.",
       downloadCV: "CV İndir",
       contact: "İletişime Geç"
     },
     about: {
       title: "Hakkımda",
-      content: "Derin bir misyonla hareket eden bir teknoloji inovasyoncusuyum: teknolojiyi insanın gelişimi için bir kaldıraç haline getirmek. Netz Informatique'in Kurucusu olarak sadece IT çözümleri sunmuyorum — teknik karmaşıklık ile gerçek insan ihtiyaçları arasında köprüler kuruyorum.",
-      content2: "Microsoft ve IBM'deki yolculuğum, sistem mimarisi ve bulut çözümlerinde sağlam bir uzmanlık kazandırdı. Ama beni gerçekten farklı kılan şey, teknik titizliği insan vizyonuyla birleştirme kapasitem: hassasiyetle planlıyor, disiplinle uyguluyorum ve hiçbir projeyi yarım bırakmıyorum.",
+      content: "Yapay zekâ, güvenli yazılım ve siber farkındalık alanlarında eğitmen ve danışmanım. Uzun dönemli teknik pratiğimi; ihtiyaç analizi, gerçekçi vaka, ölçülebilir sonuç ve kalıcı bilgi aktarımı temelli bir eğitim yaklaşımıyla birleştiriyorum.",
+      content2: "CV'mde 2006–2016 arasında DİTİB bünyesinde bilgi işlem sorumlulukları ile eş zamanlı Microsoft Paris (2010–2014) ve IBM Paris (2014) ortamlarındaki proje görevleri yer alır. Bu görevler Microsoft veya IBM'de kadrolu istihdam olarak sunulmamaktadır.",
       content3: "Bir çözümün başarısının sadece teknik mükemmelliğiyle değil, aynı zamanda onu kullanan insanlara kattığı değerle ölçüldüğüne derinden inanıyorum. Bu inanç, üstlendiğim her projeye rehberlik ediyor — sürdürülebilir, ölçeklenebilir ve insan odaklı sistemler inşa etmek.",
       values: {
         title: "Temel Değerlerim",
@@ -578,12 +534,6 @@ export const translations = {
         relations: { label: "İlişkiler", value: 92, desc: "Her projenin temeli olarak güven" },
         achievement: { label: "Başarı", value: 80, desc: "Her teslimatda mükemmelliği hedeflemek" }
       },
-      personality: {
-        title: "Kişilik Profili (Reflektif)",
-        riasec: "RIASEC Profili: Araştırmacı · Sosyal · Sanatsal",
-        bigfive: "Big Five: Vicdanlı · Dışadönük · Deneyime Açık",
-        tagline: "\"Nitelikli değişim katalizörü\" — Teknoloji ile insanlık arasında köprü"
-      }
     },
     services: {
       title: "Hizmetler",
@@ -637,57 +587,29 @@ export const translations = {
       certifications: "Sertifika",
       certificationsDesc: "Profesyonel Sertifikalar"
     },
-    testimonials: {
-      title: "Müşteri Yorumları",
-      subtitle: "Müşterilerin benimle çalışma deneyimleri",
-      cta: "Deneyiminizi paylaşmak ister misiniz?",
-      list: [
-        {
-          name: "Jean Dupont",
-          role: "CEO, TechStartup",
-          company: "Paris, Fransa",
-          text: "Mikail, DevOps uzmanlığı ile altyapımızı dönüştürdü. Dağıtım süremiz %70 azaldı ve sistem istikrarı önemli ölçüde iyileşti. En çok etkilendiğim şey, teknik çözümler önermeden önce insan ihtiyaçlarımızı anlama kapasitesiydi.",
-          rating: 5
-        },
-        {
-          name: "Sarah Martin",
-          role: "CTO, DigitalCorp",
-          company: "Strasbourg, Fransa",
-          text: "Mikail ile çalışmak bir aydınlanmaydı. Teknik becerileri etkileyici, ancak gerçek farkı yaratan insan odaklı ve işbirlikçi yaklaşımı. Sadece bir proje teslim etmiyor — tüm ekibin çözümleri anlamasını ve benimsemesini sağlıyor.",
-          rating: 5
-        },
-        {
-          name: "Ahmet Yılmaz",
-          role: "Ürün Müdürü",
-          company: "İstanbul, Türkiye",
-          text: "Profesyonel, güvenilir ve gerçekten yenilikçi. Mikail platformumuza son teknoloji yapay zeka çözümleri getirirken her ekip üyesinin dönüşüme dahil olmasını sağladı. Gerçek bir değişim katalizörü.",
-          rating: 5
-        }
-      ]
-    },
     experience: {
       title: "Profesyonel Deneyim",
       jobs: [
         {
-          title: "Kurucu & Teknik Direktör",
+          title: "Başkan & Teknik Lider",
           company: "Netz Informatique",
           period: "Oca 2016 - Günümüz",
           location: "Haguenau, Grand Est, Fransa",
           description: "İnsan odaklı bir yaklaşımla dijital dönüşüm ve teknolojik inovasyon liderliği. Bireyler ve işletmeler için özel IT ve yapay zeka çözümleri geliştirme. Yaratıcılık, fedakarlık ve mükemmellik değerleri etrafında uyumlu bir ekip kurma. Kişiselleştirilmiş takip ve sürdürülebilir sistemlerle müşterilerin dijital evrimini stratejik olarak destekleme."
         },
         {
-          title: "Sistem Mimarisi Uzmanı",
-          company: "IBM",
-          period: "Oca 2014 - Ara 2014",
-          location: "Paris, Île-de-France, Fransa",
-          description: "Karmaşık kurumsal sistemlerin mimarisi ve ölçeklenebilir çözümlerin tasarımı. İş ihtiyaçlarını sağlam teknik mimarilere dönüştürmek için çok disiplinli ekiplerle işbirliği. Büyük ölçekli sistem entegrasyonunda uzmanlık geliştirme."
+          title: "Bilgi İşlem Sorumlusu",
+          company: "DİTİB",
+          period: "2006 - 2016",
+          location: "Strasbourg · Paris · Köln",
+          description: "İş uygulamaları, kayıt ve ödeme sistemleri, web uygulamaları, altyapı ve hizmet sürekliliği sorumluluğu. Görevle eş zamanlı Microsoft Paris (2010–2014) ve IBM Paris (2014) ortamlarında proje çalışmaları."
         },
         {
-          title: "Bulut Mimarisi Uzmanı",
-          company: "Microsoft",
-          period: "Oca 2010 - Oca 2014",
-          location: "Paris, Île-de-France, Fransa",
-          description: "Yenilikçi bulut çözümleri ve yüksek performanslı sistem mimarilerinin tasarımı ve uygulanması. Pedagojik ve işbirlikçi bir yaklaşımla müşterilerin buluta geçişini destekleme. Azure ve Microsoft kurumsal çözümlerinde derin uzmanlık geliştirme."
+          title: "Yazılım Uzmanı & Teknik Servis",
+          company: "Karizma Bilgisayar · Arda Bilgisayar · Denge Bilgi İşlem · Hospital GSM Computer",
+          period: "2000 - 2005",
+          location: "Türkiye",
+          description: "Yazılım, donanım, bakım, teknik destek ve müşteri çözümleri; ihtiyacı teknik çözüme dönüştürme ve uçtan uca teslim sorumluluğu."
         }
       ]
     },
@@ -695,9 +617,15 @@ export const translations = {
       title: "Eğitim",
       list: [
         {
+          degree: "M2 GPI — Bilişim Projeleri Yönetimi",
+          school: "Strasbourg Üniversitesi",
+          period: "2026 - 2027",
+          description: "Bilişim projelerinin yönetimine odaklanan ikinci yıl yüksek lisans programı."
+        },
+        {
           degree: "LP DWCA — Profesyonel Lisans",
           school: "Strasbourg Üniversitesi",
-          period: "Eyl 2025",
+          period: "2025 - 2026",
           description: "Web Geliştirme ve Uygulama Tasarımı Profesyonel Lisansı — Modern web geliştirme ve uygulama mimarisinde ileri düzey eğitim"
         },
         {
@@ -718,6 +646,12 @@ export const translations = {
       title: "Sertifikalar",
       list: [
         {
+          name: "TOSA Expert — Web Developer & Salesforce",
+          issuer: "ISOGRAD",
+          date: "Ağu 2026",
+          id: "2026 CV’sinde beyan edilen puanlar · doğrulama talep üzerine"
+        },
+        {
           name: "ChatGPT + Zapier: AI ile E-posta Yanıtlarını Otomatikleştirme",
           issuer: "Vanderbilt University",
           date: "Ara 2024",
@@ -730,10 +664,10 @@ export const translations = {
           id: "CEOF4A1GG3ND"
         },
         {
-          name: "İş Yetkinlikleri Sertifikası",
+          name: "CCE — İşletmede eğitmenlik görevi yürütme",
           issuer: "CCI France",
-          date: "Oca 2021 - Oca 2026",
-          id: "2021-0011724-5"
+          date: "2021 · RS5365; güncel halef RS7379",
+          id: "Vérification individuelle sur demande"
         },
         {
           name: "Bilgi Yönetimi",
@@ -755,7 +689,7 @@ export const translations = {
         },
         {
           name: "Reflektif.net",
-          description: "Türkiye pazarı için yapay zeka destekli profesyonel yönelim ve yetkinlik değerlendirme platformu. Vizyonumu mükemmel biçimde somutlaştıran bir proje: insanların potansiyellerini keşfetmelerine yardımcı olmak için teknolojiyi kullanmak. Türkiye Kurucusu.",
+          description: "RIASEC, Big Five ve değerleri insan denetimli yapay zekâ ile birleştiren çok dilli kariyer yönlendirme platformu. Kamuya açık yasal bildirime göre yönetim kurulu başkanı ve teknik sorumlu.",
           tech: ["TypeScript", "React", "Node.js", "AI/ML"],
           link: "https://reflektif.net"
         },
