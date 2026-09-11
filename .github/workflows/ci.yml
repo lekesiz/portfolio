@@ -7,7 +7,7 @@ on:
   push:
     branches: ['**']
   pull_request:
-    branches: ['main', 'master', 'develop']
+    branches: ['branch-1', 'main', 'master', 'develop']
 
 jobs:
   lint-and-build:
@@ -18,16 +18,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'pnpm'
-
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -74,7 +74,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Run Lighthouse CI
         uses: treosh/lighthouse-ci-action@v11
