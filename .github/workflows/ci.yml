@@ -77,6 +77,7 @@ jobs:
       - name: Run Lighthouse CI
         uses: treosh/lighthouse-ci-action@v11
         with:
+          staticDistDir: ./dist
           runs: 3
           uploadArtifacts: true
           temporaryPublicStorage: true
