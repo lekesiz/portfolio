@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import {
-  Github, Linkedin, Mail, Phone, MapPin, Download,
+  Github, Linkedin, Mail, MapPin, Download,
   ChevronDown, Menu, X, ExternalLink, Twitter, Instagram, Youtube,
   Code, Server, Cloud, Shield, Sparkles, GraduationCap, Moon, Sun
 } from 'lucide-react'
@@ -10,11 +10,8 @@ import { Button } from '@/components/ui/button.jsx'
 import { translations } from '@/lib/translations'
 import { useThrottle } from '@/hooks/use-throttle'
 import { analytics, initAnalytics } from '@/lib/analytics'
-import { InteractiveTerminal } from '@/components/InteractiveTerminal'
 import { GitHubActivity } from '@/components/GitHubActivity'
 import { TechStackVisualization } from '@/components/TechStackVisualization'
-import { CaseStudies } from '@/components/CaseStudies'
-import { Timeline } from '@/components/Timeline'
 import profileImage from './assets/mikail_lekesiz.png'
 import './App.css'
 
@@ -99,12 +96,12 @@ function App() {
           document.body.removeChild(link)
         } else {
           // CV dosyası mevcut değil, email gönder
-          window.location.href = 'mailto:mikail@lekesiz.fr?subject=CV Request&body=Hello, I would like to request your CV.'
+          window.location.href = 'mailto:contact@netzinformatique.fr?subject=CV Request&body=Hello, I would like to request Mikail Lekesiz’s CV.'
         }
       })
       .catch(() => {
         // Hata durumunda email gönder
-        window.location.href = 'mailto:mikail@lekesiz.fr?subject=CV Request&body=Hello, I would like to request your CV.'
+        window.location.href = 'mailto:contact@netzinformatique.fr?subject=CV Request&body=Hello, I would like to request Mikail Lekesiz’s CV.'
       })
   }
 
@@ -332,7 +329,7 @@ function App() {
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-400 dark:from-gray-800 dark:to-gray-600 rounded-full blur-3xl opacity-30"></div>
                 <img
                   src={profileImage}
-                  alt="Mikail Lekesiz - Innovateur Technologique & Leader Humain"
+                  alt="Mikail Lekesiz — IA, logiciel sécurisé et formation"
                   width="384"
                   height="384"
                   loading="lazy"
@@ -383,30 +380,6 @@ function App() {
               <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
                 {t.about.content3}
               </p>
-            )}
-            {t.about.personality && (
-              <div className="mt-8 p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-800 rounded-xl text-left space-y-4">
-                <h3 className="text-xl font-bold text-center">{t.about.personality.title}</h3>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="flex items-start gap-3">
-                    <span className="text-2xl">🧠</span>
-                    <div>
-                      <p className="font-semibold text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">RIASEC</p>
-                      <p className="text-gray-700 dark:text-gray-300">{t.about.personality.riasec}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="text-2xl">⭐</span>
-                    <div>
-                      <p className="font-semibold text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">Big Five</p>
-                      <p className="text-gray-700 dark:text-gray-300">{t.about.personality.bigfive}</p>
-                    </div>
-                  </div>
-                </div>
-                <p className="text-center text-gray-600 dark:text-gray-400 italic border-t border-gray-200 dark:border-gray-800 pt-4">
-                  {t.about.personality.tagline}
-                </p>
-              </div>
             )}
           </motion.div>
         </div>
@@ -660,19 +633,6 @@ function App() {
         </div>
       </section>
 
-      {/* Interactive Terminal Section */}
-      <section id="terminal" className="py-20 bg-gray-50 dark:bg-gray-950">
-        <div className="container mx-auto px-4">
-          <InteractiveTerminal
-            t={t}
-            language={language}
-            onLanguageChange={changeLanguage}
-            onThemeChange={toggleTheme}
-            theme={theme}
-          />
-        </div>
-      </section>
-
       {/* Tech Stack Visualization Section */}
       <section id="techstack" className="py-20">
         <div className="container mx-auto px-4">
@@ -694,21 +654,7 @@ function App() {
               Live updates from my GitHub profile showing recent work and contributions
             </p>
           </motion.div>
-          <GitHubActivity t={t} />
-        </div>
-      </section>
-
-      {/* Case Studies Section */}
-      <section id="casestudies" className="py-20">
-        <div className="container mx-auto px-4">
-          <CaseStudies t={t} />
-        </div>
-      </section>
-
-      {/* Timeline Section */}
-      <section id="timeline" className="py-20 bg-gray-50 dark:bg-gray-950">
-        <div className="container mx-auto px-4">
-          <Timeline t={t} />
+          <GitHubActivity />
         </div>
       </section>
 
@@ -740,18 +686,8 @@ function App() {
                   <Mail className="mt-1 text-gray-600 dark:text-gray-400" size={20} />
                   <div>
                     <p className="text-sm text-gray-500 dark:text-gray-500">{t.contact.email}</p>
-                    <a href="mailto:mikail@lekesiz.fr" className="text-gray-900 dark:text-white hover:underline">
-                      mikail@lekesiz.fr
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <Phone className="mt-1 text-gray-600 dark:text-gray-400" size={20} />
-                  <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-500">{t.contact.phone}</p>
-                    <a href="tel:+33663907527" className="text-gray-900 dark:text-white hover:underline">
-                      +33 6 63 90 75 27
+                    <a href="mailto:contact@netzinformatique.fr" className="text-gray-900 dark:text-white hover:underline">
+                      contact@netzinformatique.fr
                     </a>
                   </div>
                 </div>
@@ -761,8 +697,7 @@ function App() {
                   <div>
                     <p className="text-sm text-gray-500 dark:text-gray-500">{t.contact.location}</p>
                     <p className="text-gray-900 dark:text-white">
-                      2 rue des Tulipes<br />
-                      67500 HAGUENAU, France
+                      Haguenau / Strasbourg, France
                     </p>
                   </div>
                 </div>
@@ -781,18 +716,8 @@ function App() {
                   <Mail className="mt-1 text-gray-600 dark:text-gray-400" size={20} />
                   <div>
                     <p className="text-sm text-gray-500 dark:text-gray-500">{t.contact.email}</p>
-                    <a href="mailto:mikail@lekesiz.org" className="text-gray-900 dark:text-white hover:underline">
-                      mikail@lekesiz.org
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <Phone className="mt-1 text-gray-600 dark:text-gray-400" size={20} />
-                  <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-500">{t.contact.phone}</p>
-                    <a href="tel:+905074343253" className="text-gray-900 dark:text-white hover:underline">
-                      +90 507 43 43 253
+                    <a href="mailto:iletisim@reflektif.net" className="text-gray-900 dark:text-white hover:underline">
+                      iletisim@reflektif.net
                     </a>
                   </div>
                 </div>
@@ -802,9 +727,7 @@ function App() {
                   <div>
                     <p className="text-sm text-gray-500 dark:text-gray-500">{t.contact.location}</p>
                     <p className="text-gray-900 dark:text-white">
-                      Tepeköy Mahallesi<br />
-                      Çengel Çeşme Caddesi No: 44<br />
-                      59800 Şarköy / Tekirdağ
+                      İstanbul / Tekirdağ, Türkiye
                     </p>
                   </div>
                 </div>

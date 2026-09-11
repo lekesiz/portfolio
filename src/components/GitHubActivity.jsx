@@ -14,7 +14,7 @@ const GITHUB_API = 'https://api.github.com'
 // Cache duration (5 minutes)
 const CACHE_DURATION = 5 * 60 * 1000
 
-export function GitHubActivity({ t }) {
+export function GitHubActivity() {
   const [repos, setRepos] = useState([])
   const [events, setEvents] = useState([])
   const [stats, setStats] = useState(null)
@@ -112,37 +112,10 @@ export function GitHubActivity({ t }) {
   }
 
   const loadFallbackData = () => {
-    // Fallback data when API fails
-    setRepos([
-      {
-        id: 1,
-        name: 'portfolio',
-        description: 'Personal portfolio website built with React and Vite',
-        html_url: 'https://github.com/lekesiz/portfolio',
-        stargazers_count: 12,
-        forks_count: 3,
-        language: 'JavaScript',
-        updated_at: new Date().toISOString(),
-      },
-    ])
-
-    setStats({
-      publicRepos: 50,
-      followers: 100,
-      following: 50,
-      totalStars: 200,
-      totalForks: 50,
-    })
-
-    setEvents([
-      {
-        id: '1',
-        type: 'PushEvent',
-        created_at: new Date().toISOString(),
-        repo: { name: 'lekesiz/portfolio' },
-        payload: { commits: [{ message: 'Update portfolio' }] },
-      },
-    ])
+    // Never replace unavailable live data with invented profile metrics.
+    setRepos([])
+    setStats(null)
+    setEvents([])
   }
 
   const formatDate = (dateString) => {
@@ -172,9 +145,10 @@ export function GitHubActivity({ t }) {
   const getEventText = (event) => {
     const repo = event.repo.name.split('/')[1]
     switch (event.type) {
-      case 'PushEvent':
+      case 'PushEvent': {
         const commits = event.payload.commits?.length || 0
         return `Pushed ${commits} commit${commits !== 1 ? 's' : ''} to ${repo}`
+      }
       case 'CreateEvent':
         return `Created ${event.payload.ref_type} in ${repo}`
       case 'WatchEvent':
@@ -229,8 +203,8 @@ export function GitHubActivity({ t }) {
           { label: 'Repositories', value: stats.publicRepos, icon: Code },
           { label: 'Followers', value: stats.followers, icon: TrendingUp },
           { label: 'Following', value: stats.following, icon: Github },
-          { label: 'Total Stars', value: stats.totalStars, icon: Star },
-          { label: 'Total Forks', value: stats.totalForks, icon: GitFork },
+          { label: 'Stars on recent repos', value: stats.totalStars, icon: Star },
+          { label: 'Forks on recent repos', value: stats.totalForks, icon: GitFork },
         ].map((stat, index) => (
           <motion.div
             key={stat.label}
@@ -349,7 +323,7 @@ export function GitHubActivity({ t }) {
           {error && (
             <div className="mt-4 p-3 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
               <p className="text-sm text-yellow-800 dark:text-yellow-200">
-                ⚠️ Using cached data. Live updates unavailable.
+                Live GitHub data is unavailable. Use the profile link below for current information.
               </p>
             </div>
           )}
