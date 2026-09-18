@@ -1,14 +1,12 @@
 {
-  "name": "Mikail Lekesiz — IA, logiciel sécurisé et formation",
+  "name": "Mikail Lekesiz — Yapay Zekâ ve Dijital Dönüşüm Eğitmeni",
   "short_name": "Mikail Lekesiz",
-  "description": "Conseil, réalisation et formation en intelligence artificielle, logiciels sécurisés, DevOps et transformation numérique.",
-  "start_url": "/#home",
-  "scope": "/",
+  "description": "Uygulamalı yapay zekâ, yazılım geliştirme ve dijital dönüşüm eğitimleri.",
+  "start_url": "/?lang=tr",
   "display": "standalone",
-  "background_color": "#fbfcfe",
+  "background_color": "#f4f7fb",
   "theme_color": "#0a2440",
-  "orientation": "any",
-  "lang": "fr",
-  "dir": "ltr",
-  "categories": ["business", "portfolio", "technology"]
+  "icons": [
+    {"src": "/favicon.ico", "sizes": "any", "type": "image/x-icon"}
+  ]
 }
