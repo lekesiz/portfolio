@@ -10,6 +10,7 @@ import sharp from 'sharp'
 import { glob } from 'glob'
 import fs from 'fs/promises'
 import path from 'path'
+import process from 'node:process'
 import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
