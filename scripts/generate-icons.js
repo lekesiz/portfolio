@@ -6,8 +6,9 @@
  */
 
 import sharp from 'sharp'
-import { readdir, stat } from 'fs/promises'
+import { stat } from 'fs/promises'
 import path from 'path'
+import process from 'node:process'
 import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)

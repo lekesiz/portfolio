@@ -1,1020 +1,643 @@
-import { useState, useEffect, useCallback } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect, useMemo, useState } from 'react'
 import { useTheme } from 'next-themes'
 import {
-  Github, Linkedin, Mail, Phone, MapPin, Download,
-  ChevronDown, Menu, X, ExternalLink, Twitter, Instagram, Youtube,
-  Code, Server, Cloud, Shield, Sparkles, GraduationCap, Moon, Sun
+  ArrowRight,
+  BriefcaseBusiness,
+  Check,
+  ChevronDown,
+  CloudCog,
+  Code2,
+  ExternalLink,
+  Github,
+  GraduationCap,
+  Linkedin,
+  Mail,
+  MapPin,
+  Menu,
+  Moon,
+  Phone,
+  ShieldCheck,
+  Sparkles,
+  Sun,
+  X,
 } from 'lucide-react'
-import { Button } from '@/components/ui/button.jsx'
 import { translations } from '@/lib/translations'
-import { useThrottle } from '@/hooks/use-throttle'
-import { analytics, initAnalytics } from '@/lib/analytics'
-import { InteractiveTerminal } from '@/components/InteractiveTerminal'
-import { GitHubActivity } from '@/components/GitHubActivity'
-import { TechStackVisualization } from '@/components/TechStackVisualization'
-import { CaseStudies } from '@/components/CaseStudies'
-import { Timeline } from '@/components/Timeline'
 import profileImage from './assets/mikail_lekesiz.png'
 import './App.css'
 
+const PAGE_IDS = ['home', 'about', 'services', 'projects', 'contact']
+
+const ui = {
+  fr: {
+    nav: { home: 'Accueil', about: 'À propos', services: 'Services', projects: 'Projets', contact: 'Contact' },
+    language: 'Langue',
+    theme: 'Changer de thème',
+    menu: 'Ouvrir le menu',
+    close: 'Fermer le menu',
+    heroEyebrow: 'IA · logiciel sécurisé · formation',
+    heroTitle: "De l’idée à la mise en service, avec méthode.",
+    heroLead: "J’aide les organisations à transformer des besoins complexes en solutions numériques utiles, sûres et transmissibles.",
+    contactCta: 'Parlons de votre projet',
+    projectsCta: 'Voir les réalisations',
+    portraitAlt: 'Portrait de Mikail Lekesiz',
+    portraitCaption: 'Mikail Lekesiz · Haguenau / İstanbul',
+    stats: [
+      ['25+', 'années de pratique numérique'],
+      ['3', 'pays d’intervention'],
+      ['7', 'projets sélectionnés'],
+      ['3', 'langues de travail'],
+    ],
+    expertiseEyebrow: "Domaines d’intervention",
+    expertiseTitle: 'Trois façons de créer de la valeur',
+    expertiseLead: 'Conseil, réalisation et transmission réunis dans une démarche claire, mesurable et centrée sur les usages.',
+    expertise: [
+      ['01 — Conseil', 'Cadrer une transformation', 'Clarifier le besoin, les risques, les priorités et la trajectoire avant d’investir.', ['Diagnostic de l’existant', 'Recommandations priorisées', 'Feuille de route actionnable']],
+      ['02 — Réalisation', 'Concevoir des solutions fiables', 'Passer de l’intention à un produit déployable, sécurisé et maintenable.', ['Architecture et prototypage', 'Développement et automatisation', 'Mise en service et suivi']],
+      ['03 — Formation', 'Rendre les équipes autonomes', 'Transformer la technologie en compétences concrètes grâce à une pédagogie de terrain.', ['Cas pratiques adaptés', 'Supports réutilisables', 'Mesure des acquis']],
+    ],
+    learnMore: 'Découvrir les services',
+    selection: 'Sélection',
+    recentProjects: 'Projets récents',
+    allProjects: 'Tous les projets',
+    statement: 'La technologie n’a de valeur que lorsqu’elle devient compréhensible, maîtrisable et réellement utile aux personnes qui l’emploient.',
+    statementBy: 'Mikail Lekesiz — formateur, conseiller et responsable technique',
+    ctaTitle: 'Un projet, une formation ou une transformation à cadrer ?',
+    ctaText: 'Présentez-moi votre contexte. Je vous répondrai avec une première lecture concrète et sans jargon inutile.',
+    ctaButton: 'Écrire un message',
+    aboutEyebrow: 'Profil',
+    aboutLead: 'Formateur et conseiller en intelligence artificielle, logiciels sécurisés et sensibilisation cyber.',
+    facts: [
+      ['Responsabilité', 'Président · Netz Informatique'],
+      ['Implantation', 'France · Türkiye · Allemagne'],
+      ['Formation', 'Université de Strasbourg'],
+      ['Approche', 'Technique · pédagogie · gouvernance'],
+    ],
+    journey: 'Parcours professionnel',
+    education: 'Formation',
+    certifications: 'Certifications',
+    skillTitle: 'Expertise technique',
+    servicesEyebrow: 'Services',
+    servicesLead: 'Des interventions modulaires pour décider, construire, sécuriser et transmettre.',
+    processEyebrow: 'Méthode',
+    processTitle: 'Comment se déroule une mission',
+    process: [
+      ['Étape 1', 'Écoute et cadrage', 'Objectifs, contexte, contraintes et critères de réussite sont explicités.'],
+      ['Étape 2', 'Architecture', 'Une solution proportionnée est conçue avec des choix traçables.'],
+      ['Étape 3', 'Réalisation', 'Les livrables avancent par étapes courtes, testées et validées.'],
+      ['Étape 4', 'Transfert', 'Documentation, formation et suivi sécurisent l’autonomie dans la durée.'],
+    ],
+    faqEyebrow: 'Questions fréquentes',
+    faqTitle: 'Bon à savoir',
+    faq: [
+      ['Travaillez-vous à distance ?', 'Oui. Les missions peuvent être menées à distance ou sur site en France, en Türkiye et selon le contexte en Allemagne.'],
+      ['À qui s’adressent vos services ?', 'Aux PME, associations, organismes de formation, équipes projet et structures qui veulent adopter l’IA et le numérique de façon maîtrisée.'],
+      ['Comment démarre une collaboration ?', 'Par un échange de cadrage afin de comprendre le besoin, vérifier l’adéquation et définir la prochaine étape utile.'],
+      ['Intervenez-vous aussi en formation ?', 'Oui. Les formations sont construites autour de cas d’usage concrets, d’exercices et d’objectifs mesurables.'],
+    ],
+    projectsEyebrow: 'Réalisations',
+    projectsLead: 'Produits, plateformes et automatisations conçus pour produire un impact concret.',
+    filters: { all: 'Tous', product: 'Produits', ai: 'IA', automation: 'Automatisation' },
+    live: 'Voir le site',
+    code: 'Voir le code',
+    contactEyebrow: 'Contact',
+    contactLead: 'Décrivez le contexte, l’objectif et l’échéance : je vous répondrai avec une première orientation.',
+    name: 'Nom et prénom',
+    email: 'Adresse e-mail',
+    subject: 'Sujet',
+    message: 'Votre message',
+    send: 'Préparer le message',
+    formNote: 'Le bouton ouvre votre messagerie avec les informations saisies. Aucune donnée n’est stockée sur ce site.',
+    france: 'France',
+    turkey: 'Türkiye',
+    availability: 'Zone d’intervention',
+    networks: 'Réseaux',
+    footerText: 'IA, logiciel sécurisé et transmission des compétences.',
+    rights: 'Tous droits réservés.',
+  },
+  en: {
+    nav: { home: 'Home', about: 'About', services: 'Services', projects: 'Projects', contact: 'Contact' },
+    language: 'Language',
+    theme: 'Change theme',
+    menu: 'Open menu',
+    close: 'Close menu',
+    heroEyebrow: 'AI · secure software · training',
+    heroTitle: 'From idea to production, with method.',
+    heroLead: 'I help organisations turn complex needs into useful, secure and transferable digital solutions.',
+    contactCta: 'Discuss your project',
+    projectsCta: 'View selected work',
+    portraitAlt: 'Portrait of Mikail Lekesiz',
+    portraitCaption: 'Mikail Lekesiz · Haguenau / Istanbul',
+    stats: [
+      ['25+', 'years in digital practice'],
+      ['3', 'countries served'],
+      ['7', 'selected projects'],
+      ['3', 'working languages'],
+    ],
+    expertiseEyebrow: 'Areas of expertise',
+    expertiseTitle: 'Three ways to create value',
+    expertiseLead: 'Advisory, delivery and knowledge transfer brought together in a clear, measurable, user-centred approach.',
+    expertise: [
+      ['01 — Advisory', 'Frame a transformation', 'Clarify needs, risks, priorities and the delivery path before investing.', ['Current-state assessment', 'Prioritised recommendations', 'Actionable roadmap']],
+      ['02 — Delivery', 'Build reliable solutions', 'Turn intent into a deployable, secure and maintainable product.', ['Architecture and prototyping', 'Development and automation', 'Launch and follow-up']],
+      ['03 — Training', 'Make teams autonomous', 'Turn technology into practical skills through hands-on learning.', ['Tailored use cases', 'Reusable resources', 'Measurable outcomes']],
+    ],
+    learnMore: 'Explore services',
+    selection: 'Selected work',
+    recentProjects: 'Recent projects',
+    allProjects: 'All projects',
+    statement: 'Technology creates value only when it becomes understandable, controllable and genuinely useful to the people who rely on it.',
+    statementBy: 'Mikail Lekesiz — trainer, advisor and technical lead',
+    ctaTitle: 'A project, a training programme or a transformation to frame?',
+    ctaText: 'Share your context. I will reply with an initial, practical perspective without unnecessary jargon.',
+    ctaButton: 'Write a message',
+    aboutEyebrow: 'Profile',
+    aboutLead: 'Trainer and advisor in artificial intelligence, secure software and cyber awareness.',
+    facts: [
+      ['Responsibility', 'President · Netz Informatique'],
+      ['Presence', 'France · Türkiye · Germany'],
+      ['Education', 'University of Strasbourg'],
+      ['Approach', 'Technology · teaching · governance'],
+    ],
+    journey: 'Professional experience',
+    education: 'Education',
+    certifications: 'Certifications',
+    skillTitle: 'Technical expertise',
+    servicesEyebrow: 'Services',
+    servicesLead: 'Modular engagements to decide, build, secure and transfer knowledge.',
+    processEyebrow: 'Method',
+    processTitle: 'How an engagement works',
+    process: [
+      ['Step 1', 'Listen and frame', 'Objectives, context, constraints and success criteria are made explicit.'],
+      ['Step 2', 'Architecture', 'A proportionate solution is designed with traceable decisions.'],
+      ['Step 3', 'Delivery', 'Deliverables progress through short, tested and validated stages.'],
+      ['Step 4', 'Transfer', 'Documentation, training and follow-up secure long-term autonomy.'],
+    ],
+    faqEyebrow: 'Frequently asked questions',
+    faqTitle: 'Good to know',
+    faq: [
+      ['Do you work remotely?', 'Yes. Engagements can be delivered remotely or on site in France, Türkiye and, depending on the context, Germany.'],
+      ['Who are your services for?', 'SMEs, associations, training organisations and project teams seeking a controlled adoption of AI and digital tools.'],
+      ['How does a collaboration begin?', 'With a discovery call to understand the need, verify fit and define the most useful next step.'],
+      ['Do you also provide training?', 'Yes. Training is built around concrete use cases, hands-on exercises and measurable objectives.'],
+    ],
+    projectsEyebrow: 'Work',
+    projectsLead: 'Products, platforms and automations designed to produce tangible impact.',
+    filters: { all: 'All', product: 'Products', ai: 'AI', automation: 'Automation' },
+    live: 'Visit site',
+    code: 'View code',
+    contactEyebrow: 'Contact',
+    contactLead: 'Share the context, goal and timeline; I will reply with an initial direction.',
+    name: 'Full name',
+    email: 'Email address',
+    subject: 'Subject',
+    message: 'Your message',
+    send: 'Prepare message',
+    formNote: 'The button opens your email application with the information entered. No data is stored on this website.',
+    france: 'France',
+    turkey: 'Türkiye',
+    availability: 'Service area',
+    networks: 'Networks',
+    footerText: 'AI, secure software and knowledge transfer.',
+    rights: 'All rights reserved.',
+  },
+  tr: {
+    nav: { home: 'Ana Sayfa', about: 'Hakkımda', services: 'Hizmetler', projects: 'Projeler', contact: 'İletişim' },
+    language: 'Dil',
+    theme: 'Temayı değiştir',
+    menu: 'Menüyü aç',
+    close: 'Menüyü kapat',
+    heroEyebrow: 'YZ · güvenli yazılım · eğitim',
+    heroTitle: 'Fikirden canlı kullanıma, sistemli bir yaklaşımla.',
+    heroLead: 'Kurumların karmaşık ihtiyaçlarını faydalı, güvenli ve aktarılabilir dijital çözümlere dönüştürmelerine yardımcı oluyorum.',
+    contactCta: 'Projenizi konuşalım',
+    projectsCta: 'Çalışmaları incele',
+    portraitAlt: 'Mikail Lekesiz portresi',
+    portraitCaption: 'Mikail Lekesiz · Haguenau / İstanbul',
+    stats: [
+      ['25+', 'yıllık dijital deneyim'],
+      ['3', 'ülkede çalışma'],
+      ['7', 'seçilmiş proje'],
+      ['3', 'çalışma dili'],
+    ],
+    expertiseEyebrow: 'Uzmanlık alanları',
+    expertiseTitle: 'Değer üretmenin üç yolu',
+    expertiseLead: 'Danışmanlık, uygulama ve bilgi aktarımını net, ölçülebilir ve insan odaklı bir yaklaşımla birleştiriyorum.',
+    expertise: [
+      ['01 — Danışmanlık', 'Dönüşümü doğru çerçevelemek', 'Yatırım öncesinde ihtiyacı, riskleri, öncelikleri ve yol haritasını netleştirmek.', ['Mevcut durum analizi', 'Öncelikli öneriler', 'Uygulanabilir yol haritası']],
+      ['02 — Uygulama', 'Güvenilir çözümler geliştirmek', 'Niyeti canlıya alınabilir, güvenli ve sürdürülebilir bir ürüne dönüştürmek.', ['Mimari ve prototipleme', 'Geliştirme ve otomasyon', 'Canlıya alma ve takip']],
+      ['03 — Eğitim', 'Ekipleri bağımsızlaştırmak', 'Saha odaklı öğrenmeyle teknolojiyi uygulanabilir beceriye dönüştürmek.', ['Uyarlanmış kullanım senaryoları', 'Yeniden kullanılabilir içerik', 'Ölçülebilir kazanımlar']],
+    ],
+    learnMore: 'Hizmetleri keşfet',
+    selection: 'Seçki',
+    recentProjects: 'Son projeler',
+    allProjects: 'Tüm projeler',
+    statement: 'Teknoloji; onu kullanan insanlar için anlaşılır, denetlenebilir ve gerçekten faydalı hâle geldiğinde değer üretir.',
+    statementBy: 'Mikail Lekesiz — eğitmen, danışman ve teknik lider',
+    ctaTitle: 'Çerçevelenecek bir proje, eğitim veya dönüşüm mü var?',
+    ctaText: 'Bağlamı paylaşın. Gereksiz jargon olmadan somut bir ilk değerlendirmeyle dönüş yapayım.',
+    ctaButton: 'Mesaj yaz',
+    aboutEyebrow: 'Profil',
+    aboutLead: 'Yapay zekâ, güvenli yazılım ve siber farkındalık alanlarında eğitmen ve danışman.',
+    facts: [
+      ['Sorumluluk', 'Başkan · Netz Informatique'],
+      ['Çalışma alanı', 'Fransa · Türkiye · Almanya'],
+      ['Eğitim', 'Strasbourg Üniversitesi'],
+      ['Yaklaşım', 'Teknik · eğitim · yönetişim'],
+    ],
+    journey: 'Profesyonel deneyim',
+    education: 'Eğitim',
+    certifications: 'Sertifikalar',
+    skillTitle: 'Teknik uzmanlık',
+    servicesEyebrow: 'Hizmetler',
+    servicesLead: 'Karar vermek, geliştirmek, güvenli hâle getirmek ve bilgi aktarmak için modüler hizmetler.',
+    processEyebrow: 'Yöntem',
+    processTitle: 'Bir çalışma nasıl ilerler?',
+    process: [
+      ['Adım 1', 'Dinleme ve çerçeveleme', 'Hedefler, bağlam, kısıtlar ve başarı ölçütleri netleştirilir.'],
+      ['Adım 2', 'Mimari', 'İzlenebilir kararlarla ihtiyaca uygun bir çözüm tasarlanır.'],
+      ['Adım 3', 'Uygulama', 'Çıktılar kısa, test edilmiş ve onaylanmış aşamalarla geliştirilir.'],
+      ['Adım 4', 'Bilgi aktarımı', 'Dokümantasyon, eğitim ve takip ile uzun vadeli bağımsızlık sağlanır.'],
+    ],
+    faqEyebrow: 'Sık sorulan sorular',
+    faqTitle: 'Bilmekte fayda var',
+    faq: [
+      ['Uzaktan çalışıyor musunuz?', 'Evet. Çalışmalar uzaktan veya Fransa, Türkiye ve bağlama göre Almanya’da yerinde yürütülebilir.'],
+      ['Hizmetleriniz kimlere yöneliktir?', 'Yapay zekâ ve dijital araçları kontrollü biçimde benimsemek isteyen KOBİ, dernek, eğitim kurumu ve proje ekiplerine.'],
+      ['Bir iş birliği nasıl başlar?', 'İhtiyacı anlamak, uyumu doğrulamak ve en faydalı sonraki adımı belirlemek için kısa bir ön görüşmeyle.'],
+      ['Eğitim hizmeti de veriyor musunuz?', 'Evet. Eğitimler somut kullanım senaryoları, uygulamalar ve ölçülebilir hedefler etrafında hazırlanır.'],
+    ],
+    projectsEyebrow: 'Çalışmalar',
+    projectsLead: 'Somut etki üretmek üzere geliştirilen ürünler, platformlar ve otomasyonlar.',
+    filters: { all: 'Tümü', product: 'Ürünler', ai: 'Yapay zekâ', automation: 'Otomasyon' },
+    live: 'Siteyi aç',
+    code: 'Kodu incele',
+    contactEyebrow: 'İletişim',
+    contactLead: 'Bağlamı, hedefi ve zamanı paylaşın; ilk yönlendirmeyle dönüş yapayım.',
+    name: 'Ad ve soyad',
+    email: 'E-posta adresi',
+    subject: 'Konu',
+    message: 'Mesajınız',
+    send: 'Mesajı hazırla',
+    formNote: 'Buton, girdiğiniz bilgilerle e-posta uygulamanızı açar. Bu sitede hiçbir veri saklanmaz.',
+    france: 'Fransa',
+    turkey: 'Türkiye',
+    availability: 'Çalışma bölgesi',
+    networks: 'Sosyal ağlar',
+    footerText: 'Yapay zekâ, güvenli yazılım ve bilgi aktarımı.',
+    rights: 'Tüm hakları saklıdır.',
+  },
+}
+
+const serviceIcons = [CloudCog, Code2, Sparkles, ShieldCheck, BriefcaseBusiness, GraduationCap]
+const skillGroups = {
+  languages: ['JavaScript', 'TypeScript', 'Python', 'PHP', 'C#', 'Java'],
+  frontend: ['React', 'Vue.js', 'HTML5', 'CSS3', 'Tailwind CSS'],
+  backend: ['Node.js', 'Express', 'Laravel', 'Symfony', 'ASP.NET'],
+  databases: ['PostgreSQL', 'MySQL', 'MongoDB', 'SQL Server', 'Oracle'],
+  devops: ['Docker', 'Kubernetes', 'CI/CD', 'AWS', 'Azure', 'Google Cloud'],
+  tools: ['Git', 'GitHub', 'Jira', 'Confluence', 'Figma'],
+}
+
+const projectCategories = [
+  ['product'],
+  ['product', 'ai'],
+  ['ai', 'automation'],
+  ['product'],
+  ['ai'],
+  ['ai', 'automation'],
+  ['automation'],
+]
+
+const projectGlyphs = ['NI', 'R', 'AI', 'BC', 'C', 'N', 'W']
+
 function App() {
-  const [language, setLanguage] = useState('fr')
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('home')
-  const [scrolled, setScrolled] = useState(false)
-  const [certModal, setCertModal] = useState(null)
-  const { theme, setTheme } = useTheme()
+  const [language, setLanguage] = useState(() => {
+    const queryLang = new URLSearchParams(window.location.search).get('lang')
+    if (['fr', 'en', 'tr'].includes(queryLang)) return queryLang
+    try {
+      const savedLanguage = localStorage.getItem('ml-language')
+      return ['fr', 'en', 'tr'].includes(savedLanguage) ? savedLanguage : 'fr'
+    } catch {
+      return 'fr'
+    }
+  })
+  const [page, setPage] = useState(() => {
+    const hash = window.location.hash.replace('#', '')
+    return PAGE_IDS.includes(hash) ? hash : 'home'
+  })
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [projectFilter, setProjectFilter] = useState('all')
+  const { resolvedTheme, setTheme } = useTheme()
 
   const t = translations[language]
+  const copy = ui[language]
 
-  // Optimize scroll handler with throttling
-  const handleScroll = useCallback(() => {
-    setScrolled(window.scrollY > 50)
-
-    const sections = ['home', 'about', 'services', 'skills', 'experience', 'education', 'certifications', 'projects', 'contact']
-    const current = sections.find(section => {
-      const element = document.getElementById(section)
-      if (element) {
-        const rect = element.getBoundingClientRect()
-        return rect.top <= 100 && rect.bottom >= 100
-      }
-      return false
-    })
-    if (current) setActiveSection(current)
-  }, [])
-
-  const throttledHandleScroll = useThrottle(handleScroll, 100)
+  const navItems = useMemo(() => PAGE_IDS.map((id) => ({ id, label: copy.nav[id] })), [copy])
 
   useEffect(() => {
-    window.addEventListener('scroll', throttledHandleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', throttledHandleScroll)
-  }, [throttledHandleScroll])
-
-  // Initialize analytics on mount
-  useEffect(() => {
-    initAnalytics()
+    const onHashChange = () => {
+      const hash = window.location.hash.replace('#', '')
+      setPage(PAGE_IDS.includes(hash) ? hash : 'home')
+      setMenuOpen(false)
+      window.scrollTo({ top: 0, behavior: 'auto' })
+    }
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
 
-  const changeLanguage = (lang) => {
-    setLanguage(lang)
-    analytics.changeLanguage(lang)
-  }
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark'
-    setTheme(newTheme)
-    analytics.toggleTheme(newTheme)
-  }
-
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-      setIsMenuOpen(false)
+  useEffect(() => {
+    try {
+      localStorage.setItem('ml-language', language)
+    } catch {
+      // The site remains fully functional when storage is unavailable.
     }
-  }
-
-  const downloadCV = () => {
-    // CV dosyaları public/cv/ klasöründe olmalı
-    // Örnek: public/cv/cv-fr.pdf, public/cv/cv-en.pdf, public/cv/cv-tr.pdf
-    const cvFiles = {
-      fr: '/cv/cv-fr.pdf',
-      en: '/cv/cv-en.pdf',
-      tr: '/cv/cv-tr.pdf'
+    document.documentElement.lang = language
+    const titles = {
+      fr: 'Mikail Lekesiz | IA, logiciel sécurisé et formation',
+      en: 'Mikail Lekesiz | AI, Secure Software & Training',
+      tr: 'Mikail Lekesiz | Yapay Zekâ, Güvenli Yazılım ve Eğitim',
     }
+    document.title = titles[language]
+  }, [language])
 
-    const cvPath = cvFiles[language] || cvFiles.fr
-
-    // CV dosyası mevcut değilse, email ile CV isteği gönder
-    fetch(cvPath, { method: 'HEAD' })
-      .then(response => {
-        if (response.ok) {
-          // CV dosyası mevcut, indir
-          analytics.downloadCV(language)
-          const link = document.createElement('a')
-          link.href = cvPath
-          link.download = `Mikail_Lekesiz_CV_${language.toUpperCase()}.pdf`
-          document.body.appendChild(link)
-          link.click()
-          document.body.removeChild(link)
-        } else {
-          // CV dosyası mevcut değil, email gönder
-          window.location.href = 'mailto:mikail@lekesiz.fr?subject=CV Request&body=Hello, I would like to request your CV.'
-        }
-      })
-      .catch(() => {
-        // Hata durumunda email gönder
-        window.location.href = 'mailto:mikail@lekesiz.fr?subject=CV Request&body=Hello, I would like to request your CV.'
-      })
+  const go = (id) => {
+    if (window.location.hash === `#${id}`) {
+      setPage(id)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      window.location.hash = id
+    }
+    setMenuOpen(false)
   }
 
-  const skills = {
-    languages: ['JavaScript', 'TypeScript', 'Python', 'PHP', 'C#', 'Java'],
-    frontend: ['React', 'Vue.js', 'HTML5', 'CSS3', 'Tailwind CSS', 'Bootstrap'],
-    backend: ['Node.js', 'ASP.NET', 'Laravel', 'Symfony', 'Express'],
-    databases: ['MySQL', 'SQL Server', 'MongoDB', 'Oracle', 'PostgreSQL'],
-    devops: ['Docker', 'Kubernetes', 'CI/CD', 'AWS', 'Azure', 'Google Cloud'],
-    tools: ['Git', 'Jira', 'Confluence', 'Figma', 'VS Code']
+  const submitMail = (event) => {
+    event.preventDefault()
+    const form = new FormData(event.currentTarget)
+    const subject = form.get('subject') || 'Portfolio contact'
+    const body = `${copy.name}: ${form.get('name')}\n${copy.email}: ${form.get('email')}\n\n${form.get('message')}`
+    window.location.href = `mailto:mikail@lekesiz.fr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
   }
 
-  const socialLinks = [
-    { icon: Github, url: 'https://github.com/lekesiz', label: 'GitHub' },
-    { icon: Linkedin, url: 'https://www.linkedin.com/in/mikail-lekesiz/', label: 'LinkedIn' },
-    { icon: Twitter, url: 'https://x.com/lekesiz_mikail', label: 'Twitter' },
-    { icon: Instagram, url: 'https://www.instagram.com/lekesizmikail', label: 'Instagram' },
-    { icon: Youtube, url: 'https://www.youtube.com/@mlekesiz', label: 'YouTube' }
-  ]
+  const projectCard = (project, index) => {
+    const href = project.link || project.github
+    return (
+      <article className="card project-card" key={project.name}>
+        <a className={`project-visual project-visual-${index % 4}`} href={href} target="_blank" rel="noreferrer" aria-label={project.name}>
+          <span>{projectGlyphs[index] || 'ML'}</span>
+          <ArrowRight size={22} aria-hidden="true" />
+        </a>
+        <div className="project-body">
+          <h3>{project.name}</h3>
+          <p>{project.description}</p>
+          <div className="chips">
+            {project.tech.map((tech) => <span className="chip" key={tech}>{tech}</span>)}
+          </div>
+          <div className="project-links">
+            {project.link && <a href={project.link} target="_blank" rel="noreferrer"><ExternalLink size={16} />{copy.live}</a>}
+            {project.github && <a href={project.github} target="_blank" rel="noreferrer"><Github size={16} />{copy.code}</a>}
+          </div>
+        </div>
+      </article>
+    )
+  }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white">
-      {/* Navigation */}
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'bg-white/90 dark:bg-black/90 backdrop-blur-lg shadow-lg' : 'bg-transparent'
-        }`}
-      >
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-2xl font-bold"
-          >
-            <span className="text-gray-900 dark:text-white">Mikail</span>
-            <span className="text-gray-500 dark:text-gray-400"> Lekesiz</span>
-          </motion.div>
+    <div className="site-shell">
+      <header className="site-header">
+        <div className="wrap header-bar">
+          <button className="brand" type="button" onClick={() => go('home')} aria-label={copy.nav.home}>
+            <span className="brand-mark">ML</span>
+            <span>Mikail <span className="brand-muted">Lekesiz</span></span>
+          </button>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
-            {['about', 'services', 'skills', 'experience', 'projects', 'contact'].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollToSection(item)}
-                className={`text-sm font-medium transition-colors hover:text-gray-900 dark:hover:text-white ${
-                  activeSection === item ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-gray-400'
-                }`}
-              >
-                {t.nav[item]}
-              </button>
+          <nav className={`main-nav ${menuOpen ? 'is-open' : ''}`} aria-label="Primary navigation">
+            {navItems.map(({ id, label }) => (
+              <button key={id} type="button" className={page === id ? 'active' : ''} onClick={() => go(id)}>{label}</button>
             ))}
-            
-            {/* Language Switcher */}
-            <div className="flex gap-2 ml-4 border-l pl-4 border-gray-300 dark:border-gray-700">
+          </nav>
+
+          <div className="header-tools">
+            <div className="language-switch" aria-label={copy.language}>
               {['fr', 'en', 'tr'].map((lang) => (
-                <button
-                  key={lang}
-                  onClick={() => changeLanguage(lang)}
-                  className={`px-2 py-1 text-xs font-medium rounded transition-colors ${
-                    language === lang
-                      ? 'bg-gray-900 dark:bg-white text-white dark:text-black'
-                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-                  }`}
-                >
-                  {lang.toUpperCase()}
-                </button>
+                <button key={lang} type="button" className={language === lang ? 'active' : ''} onClick={() => setLanguage(lang)}>{lang.toUpperCase()}</button>
               ))}
             </div>
-
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className="ml-4 p-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
-              aria-label="Toggle theme"
-            >
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            <button className="icon-button" type="button" aria-label={copy.theme} onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}>
+              {resolvedTheme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+            <button className="icon-button menu-button" type="button" aria-label={menuOpen ? copy.close : copy.menu} aria-expanded={menuOpen} onClick={() => setMenuOpen((value) => !value)}>
+              {menuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-gray-900 dark:text-white"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
+      </header>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800"
-            >
-              <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
-                {['about', 'services', 'skills', 'experience', 'projects', 'contact'].map((item) => (
-                  <button
-                    key={item}
-                    onClick={() => scrollToSection(item)}
-                    className="text-left text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-                  >
-                    {t.nav[item]}
-                  </button>
-                ))}
-                <div className="flex gap-2 pt-4 border-t border-gray-200 dark:border-gray-800">
-                  {['fr', 'en', 'tr'].map((lang) => (
-                    <button
-                      key={lang}
-                      onClick={() => changeLanguage(lang)}
-                      className={`px-3 py-1 text-sm rounded ${
-                        language === lang
-                          ? 'bg-gray-900 dark:bg-white text-white dark:text-black'
-                          : 'text-gray-600 dark:text-gray-400'
-                      }`}
-                    >
-                      {lang.toUpperCase()}
-                    </button>
+      <main>
+        {page === 'home' && (
+          <div className="page page-home">
+            <section className="hero">
+              <div className="wrap hero-grid">
+                <div className="hero-copy">
+                  <p className="eyebrow">{copy.heroEyebrow}</p>
+                  <p className="hero-kicker">{t.hero.greeting} <strong>Mikail Lekesiz</strong></p>
+                  <h1>{copy.heroTitle}</h1>
+                  <p className="lead">{copy.heroLead}</p>
+                  <p className="hero-detail">{t.hero.description}</p>
+                  <div className="button-row">
+                    <button className="button button-primary" type="button" onClick={() => go('contact')}>{copy.contactCta}<ArrowRight size={18} /></button>
+                    <button className="button button-ghost" type="button" onClick={() => go('projects')}>{copy.projectsCta}</button>
+                  </div>
+                  <div className="hero-socials" aria-label="Social profiles">
+                    <a href="https://github.com/lekesiz" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={19} /></a>
+                    <a href="https://www.linkedin.com/in/mikail-lekesiz/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={19} /></a>
+                    <a href="mailto:mikail@lekesiz.fr" aria-label="Email"><Mail size={19} /></a>
+                  </div>
+                </div>
+                <div className="portrait-wrap">
+                  <div className="portrait-frame">
+                    <img src={profileImage} alt={copy.portraitAlt} width="740" height="994" fetchPriority="high" />
+                  </div>
+                  <div className="portrait-caption"><span className="status-dot" />{copy.portraitCaption}</div>
+                </div>
+              </div>
+            </section>
+
+            <section className="band compact">
+              <div className="wrap">
+                <ul className="stats">
+                  {copy.stats.map(([value, label]) => <li className="stat" key={label}><span>{value}</span><p>{label}</p></li>)}
+                </ul>
+              </div>
+            </section>
+
+            <section className="band alternate">
+              <div className="wrap">
+                <SectionHeading eyebrow={copy.expertiseEyebrow} title={copy.expertiseTitle} lead={copy.expertiseLead} />
+                <div className="grid-3">
+                  {copy.expertise.map(([tag, title, description, bullets]) => (
+                    <article className="card" key={title}>
+                      <span className="tag">{tag}</span>
+                      <h3>{title}</h3>
+                      <p>{description}</p>
+                      <ul className="check-list">{bullets.map((bullet) => <li key={bullet}><Check size={15} />{bullet}</li>)}</ul>
+                      <button className="text-link" type="button" onClick={() => go('services')}>{copy.learnMore}<ArrowRight size={16} /></button>
+                    </article>
                   ))}
                 </div>
-
-                {/* Theme Toggle Mobile */}
-                <button
-                  onClick={toggleTheme}
-                  className="flex items-center gap-2 p-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
-                  aria-label="Toggle theme"
-                >
-                  {theme === 'dark' ? (
-                    <>
-                      <Sun size={18} />
-                      <span className="text-sm">Light Mode</span>
-                    </>
-                  ) : (
-                    <>
-                      <Moon size={18} />
-                      <span className="text-sm">Dark Mode</span>
-                    </>
-                  )}
-                </button>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.nav>
+            </section>
 
-      {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center pt-20">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left Side - Text */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="space-y-6"
-            >
-              <div className="space-y-2">
-                <p className="text-gray-600 dark:text-gray-400 text-lg">{t.hero.greeting}</p>
-                <h1 className="text-5xl md:text-7xl font-bold">
-                  Mikail <span className="text-gray-500 dark:text-gray-400">Lekesiz</span>
-                </h1>
-                <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 font-medium">
-                  {t.hero.title}
-                </p>
-                {t.hero.subtitle && (
-                  <p className="text-sm md:text-base text-gray-500 dark:text-gray-500 font-medium tracking-wider uppercase">
-                    {t.hero.subtitle}
-                  </p>
-                )}
+            <section className="band">
+              <div className="wrap">
+                <SectionHeading eyebrow={copy.selection} title={copy.recentProjects} />
+                <div className="grid-3">{t.projects.list.slice(0, 3).map(projectCard)}</div>
+                <div className="button-row"><button className="button button-ghost" type="button" onClick={() => go('projects')}>{copy.allProjects}<ArrowRight size={18} /></button></div>
               </div>
-              
-              <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
-                {t.hero.description}
-              </p>
+            </section>
 
-              <div className="flex flex-wrap gap-4">
-                <Button 
-                  size="lg"
-                  className="bg-gray-900 dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-100"
-                  onClick={() => scrollToSection('contact')}
-                >
-                  {t.hero.contact}
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-gray-900 dark:border-white text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900"
-                  onClick={downloadCV}
-                >
-                  <Download className="mr-2" size={20} />
-                  {t.hero.downloadCV}
-                </Button>
+            <section className="band alternate">
+              <div className="wrap"><blockquote className="quote">“{copy.statement}”<cite>{copy.statementBy}</cite></blockquote></div>
+            </section>
+
+            <section className="band">
+              <div className="wrap"><CallToAction copy={copy} go={go} /></div>
+            </section>
+          </div>
+        )}
+
+        {page === 'about' && (
+          <div className="page">
+            <section className="band page-intro">
+              <div className="wrap">
+                <SectionHeading eyebrow={copy.aboutEyebrow} title="Mikail Lekesiz" lead={copy.aboutLead} level="h1" />
+                <div className="about-grid">
+                  <div className="prose-stack"><p>{t.about.content}</p><p>{t.about.content2}</p><p>{t.about.content3}</p></div>
+                  <div className="about-portrait"><img src={profileImage} alt={copy.portraitAlt} width="740" height="994" /></div>
+                </div>
+                <div className="fact-grid">{copy.facts.map(([key, value]) => <div className="fact" key={key}><span>{key}</span><strong>{value}</strong></div>)}</div>
               </div>
+            </section>
 
-              {/* Social Links */}
-              <div className="flex gap-4 pt-4">
-                {socialLinks.map(({ icon: Icon, url, label }) => (
-                  <a
-                    key={label}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => analytics.clickSocialLink(label)}
-                    className="p-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
-                    aria-label={label}
-                  >
-                    <Icon size={20} />
-                  </a>
-                ))}
+            <section className="band alternate">
+              <div className="wrap"><SectionHeading eyebrow={copy.journey} title={t.experience.title} /><Timeline items={t.experience.jobs.map((job) => ({ when: job.period, title: job.title, where: `${job.company} · ${job.location}`, description: job.description }))} /></div>
+            </section>
+
+            <section className="band">
+              <div className="wrap split-grid">
+                <div>
+                  <SectionHeading eyebrow={copy.education} title={t.education.title} />
+                  <Timeline items={t.education.list.map((item) => ({ when: item.period, title: item.degree, where: item.school, description: item.description }))} />
+                </div>
+                <div>
+                  <SectionHeading eyebrow={copy.certifications} title={t.certifications.title} />
+                  <div className="cert-list">{t.certifications.list.map((cert) => <article key={cert.name}><span>{cert.date}</span><h3>{cert.name}</h3><p>{cert.issuer}</p><small>{cert.id}</small></article>)}</div>
+                </div>
               </div>
-            </motion.div>
+            </section>
 
-            {/* Right Side - Image */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="flex justify-center"
-            >
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-400 dark:from-gray-800 dark:to-gray-600 rounded-full blur-3xl opacity-30"></div>
-                <img
-                  src={profileImage}
-                  alt="Mikail Lekesiz - Innovateur Technologique & Leader Humain"
-                  width="384"
-                  height="384"
-                  loading="lazy"
-                  decoding="async"
-                  className="relative w-80 h-80 md:w-96 md:h-96 object-cover rounded-full border-4 border-gray-200 dark:border-gray-800 shadow-2xl"
-                />
+            <section className="band alternate">
+              <div className="wrap">
+                <SectionHeading eyebrow={copy.skillTitle} title={t.skills.title} lead={t.skills.subtitle} />
+                <div className="skills-grid">{Object.entries(skillGroups).map(([key, list]) => <article className="skill-group" key={key}><h3>{t.skills[key]}</h3><div className="chips">{list.map((skill) => <span className="chip" key={skill}>{skill}</span>)}</div></article>)}</div>
               </div>
-            </motion.div>
+            </section>
           </div>
+        )}
 
-          {/* Scroll Indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 1 }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5 }}
-            >
-              <ChevronDown size={32} className="text-gray-400" />
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-20 bg-gray-50 dark:bg-gray-950">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto text-center space-y-6"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold">{t.about.title}</h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-              {t.about.content}
-            </p>
-            {t.about.content2 && (
-              <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                {t.about.content2}
-              </p>
-            )}
-            {t.about.content3 && (
-              <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-                {t.about.content3}
-              </p>
-            )}
-            {t.about.personality && (
-              <div className="mt-8 p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-800 rounded-xl text-left space-y-4">
-                <h3 className="text-xl font-bold text-center">{t.about.personality.title}</h3>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="flex items-start gap-3">
-                    <span className="text-2xl">🧠</span>
-                    <div>
-                      <p className="font-semibold text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">RIASEC</p>
-                      <p className="text-gray-700 dark:text-gray-300">{t.about.personality.riasec}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <span className="text-2xl">⭐</span>
-                    <div>
-                      <p className="font-semibold text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wide">Big Five</p>
-                      <p className="text-gray-700 dark:text-gray-300">{t.about.personality.bigfive}</p>
-                    </div>
-                  </div>
+        {page === 'services' && (
+          <div className="page">
+            <section className="band page-intro">
+              <div className="wrap">
+                <SectionHeading eyebrow={copy.servicesEyebrow} title={t.services.title} lead={copy.servicesLead} level="h1" />
+                <div className="grid-3 services-grid">
+                  {t.services.list.map((service, index) => {
+                    const Icon = serviceIcons[index]
+                    const bullets = copy.expertise[index % 3][3]
+                    return <article className="card service-card" key={service.title}><div className="service-icon"><Icon size={23} /></div><span className="tag">0{index + 1}</span><h3>{service.title}</h3><p>{service.description}</p><ul className="check-list">{bullets.map((bullet) => <li key={bullet}><Check size={15} />{bullet}</li>)}</ul></article>
+                  })}
                 </div>
-                <p className="text-center text-gray-600 dark:text-gray-400 italic border-t border-gray-200 dark:border-gray-800 pt-4">
-                  {t.about.personality.tagline}
-                </p>
-                {t.about.reportLink && (
-                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
-                    <a
-                      href="/reflektif-rapport-RF-1985-E152.tr.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
-                      {t.about.reportLink.label}
-                    </a>
-                    <a
-                      href="/reflektif-rapport-RF-1985-E152.tr.pdf"
-                      download
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-medium hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                      {t.about.reportLink.download}
-                    </a>
-                  </div>
-                )}
-                {t.about.reportLink && (
-                  <p className="text-center text-xs text-gray-400 dark:text-gray-600">{t.about.reportLink.note}</p>
-                )}
               </div>
-            )}
+            </section>
 
-            {/* Data Behind My Profile */}
-            {t.about.dataProfile && (
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="mt-8 text-left"
-              >
-                <h3 className="text-2xl font-bold mb-2">{t.about.dataProfile.title}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">{t.about.dataProfile.subtitle}</p>
-                <div className="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-800">
-                  <table className="w-full text-sm">
-                    <tbody>
-                      {t.about.dataProfile.table.map((row, i) => (
-                        <tr key={i} className={i % 2 === 0 ? 'bg-gray-50 dark:bg-gray-900' : 'bg-white dark:bg-black'}>
-                          <td className="px-4 py-3 font-semibold text-gray-600 dark:text-gray-400 w-1/3 border-r border-gray-200 dark:border-gray-800">{row.dimension}</td>
-                          <td className="px-4 py-3 text-gray-800 dark:text-gray-200">{row.insight}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-                <p className="mt-3 text-xs text-gray-400 dark:text-gray-500 text-center">
-                  {t.about.dataProfile.source}{' '}
-                  <a href="https://reflektif.net" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-600 dark:hover:text-gray-300">{t.about.dataProfile.sourceLink}</a>
-                  {' '}{t.about.dataProfile.sourceNote}
-                </p>
-              </motion.div>
-            )}
+            <section className="band alternate">
+              <div className="wrap"><SectionHeading eyebrow={copy.processEyebrow} title={copy.processTitle} /><div className="steps">{copy.process.map(([number, title, description]) => <article className="step" key={number}><span>{number}</span><h3>{title}</h3><p>{description}</p></article>)}</div></div>
+            </section>
 
-            {/* Assessment Methodology */}
-            {t.about.methodology && (
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="mt-8 p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-800 rounded-xl text-left"
-              >
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-lg">🔬</span>
-                  <h3 className="text-xl font-bold">{t.about.methodology.title}</h3>
-                </div>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mb-4 uppercase tracking-wide">{t.about.methodology.subtitle}</p>
-                <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">{t.about.methodology.description}</p>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-4">
-                  {t.about.methodology.frameworks.map((fw, i) => (
-                    <div key={i} className="flex items-start gap-2 p-3 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-100 dark:border-gray-800">
-                      <span className="text-gray-400 font-mono text-xs mt-0.5">{String(i+1).padStart(2,'0')}</span>
-                      <div>
-                        <p className="font-semibold text-sm text-gray-800 dark:text-gray-200">{fw.label}</p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">{fw.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <p className="text-xs text-gray-400 dark:text-gray-500 border-t border-gray-200 dark:border-gray-800 pt-3">
-                  {t.about.methodology.source}{' '}
-                  <a href="https://reflektif.net" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-600 dark:hover:text-gray-300 font-medium">{t.about.methodology.sourceLink}</a>
-                  {' '}{t.about.methodology.sourceNote}
-                  {' — '}{t.about.methodology.disclosure}
-                </p>
-              </motion.div>
-            )}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section id="services" className="py-20">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center space-y-4 mb-12"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold">{t.services.title}</h2>
-            <p className="text-gray-600 dark:text-gray-400 text-lg">{t.services.subtitle}</p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {t.services.list.map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg hover:shadow-lg transition-shadow"
-              >
-                <div className="w-12 h-12 bg-gray-100 dark:bg-gray-900 rounded-lg flex items-center justify-center mb-4">
-                  {index === 0 && <Server size={24} />}
-                  {index === 1 && <Code size={24} />}
-                  {index === 2 && <Sparkles size={24} />}
-                  {index === 3 && <Shield size={24} />}
-                  {index === 4 && <Cloud size={24} />}
-                  {index === 5 && <GraduationCap size={24} />}
-                </div>
-                <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400">{service.description}</p>
-              </motion.div>
-            ))}
+            <section className="band">
+              <div className="wrap narrow"><SectionHeading eyebrow={copy.faqEyebrow} title={copy.faqTitle} />{copy.faq.map(([question, answer], index) => <details className="faq" key={question} open={index === 0}><summary>{question}<ChevronDown size={19} /></summary><p>{answer}</p></details>)}</div>
+            </section>
+            <section className="band compact"><div className="wrap"><CallToAction copy={copy} go={go} /></div></section>
           </div>
-        </div>
-      </section>
+        )}
 
-      {/* Skills Section */}
-      <section id="skills" className="py-20 bg-gray-50 dark:bg-gray-950">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-center mb-12"
-          >
-            {t.skills.title}
-          </motion.h2>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {Object.entries(skills).map(([category, items], catIndex) => (
-              <motion.div
-                key={category}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: catIndex * 0.1 }}
-                className="space-y-4"
-              >
-                <h3 className="text-xl font-bold capitalize">{category}</h3>
-                <div className="flex flex-wrap gap-2">
-                  {items.map((skill, index) => (
-                    <span
-                      key={index}
-                      className="px-3 py-1 bg-white dark:bg-black border border-gray-200 dark:border-gray-800 rounded-full text-sm"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Experience Section */}
-      <section id="experience" className="py-20">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-center mb-12"
-          >
-            {t.experience.title}
-          </motion.h2>
-
-          <div className="max-w-4xl mx-auto space-y-8">
-            {t.experience.jobs.map((job, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="relative pl-8 border-l-2 border-gray-300 dark:border-gray-700"
-              >
-                <div className="absolute left-0 top-0 w-4 h-4 bg-gray-900 dark:bg-white rounded-full transform -translate-x-[9px]"></div>
-                <div className="space-y-2">
-                  <h3 className="text-2xl font-bold">{job.title}</h3>
-                  <p className="text-lg text-gray-600 dark:text-gray-400">{job.company}</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-500">{job.period} • {job.location}</p>
-                  <p className="text-gray-600 dark:text-gray-400">{job.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Education Section */}
-      <section id="education" className="py-20 bg-gray-50 dark:bg-gray-950">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-center mb-12"
-          >
-            {t.education.title}
-          </motion.h2>
-
-          <div className="max-w-4xl mx-auto space-y-8">
-            {t.education.list.map((edu, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-800 rounded-lg"
-              >
-                <h3 className="text-xl font-bold mb-2">{edu.degree}</h3>
-                <p className="text-lg text-gray-600 dark:text-gray-400 mb-1">{edu.school}</p>
-                <p className="text-sm text-gray-500 dark:text-gray-500 mb-3">{edu.period}</p>
-                <p className="text-gray-600 dark:text-gray-400">{edu.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Certifications Section */}
-      <section id="certifications" className="py-20">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold text-center mb-12"
-          >
-            {t.certifications.title}
-          </motion.h2>
-
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {t.certifications.list.map((cert, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg hover:shadow-lg transition-shadow"
-              >
-                <h3 className="text-lg font-bold mb-2">{cert.name}</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-1">{cert.issuer}</p>
-                <p className="text-sm text-gray-500 dark:text-gray-500">{cert.date}</p>
-                {cert.id && (
-                  <p className="text-xs text-gray-400 dark:text-gray-600 mt-2">ID: {cert.id}</p>
-                )}
-                {cert.image && (
-                  <button
-                    onClick={() => setCertModal(cert)}
-                    className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-black dark:text-white border border-black dark:border-white px-3 py-1.5 rounded hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                    {cert.viewLabel}
-                  </button>
-                )}
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Certificate Image Modal */}
-          <AnimatePresence>
-            {certModal && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-                onClick={() => setCertModal(null)}
-              >
-                <motion.div
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  exit={{ scale: 0.9, opacity: 0 }}
-                  className="relative max-w-3xl w-full bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-2xl"
-                  onClick={e => e.stopPropagation()}
-                >
-                  <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
-                    <div>
-                      <p className="font-bold text-sm">{certModal.name}</p>
-                      <p className="text-xs text-gray-500">{certModal.issuer} · {certModal.date}</p>
-                    </div>
-                    <button
-                      onClick={() => setCertModal(null)}
-                      className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                    >
-                      <X size={18} />
-                    </button>
-                  </div>
-                  <div className="p-4">
-                    <img
-                      src={certModal.image}
-                      alt={certModal.name}
-                      className="w-full h-auto rounded-lg object-contain"
-                    />
-                  </div>
-                  <div className="p-4 border-t border-gray-200 dark:border-gray-700 flex justify-between items-center">
-                    <p className="text-xs text-gray-400">N° {certModal.id}</p>
-                    <a
-                      href={certModal.image}
-                      download
-                      className="inline-flex items-center gap-2 text-sm font-medium bg-black text-white dark:bg-white dark:text-black px-4 py-2 rounded hover:opacity-80 transition-opacity"
-                    >
-                      <Download size={14} />
-                      Télécharger
-                    </a>
-                  </div>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-950">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center space-y-4 mb-12"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold">{t.projects.title}</h2>
-            <p className="text-gray-600 dark:text-gray-400 text-lg">{t.projects.subtitle}</p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {t.projects.list.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-800 rounded-lg hover:shadow-lg transition-all group"
-              >
-                <h3 className="text-xl font-bold mb-3">{project.name}</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">{project.description}</p>
-                
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-2 py-1 bg-gray-100 dark:bg-gray-900 text-xs rounded"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex gap-3">
-                  {project.link && (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => analytics.clickProjectLink(project.name, 'demo')}
-                      className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-                    >
-                      <ExternalLink size={16} />
-                      Live
-                    </a>
-                  )}
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => analytics.clickProjectLink(project.name, 'github')}
-                      className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-                    >
-                      <Github size={16} />
-                      Code
-                    </a>
-                  )}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Interactive Terminal Section */}
-      <section id="terminal" className="py-20 bg-gray-50 dark:bg-gray-950">
-        <div className="container mx-auto px-4">
-          <InteractiveTerminal
-            t={t}
-            language={language}
-            onLanguageChange={changeLanguage}
-            onThemeChange={toggleTheme}
-            theme={theme}
-          />
-        </div>
-      </section>
-
-      {/* Tech Stack Visualization Section */}
-      <section id="techstack" className="py-20">
-        <div className="container mx-auto px-4">
-          <TechStackVisualization t={t} />
-        </div>
-      </section>
-
-      {/* GitHub Activity Section */}
-      <section id="github" className="py-20 bg-gray-50 dark:bg-gray-950">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center space-y-4 mb-12"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold">GitHub Activity</h2>
-            <p className="text-gray-600 dark:text-gray-400 text-lg">
-              Live updates from my GitHub profile showing recent work and contributions
-            </p>
-          </motion.div>
-          <GitHubActivity t={t} />
-        </div>
-      </section>
-
-      {/* Case Studies Section */}
-      <section id="casestudies" className="py-20">
-        <div className="container mx-auto px-4">
-          <CaseStudies t={t} />
-        </div>
-      </section>
-
-      {/* Timeline Section */}
-      <section id="timeline" className="py-20 bg-gray-50 dark:bg-gray-950">
-        <div className="container mx-auto px-4">
-          <Timeline t={t} />
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-20">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center space-y-4 mb-12"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold">{t.contact.title}</h2>
-            <p className="text-gray-600 dark:text-gray-400 text-lg">{t.contact.subtitle}</p>
-          </motion.div>
-
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* France Contact */}
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="space-y-6 p-6 border border-gray-200 dark:border-gray-800 rounded-lg"
-              >
-                <h3 className="text-2xl font-bold mb-4">{t.contact.france}</h3>
-                
-                <div className="flex items-start gap-3">
-                  <Mail className="mt-1 text-gray-600 dark:text-gray-400" size={20} />
-                  <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-500">{t.contact.email}</p>
-                    <a href="mailto:mikail@lekesiz.fr" className="text-gray-900 dark:text-white hover:underline">
-                      mikail@lekesiz.fr
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <Phone className="mt-1 text-gray-600 dark:text-gray-400" size={20} />
-                  <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-500">{t.contact.phone}</p>
-                    <a href="tel:+33663907527" className="text-gray-900 dark:text-white hover:underline">
-                      +33 6 63 90 75 27
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <MapPin className="mt-1 text-gray-600 dark:text-gray-400" size={20} />
-                  <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-500">{t.contact.location}</p>
-                    <p className="text-gray-900 dark:text-white">
-                      2 rue des Tulipes<br />
-                      67500 HAGUENAU, France
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Turkey Contact */}
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="space-y-6 p-6 border border-gray-200 dark:border-gray-800 rounded-lg"
-              >
-                <h3 className="text-2xl font-bold mb-4">{t.contact.turkey}</h3>
-                
-                <div className="flex items-start gap-3">
-                  <Mail className="mt-1 text-gray-600 dark:text-gray-400" size={20} />
-                  <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-500">{t.contact.email}</p>
-                    <a href="mailto:mikail@lekesiz.org" className="text-gray-900 dark:text-white hover:underline">
-                      mikail@lekesiz.org
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <Phone className="mt-1 text-gray-600 dark:text-gray-400" size={20} />
-                  <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-500">{t.contact.phone}</p>
-                    <a href="tel:+905074343253" className="text-gray-900 dark:text-white hover:underline">
-                      +90 507 43 43 253
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <MapPin className="mt-1 text-gray-600 dark:text-gray-400" size={20} />
-                  <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-500">{t.contact.location}</p>
-                    <p className="text-gray-900 dark:text-white">
-                      Tepeköy Mahallesi<br />
-                      Çengel Çeşme Caddesi No: 44<br />
-                      59800 Şarköy / Tekirdağ
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mt-12 text-center"
-            >
-              <p className="text-gray-600 dark:text-gray-400 mb-4">{t.contact.followMe}</p>
-              <div className="flex justify-center gap-4">
-                {socialLinks.map(({ icon: Icon, url, label }) => (
-                  <a
-                    key={label}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => analytics.clickSocialLink(label)}
-                    className="p-3 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
-                    aria-label={label}
-                  >
-                    <Icon size={24} />
-                  </a>
-                ))}
+        {page === 'projects' && (
+          <div className="page">
+            <section className="band page-intro">
+              <div className="wrap">
+                <SectionHeading eyebrow={copy.projectsEyebrow} title={t.projects.title} lead={copy.projectsLead} level="h1" />
+                <div className="filters">{Object.entries(copy.filters).map(([key, label]) => <button type="button" key={key} className={projectFilter === key ? 'active' : ''} onClick={() => setProjectFilter(key)}>{label}</button>)}</div>
+                <div className="grid-3 projects-grid">{t.projects.list.map((project, index) => ({ project, index })).filter(({ index }) => projectFilter === 'all' || projectCategories[index]?.includes(projectFilter)).map(({ project, index }) => projectCard(project, index))}</div>
               </div>
-            </motion.div>
+            </section>
           </div>
-        </div>
-      </section>
+        )}
 
-      {/* Footer */}
-      <footer className="py-8 border-t border-gray-200 dark:border-gray-800">
-        <div className="container mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
-          <p>
-            © 2026 Mikail Lekesiz. {t.footer.rights}.
-          </p>
-          <p className="mt-2 text-sm">
-            {t.footer.madeWith} ❤️ {t.footer.by} Mikail Lekesiz
-          </p>
-          {t.footer.colophon && (
-            <p className="mt-2 text-xs text-gray-400 dark:text-gray-600">
-              {t.footer.colophon.split('Reflektif').map((part, i, arr) => (
-                i < arr.length - 1 ? (
-                  <span key={i}>{part}<a href="https://reflektif.net" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-500">Reflektif</a></span>
-                ) : (
-                  <span key={i}>{part}</span>
-                )
-              ))}
-            </p>
-          )}
+        {page === 'contact' && (
+          <div className="page">
+            <section className="band page-intro">
+              <div className="wrap">
+                <SectionHeading eyebrow={copy.contactEyebrow} title={t.contact.title} lead={copy.contactLead} level="h1" />
+                <div className="contact-grid">
+                  <form className="contact-form" onSubmit={submitMail}>
+                    <div className="form-row"><Field label={copy.name} name="name" autoComplete="name" required /><Field label={copy.email} name="email" type="email" autoComplete="email" required /></div>
+                    <Field label={copy.subject} name="subject" required />
+                    <label className="field"><span>{copy.message}</span><textarea name="message" rows="7" required /></label>
+                    <button className="button button-primary" type="submit"><Mail size={18} />{copy.send}</button>
+                    <p className="form-note">{copy.formNote}</p>
+                  </form>
+                  <aside className="contact-aside">
+                    <ContactBlock title={copy.france} email="mikail@lekesiz.fr" phone="+33 6 63 90 75 27" place="Haguenau / Strasbourg, France" />
+                    <ContactBlock title={copy.turkey} email="mikail@lekesiz.org" phone="+90 507 43 43 253" place="İstanbul / Tekirdağ, Türkiye" />
+                    <div className="contact-socials"><span>{copy.networks}</span><a href="https://github.com/lekesiz" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/mikail-lekesiz/" target="_blank" rel="noreferrer">LinkedIn</a></div>
+                  </aside>
+                </div>
+              </div>
+            </section>
+          </div>
+        )}
+      </main>
+
+      <footer className="site-footer">
+        <div className="wrap footer-grid">
+          <div><button className="brand" type="button" onClick={() => go('home')}><span className="brand-mark">ML</span><span>Mikail <span className="brand-muted">Lekesiz</span></span></button><p>{copy.footerText}</p></div>
+          <div><h4>Navigation</h4>{navItems.map(({ id, label }) => <button key={id} type="button" onClick={() => go(id)}>{label}</button>)}</div>
+          <div><h4>{copy.contactEyebrow}</h4><a href="mailto:mikail@lekesiz.fr">mikail@lekesiz.fr</a><a href="https://github.com/lekesiz" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/mikail-lekesiz/" target="_blank" rel="noreferrer">LinkedIn</a></div>
         </div>
+        <div className="wrap footer-legal"><span>© {new Date().getFullYear()} Mikail Lekesiz. {copy.rights}</span><span>France · Türkiye · Deutschland</span></div>
       </footer>
     </div>
   )
+}
+
+function SectionHeading({ eyebrow, title, lead, level = 'h2' }) {
+  const Heading = level
+  return <div className="section-heading">{eyebrow && <p className="eyebrow">{eyebrow}</p>}<Heading>{title}</Heading>{lead && <p className="lead">{lead}</p>}</div>
+}
+
+function Timeline({ items }) {
+  return <div className="timeline">{items.map((item) => <article className="timeline-item" key={`${item.when}-${item.title}`}><span className="timeline-when">{item.when}</span><h3>{item.title}</h3><p className="timeline-where">{item.where}</p>{item.description && <p>{item.description}</p>}</article>)}</div>
+}
+
+function CallToAction({ copy, go }) {
+  return <div className="cta-band"><div><h2>{copy.ctaTitle}</h2><p>{copy.ctaText}</p></div><button className="button" type="button" onClick={() => go('contact')}>{copy.ctaButton}<ArrowRight size={18} /></button></div>
+}
+
+function Field({ label, name, type = 'text', autoComplete, required }) {
+  return <label className="field"><span>{label}</span><input name={name} type={type} autoComplete={autoComplete} required={required} /></label>
+}
+
+function ContactBlock({ title, email, phone, place }) {
+  return <section className="contact-block"><h3>{title}</h3><a href={`mailto:${email}`}><Mail size={18} />{email}</a><a href={`tel:${phone.replace(/\s/g, '')}`}><Phone size={18} />{phone}</a><p><MapPin size={18} />{place}</p></section>
 }
 
 export default App
