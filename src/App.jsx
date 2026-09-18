@@ -12,10 +12,8 @@ import {
   GraduationCap,
   Linkedin,
   Mail,
-  MapPin,
   Menu,
   Moon,
-  Phone,
   ShieldCheck,
   Sparkles,
   Sun,
@@ -40,12 +38,12 @@ const ui = {
     contactCta: 'Parlons de votre projet',
     projectsCta: 'Voir les réalisations',
     portraitAlt: 'Portrait de Mikail Lekesiz',
-    portraitCaption: 'Mikail Lekesiz · Haguenau / İstanbul',
+    portraitCaption: 'Mikail Lekesiz · France / Türkiye',
     stats: [
-      ['25+', 'années de pratique numérique'],
-      ['3', 'pays d’intervention'],
-      ['7', 'projets sélectionnés'],
-      ['3', 'langues de travail'],
+      ['IA', 'formation appliquée'],
+      ['Sécurité', 'confidentialité et vérification'],
+      ['Logiciel', 'développement et DevOps'],
+      ['TR · FR · EN', 'cadre multilingue'],
     ],
     expertiseEyebrow: "Domaines d’intervention",
     expertiseTitle: 'Trois façons de créer de la valeur',
@@ -65,12 +63,12 @@ const ui = {
     ctaText: 'Présentez-moi votre contexte. Je vous répondrai avec une première lecture concrète et sans jargon inutile.',
     ctaButton: 'Écrire un message',
     aboutEyebrow: 'Profil',
-    aboutLead: 'Formateur et conseiller en intelligence artificielle, logiciels sécurisés et sensibilisation cyber.',
+    aboutLead: 'Formateur en intelligence artificielle et transformation numérique · entrepreneur technologique.',
     facts: [
-      ['Responsabilité', 'Président · Netz Informatique'],
-      ['Implantation', 'France · Türkiye · Allemagne'],
-      ['Formation', 'Université de Strasbourg'],
-      ['Approche', 'Technique · pédagogie · gouvernance'],
+      ['Rôle vérifié', 'Président · NETZ INFORMATIQUE'],
+      ['Reflektif', 'Président du CA · responsable technique'],
+      ['Méthode', 'Ateliers · cas · évaluation'],
+      ['Cadre', 'Confidentialité · vérification · supervision'],
     ],
     journey: 'Parcours professionnel',
     education: 'Formation',
@@ -126,12 +124,12 @@ const ui = {
     contactCta: 'Discuss your project',
     projectsCta: 'View selected work',
     portraitAlt: 'Portrait of Mikail Lekesiz',
-    portraitCaption: 'Mikail Lekesiz · Haguenau / Istanbul',
+    portraitCaption: 'Mikail Lekesiz · France / Türkiye',
     stats: [
-      ['25+', 'years in digital practice'],
-      ['3', 'countries served'],
-      ['7', 'selected projects'],
-      ['3', 'working languages'],
+      ['AI', 'applied training'],
+      ['Safety', 'confidentiality and verification'],
+      ['Software', 'development and DevOps'],
+      ['TR · FR · EN', 'multilingual delivery'],
     ],
     expertiseEyebrow: 'Areas of expertise',
     expertiseTitle: 'Three ways to create value',
@@ -151,12 +149,12 @@ const ui = {
     ctaText: 'Share your context. I will reply with an initial, practical perspective without unnecessary jargon.',
     ctaButton: 'Write a message',
     aboutEyebrow: 'Profile',
-    aboutLead: 'Trainer and advisor in artificial intelligence, secure software and cyber awareness.',
+    aboutLead: 'AI and digital transformation trainer · technology entrepreneur.',
     facts: [
-      ['Responsibility', 'President · Netz Informatique'],
-      ['Presence', 'France · Türkiye · Germany'],
-      ['Education', 'University of Strasbourg'],
-      ['Approach', 'Technology · teaching · governance'],
+      ['Verified role', 'President · NETZ INFORMATIQUE'],
+      ['Reflektif', 'Board Chair · Technical Manager'],
+      ['Method', 'Workshops · cases · assessment'],
+      ['Framework', 'Confidentiality · verification · oversight'],
     ],
     journey: 'Professional experience',
     education: 'Education',
@@ -212,12 +210,12 @@ const ui = {
     contactCta: 'Projenizi konuşalım',
     projectsCta: 'Çalışmaları incele',
     portraitAlt: 'Mikail Lekesiz portresi',
-    portraitCaption: 'Mikail Lekesiz · Haguenau / İstanbul',
+    portraitCaption: 'Mikail Lekesiz · Türkiye / Fransa',
     stats: [
-      ['25+', 'yıllık dijital deneyim'],
-      ['3', 'ülkede çalışma'],
-      ['7', 'seçilmiş proje'],
-      ['3', 'çalışma dili'],
+      ['YZ', 'uygulamalı eğitim'],
+      ['Güven', 'gizlilik ve doğrulama'],
+      ['Yazılım', 'geliştirme ve DevOps'],
+      ['TR · FR · EN', 'çok dilli çalışma'],
     ],
     expertiseEyebrow: 'Uzmanlık alanları',
     expertiseTitle: 'Değer üretmenin üç yolu',
@@ -237,12 +235,12 @@ const ui = {
     ctaText: 'Bağlamı paylaşın. Gereksiz jargon olmadan somut bir ilk değerlendirmeyle dönüş yapayım.',
     ctaButton: 'Mesaj yaz',
     aboutEyebrow: 'Profil',
-    aboutLead: 'Yapay zekâ, güvenli yazılım ve siber farkındalık alanlarında eğitmen ve danışman.',
+    aboutLead: 'Yapay zekâ ve dijital dönüşüm eğitmeni · teknoloji girişimcisi.',
     facts: [
-      ['Sorumluluk', 'Başkan · Netz Informatique'],
-      ['Çalışma alanı', 'Fransa · Türkiye · Almanya'],
-      ['Eğitim', 'Strasbourg Üniversitesi'],
-      ['Yaklaşım', 'Teknik · eğitim · yönetişim'],
+      ['Doğrulanmış görev', 'Başkan · NETZ INFORMATIQUE'],
+      ['Reflektif', 'Yönetim Kurulu Başkanı · Teknik Sorumlu'],
+      ['Yöntem', 'Atölye · vaka · değerlendirme'],
+      ['Çerçeve', 'Gizlilik · doğrulama · insan denetimi'],
     ],
     journey: 'Profesyonel deneyim',
     education: 'Eğitim',
@@ -302,13 +300,12 @@ const projectCategories = [
   ['product'],
   ['product', 'ai'],
   ['ai', 'automation'],
-  ['product'],
   ['ai'],
   ['ai', 'automation'],
   ['automation'],
 ]
 
-const projectGlyphs = ['NI', 'R', 'AI', 'BC', 'C', 'N', 'W']
+const projectGlyphs = ['NI', 'R', 'AI', 'C', 'N', 'W']
 
 function App() {
   const [language, setLanguage] = useState(() => {
@@ -316,9 +313,9 @@ function App() {
     if (['fr', 'en', 'tr'].includes(queryLang)) return queryLang
     try {
       const savedLanguage = localStorage.getItem('ml-language')
-      return ['fr', 'en', 'tr'].includes(savedLanguage) ? savedLanguage : 'fr'
+      return ['fr', 'en', 'tr'].includes(savedLanguage) ? savedLanguage : 'tr'
     } catch {
-      return 'fr'
+      return 'tr'
     }
   })
   const [page, setPage] = useState(() => {
@@ -353,12 +350,32 @@ function App() {
     }
     document.documentElement.lang = language
     const titles = {
-      fr: 'Mikail Lekesiz | IA, logiciel sécurisé et formation',
-      en: 'Mikail Lekesiz | AI, Secure Software & Training',
-      tr: 'Mikail Lekesiz | Yapay Zekâ, Güvenli Yazılım ve Eğitim',
+      fr: 'Mikail Lekesiz | Formateur IA & transformation numérique',
+      en: 'Mikail Lekesiz | AI & Digital Transformation Trainer',
+      tr: 'Mikail Lekesiz | Yapay Zekâ ve Dijital Dönüşüm Eğitmeni',
     }
+    const descriptions = {
+      fr: 'Mikail Lekesiz conçoit des formations appliquées en intelligence artificielle, développement logiciel et transformation numérique.',
+      en: 'Mikail Lekesiz designs applied training in artificial intelligence, software development and digital transformation.',
+      tr: 'Mikail Lekesiz, yapay zekâ, yazılım geliştirme ve dijital dönüşüm alanlarında kurumlara yönelik uygulamalı eğitimler tasarlar.',
+    }
+    const locales = { fr: 'fr_FR', en: 'en_US', tr: 'tr_TR' }
     document.title = titles[language]
+    document.querySelector('meta[name="title"]')?.setAttribute('content', titles[language])
+    document.querySelector('meta[name="description"]')?.setAttribute('content', descriptions[language])
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', titles[language])
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', descriptions[language])
+    document.querySelector('meta[property="og:locale"]')?.setAttribute('content', locales[language])
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', titles[language])
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', descriptions[language])
   }, [language])
+
+  const changeLanguage = (lang) => {
+    const url = new URL(window.location.href)
+    url.searchParams.set('lang', lang)
+    window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`)
+    setLanguage(lang)
+  }
 
   const go = (id) => {
     if (window.location.hash === `#${id}`) {
@@ -375,7 +392,7 @@ function App() {
     const form = new FormData(event.currentTarget)
     const subject = form.get('subject') || 'Portfolio contact'
     const body = `${copy.name}: ${form.get('name')}\n${copy.email}: ${form.get('email')}\n\n${form.get('message')}`
-    window.location.href = `mailto:mikail@lekesiz.fr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    window.location.href = `mailto:contact@netzinformatique.fr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
   }
 
   const projectCard = (project, index) => {
@@ -419,7 +436,7 @@ function App() {
           <div className="header-tools">
             <div className="language-switch" aria-label={copy.language}>
               {['fr', 'en', 'tr'].map((lang) => (
-                <button key={lang} type="button" className={language === lang ? 'active' : ''} onClick={() => setLanguage(lang)}>{lang.toUpperCase()}</button>
+                <button key={lang} type="button" className={language === lang ? 'active' : ''} onClick={() => changeLanguage(lang)}>{lang.toUpperCase()}</button>
               ))}
             </div>
             <button className="icon-button" type="button" aria-label={copy.theme} onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}>
@@ -450,7 +467,7 @@ function App() {
                   <div className="hero-socials" aria-label="Social profiles">
                     <a href="https://github.com/lekesiz" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={19} /></a>
                     <a href="https://www.linkedin.com/in/mikail-lekesiz/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={19} /></a>
-                    <a href="mailto:mikail@lekesiz.fr" aria-label="Email"><Mail size={19} /></a>
+                    <a href="https://mikail.net/contact/" target="_blank" rel="noreferrer" aria-label="Professional contact"><Mail size={19} /></a>
                   </div>
                 </div>
                 <div className="portrait-wrap">
@@ -596,8 +613,9 @@ function App() {
                     <p className="form-note">{copy.formNote}</p>
                   </form>
                   <aside className="contact-aside">
-                    <ContactBlock title={copy.france} email="mikail@lekesiz.fr" phone="+33 6 63 90 75 27" place="Haguenau / Strasbourg, France" />
-                    <ContactBlock title={copy.turkey} email="mikail@lekesiz.org" phone="+90 507 43 43 253" place="İstanbul / Tekirdağ, Türkiye" />
+                    <ContactBlock title="NETZ INFORMATIQUE" email="contact@netzinformatique.fr" href="https://www.netzinformatique.fr/contact" />
+                    <ContactBlock title="Reflektif" email="direction@reflektif.net" href="https://reflektif.net" />
+                    <ContactBlock title={copy.contactEyebrow} email="" href="https://mikail.net/contact/" />
                     <div className="contact-socials"><span>{copy.networks}</span><a href="https://github.com/lekesiz" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/mikail-lekesiz/" target="_blank" rel="noreferrer">LinkedIn</a></div>
                   </aside>
                 </div>
@@ -611,7 +629,7 @@ function App() {
         <div className="wrap footer-grid">
           <div><button className="brand" type="button" onClick={() => go('home')}><span className="brand-mark">ML</span><span>Mikail <span className="brand-muted">Lekesiz</span></span></button><p>{copy.footerText}</p></div>
           <div><h4>Navigation</h4>{navItems.map(({ id, label }) => <button key={id} type="button" onClick={() => go(id)}>{label}</button>)}</div>
-          <div><h4>{copy.contactEyebrow}</h4><a href="mailto:mikail@lekesiz.fr">mikail@lekesiz.fr</a><a href="https://github.com/lekesiz" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/mikail-lekesiz/" target="_blank" rel="noreferrer">LinkedIn</a></div>
+          <div><h4>{copy.contactEyebrow}</h4><a href="https://mikail.net/contact/" target="_blank" rel="noreferrer">mikail.net/contact</a><a href="https://github.com/lekesiz" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/mikail-lekesiz/" target="_blank" rel="noreferrer">LinkedIn</a></div>
         </div>
         <div className="wrap footer-legal"><span>© {new Date().getFullYear()} Mikail Lekesiz. {copy.rights}</span><span>France · Türkiye · Deutschland</span></div>
       </footer>
@@ -636,8 +654,8 @@ function Field({ label, name, type = 'text', autoComplete, required }) {
   return <label className="field"><span>{label}</span><input name={name} type={type} autoComplete={autoComplete} required={required} /></label>
 }
 
-function ContactBlock({ title, email, phone, place }) {
-  return <section className="contact-block"><h3>{title}</h3><a href={`mailto:${email}`}><Mail size={18} />{email}</a><a href={`tel:${phone.replace(/\s/g, '')}`}><Phone size={18} />{phone}</a><p><MapPin size={18} />{place}</p></section>
+function ContactBlock({ title, email, href }) {
+  return <section className="contact-block"><h3>{title}</h3>{email && <a href={`mailto:${email}`}><Mail size={18} />{email}</a>}<a href={href} target="_blank" rel="noreferrer"><ExternalLink size={18} />{href.replace(/^https?:\/\//, '').replace(/\/$/, '')}</a></section>
 }
 
 export default App

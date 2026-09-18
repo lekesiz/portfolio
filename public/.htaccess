@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Consolidate all equivalent portfolio domains under one canonical host.
+RewriteCond %{HTTP_HOST} !^lekesiz\.org$ [NC]
+RewriteRule ^ https://lekesiz.org%{REQUEST_URI} [R=301,L,NE]
+
+# Preserve direct access to the static single-page application.
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

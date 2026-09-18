@@ -184,8 +184,8 @@ This project is private and proprietary.
 
 ### 📧 Contact
 
-- 🇫🇷 France: mikail@lekesiz.fr | +33 6 63 90 75 27
-- 🇹🇷 Turkey: mikail@lekesiz.org | +90 507 43 43 253
+- Professional enquiries: [mikail.net/contact](https://mikail.net/contact/)
+- NETZ INFORMATIQUE: [contact@netzinformatique.fr](mailto:contact@netzinformatique.fr)
 
 ---
 
@@ -369,8 +369,8 @@ Bu proje özel ve tescillidir.
 
 ### 📧 İletişim
 
-- 🇫🇷 Fransa: mikail@lekesiz.fr | +33 6 63 90 75 27
-- 🇹🇷 Türkiye: mikail@lekesiz.org | +90 507 43 43 253
+- Profesyonel iletişim: [mikail.net/contact](https://mikail.net/contact/)
+- NETZ INFORMATIQUE: [contact@netzinformatique.fr](mailto:contact@netzinformatique.fr)
 
 ---
 

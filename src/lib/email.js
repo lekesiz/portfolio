@@ -19,8 +19,8 @@ const config = {
     formId: import.meta.env.VITE_FORMSPREE_FORM_ID,
   },
 
-  // Fallback email for mailto
-  fallbackEmail: 'mikail@lekesiz.fr',
+  // Role-based business address; avoids publishing a personal mailbox.
+  fallbackEmail: 'contact@netzinformatique.fr',
 }
 
 /**
