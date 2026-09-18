@@ -64,7 +64,7 @@ export function ContactForm({ t }) {
       // Show error message
       setSubmitStatus({
         type: 'error',
-        message: t.contact.errorMessage || 'Failed to send message. Please try again or contact me directly at mikail@lekesiz.fr',
+        message: t.contact.errorMessage || 'Failed to send message. Please try again or use the professional contact page at mikail.net/contact/.',
       })
     } finally {
       setIsSubmitting(false)

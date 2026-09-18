@@ -113,13 +113,13 @@ Sitede aşağıdaki sosyal medya hesapları bağlıdır:
 ## 📧 İletişim Bilgileri
 
 ### Fransa
-- **E-posta:** mikail@lekesiz.fr
-- **Telefon:** +33 6 63 90 75 27
+- **E-posta:** contact@netzinformatique.fr
+- **Telefon:** https://mikail.net/contact/
 - **Adres:** 2 rue des Tulipes, 67500 HAGUENAU, France
 
 ### Türkiye
-- **E-posta:** mikail@lekesiz.org
-- **Telefon:** +90 507 43 43 253
+- **E-posta:** https://mikail.net/contact/
+- **Telefon:** https://mikail.net/contact/
 - **Adres:** Tepeköy Mahallesi, Çengel Çeşme Caddesi No: 44, 59800 Şarköy / Tekirdağ
 
 ## 🎨 Özelleştirme

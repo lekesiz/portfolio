@@ -294,7 +294,7 @@ A: No, free tiers are sufficient for most portfolio sites.
 A: Yes with EmailJS. Formspree templates are only available on paid plans.
 
 **Q: Is my email address exposed in the code?**
-A: The fallback email (mikail@lekesiz.fr) is visible in source. For privacy, use EmailJS/Formspree.
+A: The fallback email (contact@netzinformatique.fr) is visible in source. For privacy, use EmailJS/Formspree.
 
 ---
 

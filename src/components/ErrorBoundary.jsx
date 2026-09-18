@@ -110,12 +110,12 @@ class ErrorBoundary extends React.Component {
 
               <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  If this problem persists, please contact{' '}
+                  If this problem persists, please use the{' '}
                   <a
-                    href="mailto:mikail@lekesiz.fr"
+                    href="https://mikail.net/contact/"
                     className="text-gray-900 dark:text-white hover:underline"
                   >
-                    mikail@lekesiz.fr
+                    professional contact page
                   </a>
                 </p>
               </div>
