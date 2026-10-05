@@ -628,7 +628,7 @@ function App() {
       <footer className="site-footer">
         <div className="wrap footer-grid">
           <div><button className="brand" type="button" onClick={() => go('home')}><span className="brand-mark">ML</span><span>Mikail <span className="brand-muted">Lekesiz</span></span></button><p>{copy.footerText}</p></div>
-          <div><h4>Navigation</h4>{navItems.map(({ id, label }) => <button key={id} type="button" onClick={() => go(id)}>{label}</button>)}</div>
+          <div><h4>Navigation</h4>{navItems.map(({ id, label }) => <button key={id} type="button" onClick={() => go(id)}>{label}</button>)}<a href="/ai-professionals/">{language === 'fr' ? 'Méthode IA en entreprise (TR)' : language === 'en' ? 'AI for organisations (TR)' : 'Kurumlarda güvenli yapay zekâ'}</a></div>
           <div><h4>{copy.contactEyebrow}</h4><a href="https://mikail.net/contact/" target="_blank" rel="noreferrer">mikail.net/contact</a><a href="https://github.com/lekesiz" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/mikail-lekesiz/" target="_blank" rel="noreferrer">LinkedIn</a></div>
         </div>
         <div className="wrap footer-legal"><span>© {new Date().getFullYear()} Mikail Lekesiz. {copy.rights}</span><span>France · Türkiye · Deutschland</span></div>
