@@ -241,7 +241,7 @@ h3 { font-size: 1.45rem; }
 .quote { max-width: 57rem; padding: .4rem 0 .4rem 1.5rem; border-left: 3px solid #F07A5A; color: var(--moon); font-family: var(--serif); font-size: clamp(1.55rem, 3vw, 2.4rem); font-style: italic; line-height: 1.25; }
 .quote cite { display: block; margin-top: 1.2rem; color: var(--moon-2); font-family: var(--mono); font-size: .7rem; font-style: normal; letter-spacing: .08em; text-transform: uppercase; }
 
-.ecosystem-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 1.25rem; border-top: 1px solid var(--rule); }
+.ecosystem-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(1.25rem, 3vw, 2.5rem); border-top: 1px solid var(--rule); }
 .ecosystem-item { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; align-items: start; gap: .7rem; padding: 1rem .25rem 1rem 0; border-bottom: 1px solid var(--rule); color: var(--ink); text-decoration: none; }
 .ecosystem-item:hover { color: var(--rubric); }
 .ecosystem-dot { width: 8px; height: 8px; margin-top: .38rem; border-radius: 50%; box-shadow: 0 0 0 1px var(--paper-2), 0 0 0 2px var(--ink-3); }
