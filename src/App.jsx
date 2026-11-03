@@ -1,319 +1,45 @@
 import { useEffect, useMemo, useState } from 'react'
-import { useTheme } from 'next-themes'
 import {
   ArrowRight,
-  BriefcaseBusiness,
   Check,
   ChevronDown,
-  CloudCog,
-  Code2,
   ExternalLink,
   Github,
-  GraduationCap,
   Linkedin,
   Mail,
   Menu,
-  Moon,
-  ShieldCheck,
-  Sparkles,
-  Sun,
   X,
 } from 'lucide-react'
 import { translations } from '@/lib/translations'
 import profileImage from './assets/mikail_lekesiz.png'
 import './App.css'
 
+const LANGS = ['tr', 'en', 'fr', 'de', 'es']
 const PAGE_IDS = ['home', 'about', 'services', 'projects', 'contact']
+const projectCategories = [['product'], ['product', 'ai'], ['ai'], ['ai', 'automation'], ['ai'], ['automation']]
+const projectGlyphs = ['NI', 'R', 'AI', 'AO', 'CC', 'GS']
 
-const ui = {
-  fr: {
-    nav: { home: 'Accueil', about: 'À propos', services: 'Services', projects: 'Projets', contact: 'Contact' },
-    language: 'Langue',
-    theme: 'Changer de thème',
-    menu: 'Ouvrir le menu',
-    close: 'Fermer le menu',
-    heroEyebrow: 'IA · logiciel sécurisé · formation',
-    heroTitle: "De l’idée à la mise en service, avec méthode.",
-    heroLead: "J’aide les organisations à transformer des besoins complexes en solutions numériques utiles, sûres et transmissibles.",
-    contactCta: 'Parlons de votre projet',
-    projectsCta: 'Voir les réalisations',
-    portraitAlt: 'Portrait de Mikail Lekesiz',
-    portraitCaption: 'Mikail Lekesiz · France / Türkiye',
-    stats: [
-      ['IA', 'formation appliquée'],
-      ['Sécurité', 'confidentialité et vérification'],
-      ['Logiciel', 'développement et DevOps'],
-      ['TR · FR · EN', 'cadre multilingue'],
-    ],
-    expertiseEyebrow: "Domaines d’intervention",
-    expertiseTitle: 'Trois façons de créer de la valeur',
-    expertiseLead: 'Conseil, réalisation et transmission réunis dans une démarche claire, mesurable et centrée sur les usages.',
-    expertise: [
-      ['01 — Conseil', 'Cadrer une transformation', 'Clarifier le besoin, les risques, les priorités et la trajectoire avant d’investir.', ['Diagnostic de l’existant', 'Recommandations priorisées', 'Feuille de route actionnable']],
-      ['02 — Réalisation', 'Concevoir des solutions fiables', 'Passer de l’intention à un produit déployable, sécurisé et maintenable.', ['Architecture et prototypage', 'Développement et automatisation', 'Mise en service et suivi']],
-      ['03 — Formation', 'Rendre les équipes autonomes', 'Transformer la technologie en compétences concrètes grâce à une pédagogie de terrain.', ['Cas pratiques adaptés', 'Supports réutilisables', 'Mesure des acquis']],
-    ],
-    learnMore: 'Découvrir les services',
-    selection: 'Sélection',
-    recentProjects: 'Projets récents',
-    allProjects: 'Tous les projets',
-    statement: 'La technologie n’a de valeur que lorsqu’elle devient compréhensible, maîtrisable et réellement utile aux personnes qui l’emploient.',
-    statementBy: 'Mikail Lekesiz — formateur, conseiller et responsable technique',
-    ctaTitle: 'Un projet, une formation ou une transformation à cadrer ?',
-    ctaText: 'Présentez-moi votre contexte. Je vous répondrai avec une première lecture concrète et sans jargon inutile.',
-    ctaButton: 'Écrire un message',
-    aboutEyebrow: 'Profil',
-    aboutLead: 'Formateur en intelligence artificielle et transformation numérique · entrepreneur technologique.',
-    facts: [
-      ['Rôle vérifié', 'Président · NETZ INFORMATIQUE'],
-      ['Reflektif', 'Président du CA · responsable technique'],
-      ['Méthode', 'Ateliers · cas · évaluation'],
-      ['Cadre', 'Confidentialité · vérification · supervision'],
-    ],
-    journey: 'Parcours professionnel',
-    education: 'Formation',
-    certifications: 'Certifications',
-    skillTitle: 'Expertise technique',
-    servicesEyebrow: 'Services',
-    servicesLead: 'Des interventions modulaires pour décider, construire, sécuriser et transmettre.',
-    processEyebrow: 'Méthode',
-    processTitle: 'Comment se déroule une mission',
-    process: [
-      ['Étape 1', 'Écoute et cadrage', 'Objectifs, contexte, contraintes et critères de réussite sont explicités.'],
-      ['Étape 2', 'Architecture', 'Une solution proportionnée est conçue avec des choix traçables.'],
-      ['Étape 3', 'Réalisation', 'Les livrables avancent par étapes courtes, testées et validées.'],
-      ['Étape 4', 'Transfert', 'Documentation, formation et suivi sécurisent l’autonomie dans la durée.'],
-    ],
-    faqEyebrow: 'Questions fréquentes',
-    faqTitle: 'Bon à savoir',
-    faq: [
-      ['Travaillez-vous à distance ?', 'Oui. Les missions peuvent être menées à distance ou sur site en France, en Türkiye et selon le contexte en Allemagne.'],
-      ['À qui s’adressent vos services ?', 'Aux PME, associations, organismes de formation, équipes projet et structures qui veulent adopter l’IA et le numérique de façon maîtrisée.'],
-      ['Comment démarre une collaboration ?', 'Par un échange de cadrage afin de comprendre le besoin, vérifier l’adéquation et définir la prochaine étape utile.'],
-      ['Intervenez-vous aussi en formation ?', 'Oui. Les formations sont construites autour de cas d’usage concrets, d’exercices et d’objectifs mesurables.'],
-    ],
-    projectsEyebrow: 'Réalisations',
-    projectsLead: 'Produits, plateformes et automatisations conçus pour produire un impact concret.',
-    filters: { all: 'Tous', product: 'Produits', ai: 'IA', automation: 'Automatisation' },
-    live: 'Voir le site',
-    code: 'Voir le code',
-    contactEyebrow: 'Contact',
-    contactLead: 'Décrivez le contexte, l’objectif et l’échéance : je vous répondrai avec une première orientation.',
-    name: 'Nom et prénom',
-    email: 'Adresse e-mail',
-    subject: 'Sujet',
-    message: 'Votre message',
-    send: 'Préparer le message',
-    formNote: 'Le bouton ouvre votre messagerie avec les informations saisies. Aucune donnée n’est stockée sur ce site.',
-    france: 'France',
-    turkey: 'Türkiye',
-    availability: 'Zone d’intervention',
-    networks: 'Réseaux',
-    footerText: 'IA, logiciel sécurisé et transmission des compétences.',
-    rights: 'Tous droits réservés.',
-  },
-  en: {
-    nav: { home: 'Home', about: 'About', services: 'Services', projects: 'Projects', contact: 'Contact' },
-    language: 'Language',
-    theme: 'Change theme',
-    menu: 'Open menu',
-    close: 'Close menu',
-    heroEyebrow: 'AI · secure software · training',
-    heroTitle: 'From idea to production, with method.',
-    heroLead: 'I help organisations turn complex needs into useful, secure and transferable digital solutions.',
-    contactCta: 'Discuss your project',
-    projectsCta: 'View selected work',
-    portraitAlt: 'Portrait of Mikail Lekesiz',
-    portraitCaption: 'Mikail Lekesiz · France / Türkiye',
-    stats: [
-      ['AI', 'applied training'],
-      ['Safety', 'confidentiality and verification'],
-      ['Software', 'development and DevOps'],
-      ['TR · FR · EN', 'multilingual delivery'],
-    ],
-    expertiseEyebrow: 'Areas of expertise',
-    expertiseTitle: 'Three ways to create value',
-    expertiseLead: 'Advisory, delivery and knowledge transfer brought together in a clear, measurable, user-centred approach.',
-    expertise: [
-      ['01 — Advisory', 'Frame a transformation', 'Clarify needs, risks, priorities and the delivery path before investing.', ['Current-state assessment', 'Prioritised recommendations', 'Actionable roadmap']],
-      ['02 — Delivery', 'Build reliable solutions', 'Turn intent into a deployable, secure and maintainable product.', ['Architecture and prototyping', 'Development and automation', 'Launch and follow-up']],
-      ['03 — Training', 'Make teams autonomous', 'Turn technology into practical skills through hands-on learning.', ['Tailored use cases', 'Reusable resources', 'Measurable outcomes']],
-    ],
-    learnMore: 'Explore services',
-    selection: 'Selected work',
-    recentProjects: 'Recent projects',
-    allProjects: 'All projects',
-    statement: 'Technology creates value only when it becomes understandable, controllable and genuinely useful to the people who rely on it.',
-    statementBy: 'Mikail Lekesiz — trainer, advisor and technical lead',
-    ctaTitle: 'A project, a training programme or a transformation to frame?',
-    ctaText: 'Share your context. I will reply with an initial, practical perspective without unnecessary jargon.',
-    ctaButton: 'Write a message',
-    aboutEyebrow: 'Profile',
-    aboutLead: 'AI and digital transformation trainer · technology entrepreneur.',
-    facts: [
-      ['Verified role', 'President · NETZ INFORMATIQUE'],
-      ['Reflektif', 'Board Chair · Technical Manager'],
-      ['Method', 'Workshops · cases · assessment'],
-      ['Framework', 'Confidentiality · verification · oversight'],
-    ],
-    journey: 'Professional experience',
-    education: 'Education',
-    certifications: 'Certifications',
-    skillTitle: 'Technical expertise',
-    servicesEyebrow: 'Services',
-    servicesLead: 'Modular engagements to decide, build, secure and transfer knowledge.',
-    processEyebrow: 'Method',
-    processTitle: 'How an engagement works',
-    process: [
-      ['Step 1', 'Listen and frame', 'Objectives, context, constraints and success criteria are made explicit.'],
-      ['Step 2', 'Architecture', 'A proportionate solution is designed with traceable decisions.'],
-      ['Step 3', 'Delivery', 'Deliverables progress through short, tested and validated stages.'],
-      ['Step 4', 'Transfer', 'Documentation, training and follow-up secure long-term autonomy.'],
-    ],
-    faqEyebrow: 'Frequently asked questions',
-    faqTitle: 'Good to know',
-    faq: [
-      ['Do you work remotely?', 'Yes. Engagements can be delivered remotely or on site in France, Türkiye and, depending on the context, Germany.'],
-      ['Who are your services for?', 'SMEs, associations, training organisations and project teams seeking a controlled adoption of AI and digital tools.'],
-      ['How does a collaboration begin?', 'With a discovery call to understand the need, verify fit and define the most useful next step.'],
-      ['Do you also provide training?', 'Yes. Training is built around concrete use cases, hands-on exercises and measurable objectives.'],
-    ],
-    projectsEyebrow: 'Work',
-    projectsLead: 'Products, platforms and automations designed to produce tangible impact.',
-    filters: { all: 'All', product: 'Products', ai: 'AI', automation: 'Automation' },
-    live: 'Visit site',
-    code: 'View code',
-    contactEyebrow: 'Contact',
-    contactLead: 'Share the context, goal and timeline; I will reply with an initial direction.',
-    name: 'Full name',
-    email: 'Email address',
-    subject: 'Subject',
-    message: 'Your message',
-    send: 'Prepare message',
-    formNote: 'The button opens your email application with the information entered. No data is stored on this website.',
-    france: 'France',
-    turkey: 'Türkiye',
-    availability: 'Service area',
-    networks: 'Networks',
-    footerText: 'AI, secure software and knowledge transfer.',
-    rights: 'All rights reserved.',
-  },
-  tr: {
-    nav: { home: 'Ana Sayfa', about: 'Hakkımda', services: 'Hizmetler', projects: 'Projeler', contact: 'İletişim' },
-    language: 'Dil',
-    theme: 'Temayı değiştir',
-    menu: 'Menüyü aç',
-    close: 'Menüyü kapat',
-    heroEyebrow: 'YZ · güvenli yazılım · eğitim',
-    heroTitle: 'Fikirden canlı kullanıma, sistemli bir yaklaşımla.',
-    heroLead: 'Kurumların karmaşık ihtiyaçlarını faydalı, güvenli ve aktarılabilir dijital çözümlere dönüştürmelerine yardımcı oluyorum.',
-    contactCta: 'Projenizi konuşalım',
-    projectsCta: 'Çalışmaları incele',
-    portraitAlt: 'Mikail Lekesiz portresi',
-    portraitCaption: 'Mikail Lekesiz · Türkiye / Fransa',
-    stats: [
-      ['YZ', 'uygulamalı eğitim'],
-      ['Güven', 'gizlilik ve doğrulama'],
-      ['Yazılım', 'geliştirme ve DevOps'],
-      ['TR · FR · EN', 'çok dilli çalışma'],
-    ],
-    expertiseEyebrow: 'Uzmanlık alanları',
-    expertiseTitle: 'Değer üretmenin üç yolu',
-    expertiseLead: 'Danışmanlık, uygulama ve bilgi aktarımını net, ölçülebilir ve insan odaklı bir yaklaşımla birleştiriyorum.',
-    expertise: [
-      ['01 — Danışmanlık', 'Dönüşümü doğru çerçevelemek', 'Yatırım öncesinde ihtiyacı, riskleri, öncelikleri ve yol haritasını netleştirmek.', ['Mevcut durum analizi', 'Öncelikli öneriler', 'Uygulanabilir yol haritası']],
-      ['02 — Uygulama', 'Güvenilir çözümler geliştirmek', 'Niyeti canlıya alınabilir, güvenli ve sürdürülebilir bir ürüne dönüştürmek.', ['Mimari ve prototipleme', 'Geliştirme ve otomasyon', 'Canlıya alma ve takip']],
-      ['03 — Eğitim', 'Ekipleri bağımsızlaştırmak', 'Saha odaklı öğrenmeyle teknolojiyi uygulanabilir beceriye dönüştürmek.', ['Uyarlanmış kullanım senaryoları', 'Yeniden kullanılabilir içerik', 'Ölçülebilir kazanımlar']],
-    ],
-    learnMore: 'Hizmetleri keşfet',
-    selection: 'Seçki',
-    recentProjects: 'Son projeler',
-    allProjects: 'Tüm projeler',
-    statement: 'Teknoloji; onu kullanan insanlar için anlaşılır, denetlenebilir ve gerçekten faydalı hâle geldiğinde değer üretir.',
-    statementBy: 'Mikail Lekesiz — eğitmen, danışman ve teknik lider',
-    ctaTitle: 'Çerçevelenecek bir proje, eğitim veya dönüşüm mü var?',
-    ctaText: 'Bağlamı paylaşın. Gereksiz jargon olmadan somut bir ilk değerlendirmeyle dönüş yapayım.',
-    ctaButton: 'Mesaj yaz',
-    aboutEyebrow: 'Profil',
-    aboutLead: 'Yapay zekâ ve dijital dönüşüm eğitmeni · teknoloji girişimcisi.',
-    facts: [
-      ['Doğrulanmış görev', 'Başkan · NETZ INFORMATIQUE'],
-      ['Reflektif', 'Yönetim Kurulu Başkanı · Teknik Sorumlu'],
-      ['Yöntem', 'Atölye · vaka · değerlendirme'],
-      ['Çerçeve', 'Gizlilik · doğrulama · insan denetimi'],
-    ],
-    journey: 'Profesyonel deneyim',
-    education: 'Eğitim',
-    certifications: 'Sertifikalar',
-    skillTitle: 'Teknik uzmanlık',
-    servicesEyebrow: 'Hizmetler',
-    servicesLead: 'Karar vermek, geliştirmek, güvenli hâle getirmek ve bilgi aktarmak için modüler hizmetler.',
-    processEyebrow: 'Yöntem',
-    processTitle: 'Bir çalışma nasıl ilerler?',
-    process: [
-      ['Adım 1', 'Dinleme ve çerçeveleme', 'Hedefler, bağlam, kısıtlar ve başarı ölçütleri netleştirilir.'],
-      ['Adım 2', 'Mimari', 'İzlenebilir kararlarla ihtiyaca uygun bir çözüm tasarlanır.'],
-      ['Adım 3', 'Uygulama', 'Çıktılar kısa, test edilmiş ve onaylanmış aşamalarla geliştirilir.'],
-      ['Adım 4', 'Bilgi aktarımı', 'Dokümantasyon, eğitim ve takip ile uzun vadeli bağımsızlık sağlanır.'],
-    ],
-    faqEyebrow: 'Sık sorulan sorular',
-    faqTitle: 'Bilmekte fayda var',
-    faq: [
-      ['Uzaktan çalışıyor musunuz?', 'Evet. Çalışmalar uzaktan veya Fransa, Türkiye ve bağlama göre Almanya’da yerinde yürütülebilir.'],
-      ['Hizmetleriniz kimlere yöneliktir?', 'Yapay zekâ ve dijital araçları kontrollü biçimde benimsemek isteyen KOBİ, dernek, eğitim kurumu ve proje ekiplerine.'],
-      ['Bir iş birliği nasıl başlar?', 'İhtiyacı anlamak, uyumu doğrulamak ve en faydalı sonraki adımı belirlemek için kısa bir ön görüşmeyle.'],
-      ['Eğitim hizmeti de veriyor musunuz?', 'Evet. Eğitimler somut kullanım senaryoları, uygulamalar ve ölçülebilir hedefler etrafında hazırlanır.'],
-    ],
-    projectsEyebrow: 'Çalışmalar',
-    projectsLead: 'Somut etki üretmek üzere geliştirilen ürünler, platformlar ve otomasyonlar.',
-    filters: { all: 'Tümü', product: 'Ürünler', ai: 'Yapay zekâ', automation: 'Otomasyon' },
-    live: 'Siteyi aç',
-    code: 'Kodu incele',
-    contactEyebrow: 'İletişim',
-    contactLead: 'Bağlamı, hedefi ve zamanı paylaşın; ilk yönlendirmeyle dönüş yapayım.',
-    name: 'Ad ve soyad',
-    email: 'E-posta adresi',
-    subject: 'Konu',
-    message: 'Mesajınız',
-    send: 'Mesajı hazırla',
-    formNote: 'Buton, girdiğiniz bilgilerle e-posta uygulamanızı açar. Bu sitede hiçbir veri saklanmaz.',
-    france: 'Fransa',
-    turkey: 'Türkiye',
-    availability: 'Çalışma bölgesi',
-    networks: 'Sosyal ağlar',
-    footerText: 'Yapay zekâ, güvenli yazılım ve bilgi aktarımı.',
-    rights: 'Tüm hakları saklıdır.',
-  },
-}
+const META = Object.fromEntries(LANGS.map((lang) => [lang, translations[lang].meta]))
 
-const serviceIcons = [CloudCog, Code2, Sparkles, ShieldCheck, BriefcaseBusiness, GraduationCap]
-const skillGroups = {
-  languages: ['JavaScript', 'TypeScript', 'Python', 'PHP', 'C#', 'Java'],
-  frontend: ['React', 'Vue.js', 'HTML5', 'CSS3', 'Tailwind CSS'],
-  backend: ['Node.js', 'Express', 'Laravel', 'Symfony', 'ASP.NET'],
-  databases: ['PostgreSQL', 'MySQL', 'MongoDB', 'SQL Server', 'Oracle'],
-  devops: ['Docker', 'Kubernetes', 'CI/CD', 'AWS', 'Azure', 'Google Cloud'],
-  tools: ['Git', 'GitHub', 'Jira', 'Confluence', 'Figma'],
-}
-
-const projectCategories = [
-  ['product'],
-  ['product', 'ai'],
-  ['ai', 'automation'],
-  ['ai'],
-  ['ai', 'automation'],
-  ['automation'],
+const ECOSYSTEM_PROJECTS = [
+  { key: 'kyze', short: 'KYZE', url: 'https://kyze.mikail.net/', color: '#0B4F5C', name: { tr: 'Kurumsal Yapay Zekâ Programı', en: 'Corporate AI Programme', fr: 'Programme d’IA en entreprise', de: 'Programm für KI im Unternehmen', es: 'Programa de IA para empresas' }, facts: { tr: '18 modül · 47 saat · 76 şablon', en: '18 modules · 47 hours · 76 templates', fr: '18 modules · 47 heures · 76 modèles', de: '18 Module · 47 Stunden · 76 Vorlagen', es: '18 módulos · 47 horas · 76 plantillas' } },
+  { key: 'gw', short: 'Workspace', url: 'https://googleworkspace.mikail.net/', color: '#1F4AA8', name: { tr: 'Google Workspace Saha Kılavuzu', en: 'Google Workspace Field Guide', fr: 'Google Workspace — Guide de terrain', de: 'Google Workspace Praxisleitfaden', es: 'Google Workspace — Guía de campo' }, facts: { tr: '15 modül · 37 saat · 7 öğrenme yolu', en: '15 modules · 37 hours · 7 learning paths', fr: '15 modules · 37 heures · 7 parcours', de: '15 Module · 37 Stunden · 7 Lernpfade', es: '15 módulos · 37 horas · 7 itinerarios' } },
+  { key: 'yzhatti', short: 'YZ İş Hattı', url: 'https://yzhatti.mikail.net/', color: '#2A2560', name: { tr: 'YZ İş Hattı', en: 'YZ İş Hattı — AI work scenarios', fr: 'YZ İş Hattı — scénarios de travail avec l’IA', de: 'YZ İş Hattı — KI-Arbeitsszenarien', es: 'YZ İş Hattı — escenarios de trabajo con IA' }, facts: { tr: '100 senaryo · 10 bölüm · 204 kaynak', en: '100 scenarios · 10 chapters · 204 sources', fr: '100 scénarios · 10 chapitres · 204 sources', de: '100 Szenarien · 10 Kapitel · 204 Quellen', es: '100 escenarios · 10 capítulos · 204 fuentes' } },
+  { key: 'kalibre', short: 'Kalibre', url: 'https://kalibre.mikail.net/', color: '#C2412D', name: { tr: 'Kalibre', en: 'Calibre', fr: 'Calibre', de: 'Kalibre', es: 'Kalibre' }, facts: { tr: '43 meslek · 8 aile · 1.290 soru', en: '43 professions · 8 families · 1,290 questions', fr: '43 métiers · 8 familles · 1 290 questions', de: '43 Berufe · 8 Familien · 1.290 Fragen', es: '43 profesiones · 8 familias · 1290 preguntas' } },
+  { key: 'pusula', short: 'Pusula', url: 'https://pusula.mikail.net/', color: '#1F5A4E', name: { tr: 'Pusula AI', en: 'Pusula AI — your AI compass', fr: 'Pusula AI — votre boussole IA', de: 'Pusula AI — Ihr KI-Kompass', es: 'Pusula AI — su brújula de IA' }, facts: { tr: '8 alan · 24 ifade · pilot sürüm', en: '8 areas · 24 statements · pilot', fr: '8 domaines · 24 affirmations · pilote', de: '8 Bereiche · 24 Aussagen · Pilot', es: '8 áreas · 24 afirmaciones · piloto' } },
+  { key: 'ses', short: 'Ses', url: 'https://ses.mikail.net/', color: '#2F7F6A', name: { tr: 'Ses', en: 'Ses — just talk', fr: 'Ses — parlez, simplement', de: 'Ses — einfach sprechen', es: 'Ses — solo habla' }, facts: { tr: '5 konuşma dili · kayıt yok', en: '5 spoken languages · no recording', fr: '5 langues parlées · aucun enregistrement', de: '5 Sprachen · keine Aufzeichnung', es: '5 idiomas · sin grabación' } },
+  { key: 'yz', short: 'YZ Radar', url: 'https://yz.mikail.net/', color: '#0E7490', name: { tr: 'YZ Radar', en: 'YZ Radar — daily AI top 10', fr: 'YZ Radar — le top 10 quotidien de l’IA', de: 'YZ Radar — tägliche KI-Top-10', es: 'YZ Radar — el top 10 diario de la IA' }, facts: { tr: 'Günlük · TOP 10 · 9 YZ ailesi', en: 'Daily · top 10 · 9 AI families', fr: 'Quotidien · top 10 · 9 familles d’IA', de: 'Täglich · Top 10 · 9 KI-Familien', es: 'Diario · top 10 · 9 familias de IA' } },
+  { key: 'airadar', short: 'AI·Radar', url: 'https://airadar.mikail.net/', color: '#3F6B5C', name: { tr: 'AI·Radar — Toplumsal Teknoloji Radarı', en: 'AI·Radar — Social Technology Radar', fr: 'AI·Radar — Radar des technologies et de la société', de: 'AI·Radar — Radar für Technik und Gesellschaft', es: 'AI·Radar — Radar de tecnología y sociedad' }, facts: { tr: 'Sayı 01 · 74 kayıt · 104 kaynak', en: 'Issue 01 · 74 records · 104 sources', fr: 'Numéro 01 · 74 fiches · 104 sources', de: 'Ausgabe 01 · 74 Einträge · 104 Quellen', es: 'Número 01 · 74 registros · 104 fuentes' } },
+  { key: 'skillatlas', short: 'Skill Atlas', url: 'https://skillatlas.mikail.net/', color: '#C2410C', name: { tr: 'Skill Atlas', en: 'Skill Atlas', fr: 'Skill Atlas', de: 'Skill Atlas', es: 'Skill Atlas' }, facts: { tr: 'Haftalık · 80 sıralı araç · 115 repo', en: 'Weekly · 80 ranked tools · 115 repos', fr: 'Hebdo · 80 outils classés · 115 dépôts', de: 'Wöchentlich · 80 Tools · 115 Repos', es: 'Semanal · 80 herramientas · 115 repos' } },
 ]
-
-const projectGlyphs = ['NI', 'R', 'AI', 'C', 'N', 'W']
 
 function App() {
   const [language, setLanguage] = useState(() => {
     const queryLang = new URLSearchParams(window.location.search).get('lang')
-    if (['fr', 'en', 'tr'].includes(queryLang)) return queryLang
+    if (LANGS.includes(queryLang)) return queryLang
     try {
       const savedLanguage = localStorage.getItem('ml-language')
-      return ['fr', 'en', 'tr'].includes(savedLanguage) ? savedLanguage : 'tr'
+      return LANGS.includes(savedLanguage) ? savedLanguage : 'tr'
     } catch {
       return 'tr'
     }
@@ -324,12 +50,7 @@ function App() {
   })
   const [menuOpen, setMenuOpen] = useState(false)
   const [projectFilter, setProjectFilter] = useState('all')
-  const { resolvedTheme, setTheme } = useTheme()
-
-  const t = translations[language]
-  const copy = ui[language]
-
-  const navItems = useMemo(() => PAGE_IDS.map((id) => ({ id, label: copy.nav[id] })), [copy])
+  const t = translations[language].ui
 
   useEffect(() => {
     const onHashChange = () => {
@@ -346,35 +67,36 @@ function App() {
     try {
       localStorage.setItem('ml-language', language)
     } catch {
-      // The site remains fully functional when storage is unavailable.
+      // The URL remains the source of truth when storage is unavailable.
     }
+    const meta = META[language]
+    const languageUrl = `https://lekesiz.org/?lang=${language}`
     document.documentElement.lang = language
-    const titles = {
-      fr: 'Mikail Lekesiz | Formateur IA & transformation numérique',
-      en: 'Mikail Lekesiz | AI & Digital Transformation Trainer',
-      tr: 'Mikail Lekesiz | Yapay Zekâ ve Dijital Dönüşüm Eğitmeni',
-    }
-    const descriptions = {
-      fr: 'Mikail Lekesiz conçoit des formations appliquées en intelligence artificielle, développement logiciel et transformation numérique.',
-      en: 'Mikail Lekesiz designs applied training in artificial intelligence, software development and digital transformation.',
-      tr: 'Mikail Lekesiz, yapay zekâ, yazılım geliştirme ve dijital dönüşüm alanlarında kurumlara yönelik uygulamalı eğitimler tasarlar.',
-    }
-    const locales = { fr: 'fr_FR', en: 'en_US', tr: 'tr_TR' }
-    document.title = titles[language]
-    document.querySelector('meta[name="title"]')?.setAttribute('content', titles[language])
-    document.querySelector('meta[name="description"]')?.setAttribute('content', descriptions[language])
-    document.querySelector('meta[property="og:title"]')?.setAttribute('content', titles[language])
-    document.querySelector('meta[property="og:description"]')?.setAttribute('content', descriptions[language])
-    document.querySelector('meta[property="og:locale"]')?.setAttribute('content', locales[language])
-    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', titles[language])
-    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', descriptions[language])
+    document.title = meta.title
+    document.querySelector('meta[name="title"]')?.setAttribute('content', meta.title)
+    document.querySelector('meta[name="description"]')?.setAttribute('content', meta.description)
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', meta.title)
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', meta.description)
+    document.querySelector('meta[property="og:locale"]')?.setAttribute('content', meta.locale)
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', meta.title)
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', meta.description)
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', languageUrl)
+    document.querySelector('meta[name="twitter:url"]')?.setAttribute('content', languageUrl)
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', languageUrl)
+    const structuredData = document.querySelector('#identity-jsonld')
+    if (structuredData) structuredData.textContent = JSON.stringify(buildIdentityData(meta, languageUrl))
   }, [language])
 
-  const changeLanguage = (lang) => {
+  const navItems = useMemo(() => PAGE_IDS.map((id) => ({ id, label: t.nav[id] })), [t])
+  const visibleProjects = t.projects
+    .map((project, index) => ({ project, index }))
+    .filter(({ index }) => projectFilter === 'all' || projectCategories[index]?.includes(projectFilter))
+
+  const changeLanguage = (nextLanguage) => {
     const url = new URL(window.location.href)
-    url.searchParams.set('lang', lang)
+    url.searchParams.set('lang', nextLanguage)
     window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`)
-    setLanguage(lang)
+    setLanguage(nextLanguage)
   }
 
   const go = (id) => {
@@ -391,27 +113,29 @@ function App() {
     event.preventDefault()
     const form = new FormData(event.currentTarget)
     const subject = form.get('subject') || 'Portfolio contact'
-    const body = `${copy.name}: ${form.get('name')}\n${copy.email}: ${form.get('email')}\n\n${form.get('message')}`
+    const body = `${t.name}: ${form.get('name')}\n${t.email}: ${form.get('email')}\n\n${form.get('message')}`
     window.location.href = `mailto:contact@netzinformatique.fr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
   }
 
   const projectCard = (project, index) => {
     const href = project.link || project.github
+    const external = href.startsWith('http')
     return (
-      <article className="card project-card" key={project.name}>
-        <a className={`project-visual project-visual-${index % 4}`} href={href} target="_blank" rel="noreferrer" aria-label={project.name}>
+      <article className="notebook-card project-card" key={project.name}>
+        <a className={`project-visual project-visual-${index % 4}`} href={href} target={external ? '_blank' : undefined} rel={external ? 'noreferrer' : undefined} aria-label={`${project.name} — ${t.live}`}>
           <span>{projectGlyphs[index] || 'ML'}</span>
           <ArrowRight size={22} aria-hidden="true" />
         </a>
         <div className="project-body">
+          <p className="card-label">{project.tech[0]}</p>
           <h3>{project.name}</h3>
-          <p>{project.description}</p>
-          <div className="chips">
+          <p className="card-description">{project.description}</p>
+          <div className="chips" aria-label={`${project.name} technologies`}>
             {project.tech.map((tech) => <span className="chip" key={tech}>{tech}</span>)}
           </div>
           <div className="project-links">
-            {project.link && <a href={project.link} target="_blank" rel="noreferrer"><ExternalLink size={16} />{copy.live}</a>}
-            {project.github && <a href={project.github} target="_blank" rel="noreferrer"><Github size={16} />{copy.code}</a>}
+            {project.link && <a href={project.link} target={project.link.startsWith('http') ? '_blank' : undefined} rel={project.link.startsWith('http') ? 'noreferrer' : undefined}><ExternalLink size={15} aria-hidden="true" />{t.live}</a>}
+            {project.github && <a href={project.github} target="_blank" rel="noreferrer"><Github size={15} aria-hidden="true" />{t.code}</a>}
           </div>
         </div>
       </article>
@@ -420,234 +144,100 @@ function App() {
 
   return (
     <div className="site-shell">
+      <a className="skip-link" href="#main-content">{t.skip}</a>
       <header className="site-header">
         <div className="wrap header-bar">
-          <button className="brand" type="button" onClick={() => go('home')} aria-label={copy.nav.home}>
-            <span className="brand-mark">ML</span>
-            <span>Mikail <span className="brand-muted">Lekesiz</span></span>
-          </button>
-
-          <nav className={`main-nav ${menuOpen ? 'is-open' : ''}`} aria-label="Primary navigation">
-            {navItems.map(({ id, label }) => (
-              <button key={id} type="button" className={page === id ? 'active' : ''} onClick={() => go(id)}>{label}</button>
-            ))}
+          <a className="brand" href="#home" onClick={(event) => { event.preventDefault(); go('home') }} aria-label={`${t.nav.home} — Mikail Lekesiz`}>
+            <span className="brand-mark" aria-hidden="true">ML</span>
+            <span className="brand-name">Mikail <span className="brand-muted">Lekesiz</span></span>
+          </a>
+          <nav className={`main-nav ${menuOpen ? 'is-open' : ''}`} aria-label={t.nav.home}>
+            {navItems.map(({ id, label }) => <a key={id} href={`#${id}`} className={page === id ? 'active' : ''} aria-current={page === id ? 'page' : undefined} onClick={(event) => { event.preventDefault(); go(id) }}>{label}</a>)}
           </nav>
-
           <div className="header-tools">
-            <div className="language-switch" aria-label={copy.language}>
-              {['fr', 'en', 'tr'].map((lang) => (
-                <button key={lang} type="button" className={language === lang ? 'active' : ''} onClick={() => changeLanguage(lang)}>{lang.toUpperCase()}</button>
-              ))}
+            <div className="language-switch" aria-label={t.language}>
+              {LANGS.map((lang) => <button key={lang} type="button" className={language === lang ? 'active' : ''} aria-pressed={language === lang} onClick={() => changeLanguage(lang)}>{lang.toUpperCase()}</button>)}
             </div>
-            <button className="icon-button" type="button" aria-label={copy.theme} onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}>
-              {resolvedTheme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
-            <button className="icon-button menu-button" type="button" aria-label={menuOpen ? copy.close : copy.menu} aria-expanded={menuOpen} onClick={() => setMenuOpen((value) => !value)}>
-              {menuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
+            <button className="icon-button menu-button" type="button" aria-label={menuOpen ? t.close : t.menu} aria-expanded={menuOpen} onClick={() => setMenuOpen((value) => !value)}>{menuOpen ? <X size={19} /> : <Menu size={19} />}</button>
           </div>
         </div>
       </header>
 
-      <main>
+      <main id="main-content">
         {page === 'home' && (
           <div className="page page-home">
             <section className="hero">
               <div className="wrap hero-grid">
                 <div className="hero-copy">
-                  <p className="eyebrow">{copy.heroEyebrow}</p>
-                  <p className="hero-kicker">{t.hero.greeting} <strong>Mikail Lekesiz</strong></p>
-                  <h1>{copy.heroTitle}</h1>
-                  <p className="lead">{copy.heroLead}</p>
-                  <p className="hero-detail">{t.hero.description}</p>
+                  <p className="eyebrow">{t.heroEyebrow}</p>
+                  <p className="hero-kicker">{t.heroKicker}</p>
+                  <h1>{t.heroTitle}</h1>
+                  <p className="lead">{t.heroLead}</p>
+                  <p className="hero-detail">{t.heroDetail}</p>
                   <div className="button-row">
-                    <button className="button button-primary" type="button" onClick={() => go('contact')}>{copy.contactCta}<ArrowRight size={18} /></button>
-                    <button className="button button-ghost" type="button" onClick={() => go('projects')}>{copy.projectsCta}</button>
+                    <button className="button button-primary" type="button" onClick={() => go('contact')}>{t.contactCta}<ArrowRight size={17} aria-hidden="true" /></button>
+                    <button className="button button-ghost" type="button" onClick={() => go('projects')}>{t.projectsCta}</button>
                   </div>
-                  <div className="hero-socials" aria-label="Social profiles">
-                    <a href="https://github.com/lekesiz" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={19} /></a>
-                    <a href="https://www.linkedin.com/in/mikail-lekesiz/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={19} /></a>
-                    <a href="https://mikail.net/contact/" target="_blank" rel="noreferrer" aria-label="Professional contact"><Mail size={19} /></a>
+                  <div className="hero-links">
+                    <a href="https://mikail.net/" target="_blank" rel="noreferrer">{t.hubShort} ↗</a>
+                    <a href="https://github.com/lekesiz" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={17} aria-hidden="true" />GitHub</a>
+                    <a href="https://www.linkedin.com/in/mikail-lekesiz/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={17} aria-hidden="true" />LinkedIn</a>
                   </div>
                 </div>
                 <div className="portrait-wrap">
-                  <div className="portrait-frame">
-                    <img src={profileImage} alt={copy.portraitAlt} width="740" height="994" fetchPriority="high" />
-                  </div>
-                  <div className="portrait-caption"><span className="status-dot" />{copy.portraitCaption}</div>
+                  <div className="portrait-frame"><img src={profileImage} alt={t.portraitAlt} width="740" height="994" fetchPriority="high" /></div>
+                  <p className="portrait-caption"><span className="status-dot" aria-hidden="true" />{t.portraitCaption}</p>
                 </div>
               </div>
             </section>
 
-            <section className="band compact">
-              <div className="wrap">
-                <ul className="stats">
-                  {copy.stats.map(([value, label]) => <li className="stat" key={label}><span>{value}</span><p>{label}</p></li>)}
-                </ul>
-              </div>
+            <section className="stats-band" aria-label={t.statsNote}>
+              <div className="wrap"><ul className="stats">{t.stats.map(([value, label]) => <li className="stat" key={label}><span>{value}</span><p>{label}</p></li>)}</ul><p className="stats-note">{t.statsNote}</p></div>
             </section>
 
-            <section className="band alternate">
-              <div className="wrap">
-                <SectionHeading eyebrow={copy.expertiseEyebrow} title={copy.expertiseTitle} lead={copy.expertiseLead} />
-                <div className="grid-3">
-                  {copy.expertise.map(([tag, title, description, bullets]) => (
-                    <article className="card" key={title}>
-                      <span className="tag">{tag}</span>
-                      <h3>{title}</h3>
-                      <p>{description}</p>
-                      <ul className="check-list">{bullets.map((bullet) => <li key={bullet}><Check size={15} />{bullet}</li>)}</ul>
-                      <button className="text-link" type="button" onClick={() => go('services')}>{copy.learnMore}<ArrowRight size={16} /></button>
-                    </article>
-                  ))}
-                </div>
-              </div>
+            <section className="section section-paper">
+              <div className="wrap"><SectionHeading eyebrow={t.servicesEyebrow} title={t.servicesTitle} lead={t.servicesLead} /><div className="services-grid">{t.services.map((service) => <ServiceCard key={service.title} service={service} action={t.learnMore} onAction={() => go('services')} />)}</div></div>
             </section>
 
-            <section className="band">
-              <div className="wrap">
-                <SectionHeading eyebrow={copy.selection} title={copy.recentProjects} />
-                <div className="grid-3">{t.projects.list.slice(0, 3).map(projectCard)}</div>
-                <div className="button-row"><button className="button button-ghost" type="button" onClick={() => go('projects')}>{copy.allProjects}<ArrowRight size={18} /></button></div>
-              </div>
+            <section className="section section-soft">
+              <div className="wrap"><SectionHeading eyebrow={t.selection} title={t.recentProjects} /><div className="projects-grid">{t.projects.slice(0, 3).map(projectCard)}</div><div className="section-action"><button className="button button-ghost" type="button" onClick={() => go('projects')}>{t.allProjects}<ArrowRight size={17} aria-hidden="true" /></button></div></div>
             </section>
 
-            <section className="band alternate">
-              <div className="wrap"><blockquote className="quote">“{copy.statement}”<cite>{copy.statementBy}</cite></blockquote></div>
-            </section>
-
-            <section className="band">
-              <div className="wrap"><CallToAction copy={copy} go={go} /></div>
-            </section>
+            <section className="section section-ink"><div className="wrap"><blockquote className="quote">“{t.quote}”<cite>{t.quoteBy}</cite></blockquote></div></section>
+            <section className="section section-paper"><div className="wrap"><Ecosystem t={t} language={language} /></div></section>
+            <section className="section section-soft"><div className="wrap"><CallToAction copy={t} onClick={() => go('contact')} /></div></section>
           </div>
         )}
 
-        {page === 'about' && (
-          <div className="page">
-            <section className="band page-intro">
-              <div className="wrap">
-                <SectionHeading eyebrow={copy.aboutEyebrow} title="Mikail Lekesiz" lead={copy.aboutLead} level="h1" />
-                <div className="about-grid">
-                  <div className="prose-stack"><p>{t.about.content}</p><p>{t.about.content2}</p><p>{t.about.content3}</p></div>
-                  <div className="about-portrait"><img src={profileImage} alt={copy.portraitAlt} width="740" height="994" /></div>
-                </div>
-                <div className="fact-grid">{copy.facts.map(([key, value]) => <div className="fact" key={key}><span>{key}</span><strong>{value}</strong></div>)}</div>
-              </div>
-            </section>
+        {page === 'about' && <div className="page"><section className="section page-intro section-paper"><div className="wrap"><SectionHeading eyebrow={t.aboutEyebrow} title={t.aboutTitle} lead={t.aboutLead} level="h1" /><div className="about-layout"><div className="prose-stack">{t.aboutParagraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div><div className="about-portrait"><img src={profileImage} alt={t.portraitAlt} width="740" height="994" /></div></div><div className="fact-grid">{t.facts.map(([label, value]) => <div className="fact" key={`${label}-${value}`}><span>{label}</span><strong>{value}</strong></div>)}</div></div></section><section className="section section-soft"><div className="wrap"><SectionHeading eyebrow={t.principlesTitle} title={t.principlesTitle} /><div className="principles-grid">{t.principles.map(([title, description], index) => <article className="notebook-line" key={title}><span className="line-number">0{index + 1}</span><h3>{title}</h3><p>{description}</p></article>)}</div></div></section></div>}
 
-            <section className="band alternate">
-              <div className="wrap"><SectionHeading eyebrow={copy.journey} title={t.experience.title} /><Timeline items={t.experience.jobs.map((job) => ({ when: job.period, title: job.title, where: `${job.company} · ${job.location}`, description: job.description }))} /></div>
-            </section>
+        {page === 'services' && <div className="page"><section className="section page-intro section-paper"><div className="wrap"><SectionHeading eyebrow={t.servicesPageEyebrow} title={t.servicesPageTitle} lead={t.servicesLead} level="h1" /><div className="services-grid services-grid-large">{t.services.map((service) => <ServiceCard key={service.title} service={service} />)}</div></div></section><section className="section section-ink"><div className="wrap"><SectionHeading eyebrow={t.processEyebrow} title={t.processTitle} tone="dark" /><div className="process-grid">{t.process.map(([number, title, description]) => <article className="process-step" key={number}><span>{number}</span><h3>{title}</h3><p>{description}</p></article>)}</div></div></section><section className="section section-paper"><div className="wrap narrow"><SectionHeading eyebrow={t.faqEyebrow} title={t.faqTitle} />{t.faq.map(([question, answer], index) => <details className="faq" key={question} open={index === 0}><summary>{question}<ChevronDown size={18} aria-hidden="true" /></summary><p>{answer}</p></details>)}</div></section><section className="section section-soft"><div className="wrap"><CallToAction copy={t} onClick={() => go('contact')} /></div></section></div>}
 
-            <section className="band">
-              <div className="wrap split-grid">
-                <div>
-                  <SectionHeading eyebrow={copy.education} title={t.education.title} />
-                  <Timeline items={t.education.list.map((item) => ({ when: item.period, title: item.degree, where: item.school, description: item.description }))} />
-                </div>
-                <div>
-                  <SectionHeading eyebrow={copy.certifications} title={t.certifications.title} />
-                  <div className="cert-list">{t.certifications.list.map((cert) => <article key={cert.name}><span>{cert.date}</span><h3>{cert.name}</h3><p>{cert.issuer}</p><small>{cert.id}</small></article>)}</div>
-                </div>
-              </div>
-            </section>
+        {page === 'projects' && <div className="page"><section className="section page-intro section-paper"><div className="wrap"><SectionHeading eyebrow={t.projectsEyebrow} title={t.projectsTitle} lead={t.projectsLead} level="h1" /><div className="filters" role="group" aria-label={t.projectsEyebrow}>{Object.entries(t.filters).map(([key, label]) => <button type="button" key={key} className={projectFilter === key ? 'active' : ''} aria-pressed={projectFilter === key} onClick={() => setProjectFilter(key)}>{label}</button>)}</div><div className="projects-grid projects-grid-all">{visibleProjects.map(({ project, index }) => projectCard(project, index))}</div></div></section><section className="section section-soft"><div className="wrap"><Ecosystem t={t} language={language} /></div></section></div>}
 
-            <section className="band alternate">
-              <div className="wrap">
-                <SectionHeading eyebrow={copy.skillTitle} title={t.skills.title} lead={t.skills.subtitle} />
-                <div className="skills-grid">{Object.entries(skillGroups).map(([key, list]) => <article className="skill-group" key={key}><h3>{t.skills[key]}</h3><div className="chips">{list.map((skill) => <span className="chip" key={skill}>{skill}</span>)}</div></article>)}</div>
-              </div>
-            </section>
-          </div>
-        )}
-
-        {page === 'services' && (
-          <div className="page">
-            <section className="band page-intro">
-              <div className="wrap">
-                <SectionHeading eyebrow={copy.servicesEyebrow} title={t.services.title} lead={copy.servicesLead} level="h1" />
-                <div className="grid-3 services-grid">
-                  {t.services.list.map((service, index) => {
-                    const Icon = serviceIcons[index]
-                    const bullets = copy.expertise[index % 3][3]
-                    return <article className="card service-card" key={service.title}><div className="service-icon"><Icon size={23} /></div><span className="tag">0{index + 1}</span><h3>{service.title}</h3><p>{service.description}</p><ul className="check-list">{bullets.map((bullet) => <li key={bullet}><Check size={15} />{bullet}</li>)}</ul></article>
-                  })}
-                </div>
-              </div>
-            </section>
-
-            <section className="band alternate">
-              <div className="wrap"><SectionHeading eyebrow={copy.processEyebrow} title={copy.processTitle} /><div className="steps">{copy.process.map(([number, title, description]) => <article className="step" key={number}><span>{number}</span><h3>{title}</h3><p>{description}</p></article>)}</div></div>
-            </section>
-
-            <section className="band">
-              <div className="wrap narrow"><SectionHeading eyebrow={copy.faqEyebrow} title={copy.faqTitle} />{copy.faq.map(([question, answer], index) => <details className="faq" key={question} open={index === 0}><summary>{question}<ChevronDown size={19} /></summary><p>{answer}</p></details>)}</div>
-            </section>
-            <section className="band compact"><div className="wrap"><CallToAction copy={copy} go={go} /></div></section>
-          </div>
-        )}
-
-        {page === 'projects' && (
-          <div className="page">
-            <section className="band page-intro">
-              <div className="wrap">
-                <SectionHeading eyebrow={copy.projectsEyebrow} title={t.projects.title} lead={copy.projectsLead} level="h1" />
-                <div className="filters">{Object.entries(copy.filters).map(([key, label]) => <button type="button" key={key} className={projectFilter === key ? 'active' : ''} onClick={() => setProjectFilter(key)}>{label}</button>)}</div>
-                <div className="grid-3 projects-grid">{t.projects.list.map((project, index) => ({ project, index })).filter(({ index }) => projectFilter === 'all' || projectCategories[index]?.includes(projectFilter)).map(({ project, index }) => projectCard(project, index))}</div>
-              </div>
-            </section>
-          </div>
-        )}
-
-        {page === 'contact' && (
-          <div className="page">
-            <section className="band page-intro">
-              <div className="wrap">
-                <SectionHeading eyebrow={copy.contactEyebrow} title={t.contact.title} lead={copy.contactLead} level="h1" />
-                <div className="contact-grid">
-                  <form className="contact-form" onSubmit={submitMail}>
-                    <div className="form-row"><Field label={copy.name} name="name" autoComplete="name" required /><Field label={copy.email} name="email" type="email" autoComplete="email" required /></div>
-                    <Field label={copy.subject} name="subject" required />
-                    <label className="field"><span>{copy.message}</span><textarea name="message" rows="7" required /></label>
-                    <button className="button button-primary" type="submit"><Mail size={18} />{copy.send}</button>
-                    <p className="form-note">{copy.formNote}</p>
-                  </form>
-                  <aside className="contact-aside">
-                    <ContactBlock title="NETZ INFORMATIQUE" email="contact@netzinformatique.fr" href="https://www.netzinformatique.fr/contact" />
-                    <ContactBlock title="Reflektif" email="direction@reflektif.net" href="https://reflektif.net" />
-                    <ContactBlock title={copy.contactEyebrow} email="" href="https://mikail.net/contact/" />
-                    <div className="contact-socials"><span>{copy.networks}</span><a href="https://github.com/lekesiz" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/mikail-lekesiz/" target="_blank" rel="noreferrer">LinkedIn</a></div>
-                  </aside>
-                </div>
-              </div>
-            </section>
-          </div>
-        )}
+        {page === 'contact' && <div className="page"><section className="section page-intro section-paper"><div className="wrap"><SectionHeading eyebrow={t.contactEyebrow} title={t.contactTitle} lead={t.contactLead} level="h1" /><div className="contact-layout"><form className="contact-form notebook-card" onSubmit={submitMail}><div className="form-row"><Field label={t.name} name="name" autoComplete="name" required /><Field label={t.email} name="email" type="email" autoComplete="email" required /></div><Field label={t.subject} name="subject" required /><label className="field"><span>{t.message}</span><textarea name="message" rows="7" required /></label><button className="button button-primary" type="submit"><Mail size={17} aria-hidden="true" />{t.send}</button><p className="form-note">{t.formNote}</p></form><aside className="contact-aside"><ContactBlock title="NETZ INFORMATIQUE" email="contact@netzinformatique.fr" href="https://www.netzinformatique.fr/contact" /><ContactBlock title="Reflektif" email="direction@reflektif.net" href="https://reflektif.net/legal" /><div className="social-block"><p className="eyebrow">{t.networks}</p><a href="https://github.com/lekesiz" target="_blank" rel="noreferrer"><Github size={17} aria-hidden="true" />GitHub</a><a href="https://www.linkedin.com/in/mikail-lekesiz/" target="_blank" rel="noreferrer"><Linkedin size={17} aria-hidden="true" />LinkedIn</a><a href="https://mikail.net/contact/" target="_blank" rel="noreferrer"><ExternalLink size={17} aria-hidden="true" />mikail.net/contact</a></div></aside></div></div></section></div>}
       </main>
 
-      <footer className="site-footer">
-        <div className="wrap footer-grid">
-          <div><button className="brand" type="button" onClick={() => go('home')}><span className="brand-mark">ML</span><span>Mikail <span className="brand-muted">Lekesiz</span></span></button><p>{copy.footerText}</p></div>
-          <div><h4>Navigation</h4>{navItems.map(({ id, label }) => <button key={id} type="button" onClick={() => go(id)}>{label}</button>)}<a href="/ai-professionals/">{language === 'fr' ? 'Méthode IA en entreprise (TR)' : language === 'en' ? 'AI for organisations (TR)' : 'Kurumlarda güvenli yapay zekâ'}</a></div>
-          <div><h4>{copy.contactEyebrow}</h4><a href="https://mikail.net/contact/" target="_blank" rel="noreferrer">mikail.net/contact</a><a href="https://github.com/lekesiz" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/mikail-lekesiz/" target="_blank" rel="noreferrer">LinkedIn</a></div>
-        </div>
-        <div className="wrap footer-legal"><span>© {new Date().getFullYear()} Mikail Lekesiz. {copy.rights}</span><span>France · Türkiye · Deutschland</span></div>
-      </footer>
+      <footer className="site-footer"><div className="wrap footer-grid"><div className="footer-brand"><a className="brand" href="#home" onClick={(event) => { event.preventDefault(); go('home') }}><span className="brand-mark" aria-hidden="true">ML</span><span className="brand-name">Mikail <span className="brand-muted">Lekesiz</span></span></a><p>{t.footerText}</p><a className="hub-link" href="https://mikail.net/" target="_blank" rel="noreferrer">{t.hubShort} ↗</a></div><div><h2 className="footer-heading">{t.footerLinks}</h2>{navItems.map(({ id, label }) => <a key={id} href={`#${id}`} onClick={(event) => { event.preventDefault(); go(id) }}>{label}</a>)}<a href="/ai-professionals/">{t.projects[2].name}</a></div><div><h2 className="footer-heading">{t.organization}</h2><a href="https://www.netzinformatique.fr/" target="_blank" rel="noreferrer">NETZ INFORMATIQUE</a><a href="https://reflektif.net/" target="_blank" rel="noreferrer">Reflektif</a><a href="https://github.com/lekesiz" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/mikail-lekesiz/" target="_blank" rel="noreferrer">LinkedIn</a></div></div><div className="wrap footer-legal"><span>© {new Date().getFullYear()} Mikail Lekesiz. {t.rights}</span><span>TR · EN · FR · DE · ES</span></div></footer>
     </div>
   )
 }
 
-function SectionHeading({ eyebrow, title, lead, level = 'h2' }) {
+function SectionHeading({ eyebrow, title, lead, level = 'h2', tone = 'light' }) {
   const Heading = level
-  return <div className="section-heading">{eyebrow && <p className="eyebrow">{eyebrow}</p>}<Heading>{title}</Heading>{lead && <p className="lead">{lead}</p>}</div>
+  return <div className={`section-heading ${tone === 'dark' ? 'section-heading-dark' : ''}`}><p className="eyebrow">{eyebrow}</p><Heading>{title}</Heading>{lead && <p className="lead">{lead}</p>}</div>
 }
 
-function Timeline({ items }) {
-  return <div className="timeline">{items.map((item) => <article className="timeline-item" key={`${item.when}-${item.title}`}><span className="timeline-when">{item.when}</span><h3>{item.title}</h3><p className="timeline-where">{item.where}</p>{item.description && <p>{item.description}</p>}</article>)}</div>
+function ServiceCard({ service, action, onAction }) {
+  return <article className="notebook-card service-card"><p className="card-label">{service.tag}</p><h3>{service.title}</h3><p className="card-description">{service.description}</p><ul className="check-list">{service.bullets.map((bullet) => <li key={bullet}><Check size={15} aria-hidden="true" />{bullet}</li>)}</ul>{action && <button className="text-link" type="button" onClick={onAction}>{action}<ArrowRight size={15} aria-hidden="true" /></button>}</article>
 }
 
-function CallToAction({ copy, go }) {
-  return <div className="cta-band"><div><h2>{copy.ctaTitle}</h2><p>{copy.ctaText}</p></div><button className="button" type="button" onClick={() => go('contact')}>{copy.ctaButton}<ArrowRight size={18} /></button></div>
+function Ecosystem({ t, language }) {
+  return <div className="ecosystem"><SectionHeading eyebrow={t.ecosystemEyebrow} title={t.ecosystemTitle} lead={t.ecosystemLead} /><div className="ecosystem-grid">{ECOSYSTEM_PROJECTS.map((project) => <a className="ecosystem-item" href={project.url} target="_blank" rel="noreferrer" key={project.key}><span className="ecosystem-dot" style={{ backgroundColor: project.color }} aria-hidden="true" /><span className="ecosystem-copy"><strong>{project.short}</strong><span>{project.name[language]}</span><small>{project.facts[language]}</small></span><ArrowRight size={17} aria-hidden="true" /></a>)}</div><a className="hub-link ecosystem-link" href="https://mikail.net/" target="_blank" rel="noreferrer">{t.ecosystemCta} ↗</a></div>
+}
+
+function CallToAction({ copy, onClick }) {
+  return <div className="cta-line"><div><p className="eyebrow">{copy.contactEyebrow}</p><h2>{copy.ctaTitle}</h2><p>{copy.ctaText}</p></div><button className="button button-primary" type="button" onClick={onClick}>{copy.ctaButton}<ArrowRight size={17} aria-hidden="true" /></button></div>
 }
 
 function Field({ label, name, type = 'text', autoComplete, required }) {
@@ -655,7 +245,34 @@ function Field({ label, name, type = 'text', autoComplete, required }) {
 }
 
 function ContactBlock({ title, email, href }) {
-  return <section className="contact-block"><h3>{title}</h3>{email && <a href={`mailto:${email}`}><Mail size={18} />{email}</a>}<a href={href} target="_blank" rel="noreferrer"><ExternalLink size={18} />{href.replace(/^https?:\/\//, '').replace(/\/$/, '')}</a></section>
+  return <section className="contact-block"><h2>{title}</h2><a href={`mailto:${email}`}><Mail size={17} aria-hidden="true" />{email}</a><a href={href} target="_blank" rel="noreferrer"><ExternalLink size={17} aria-hidden="true" />{href.replace(/^https?:\/\//, '').replace(/\/$/, '')}</a></section>
+}
+
+function buildIdentityData(meta, languageUrl) {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Person',
+        '@id': 'https://mikail.net/#mikail',
+        name: 'Mikail Lekesiz',
+        url: 'https://mikail.net/',
+        jobTitle: 'Yapay zekâ ve dijital dönüşüm eğitmeni',
+        description: meta.description,
+        sameAs: ['https://lekesiz.org/', 'https://github.com/lekesiz', 'https://www.linkedin.com/in/mikail-lekesiz/'],
+      },
+      {
+        '@type': 'WebSite',
+        '@id': 'https://lekesiz.org/#website',
+        url: languageUrl,
+        name: meta.title,
+        description: meta.description,
+        inLanguage: languageUrl.split('lang=')[1] || 'tr',
+        author: { '@id': 'https://mikail.net/#mikail' },
+        publisher: { '@id': 'https://mikail.net/#mikail' },
+      },
+    ],
+  }
 }
 
 export default App

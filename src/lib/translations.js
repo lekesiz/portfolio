@@ -1,406 +1,140 @@
+const commonProjects = {
+  netz: {
+    name: 'NETZ INFORMATIQUE',
+    link: 'https://www.netzinformatique.fr/',
+    tech: ['IT services', 'Training', 'France'],
+  },
+  reflektif: {
+    name: 'Reflektif',
+    link: 'https://reflektif.net/',
+    tech: ['EdTech', 'AI', 'Assessment'],
+  },
+  aiProfessionals: {
+    name: 'AI for professionals',
+    link: '/ai-professionals/',
+    tech: ['Resource', 'AI', 'Method'],
+  },
+  aiOrchestrator: {
+    name: 'AI Orchestrator',
+    github: 'https://github.com/lekesiz/ai_orchestrator',
+    tech: ['Python', 'LLM', 'API'],
+  },
+  claudeChat: {
+    name: 'Claude Chat App',
+    github: 'https://github.com/lekesiz/claude-chat-app',
+    tech: ['JavaScript', 'AI API', 'React'],
+  },
+  wedof: {
+    name: 'Wedof Sync Google Sheets',
+    github: 'https://github.com/lekesiz/wedof-sync-google-sheets',
+    tech: ['Python', 'Google API', 'Automation'],
+  },
+}
+
 export const translations = {
-  fr: {
-    hero: {
-      greeting: "Bonjour, je suis",
-      description: "Entrepreneur technologique et formateur en entreprise, je conçois des parcours appliqués en intelligence artificielle, développement logiciel et transformation numérique pour les organisations.",
+  tr: {
+    meta: {
+      title: 'Mikail Lekesiz | Yapay zekâ ve dijital dönüşüm eğitmeni',
+      description: 'Mikail Lekesiz; yapay zekâ, yazılım ve dijital dönüşüm alanlarında danışmanlık, uygulama ve kurumsal eğitim çalışmaları yürütür.',
+      locale: 'tr_TR',
     },
-    about: {
-      content: "Je suis entrepreneur technologique et formateur en entreprise. Je conçois des parcours appliqués en intelligence artificielle, développement logiciel et transformation numérique, à partir des besoins réels des organisations.",
-      content2: "Je suis président de NETZ INFORMATIQUE, société française créée en 2016. La notice légale publique de Reflektif Bilişim A.Ş. m’identifie comme président du conseil d’administration et responsable technique.",
-      content3: "Ma méthode associe analyse des besoins, objectifs d’apprentissage mesurables, ateliers pratiques, études de cas et évaluation par projet. J’aborde l’IA générative avec des règles explicites de confidentialité, de vérification, de supervision humaine et de gestion des risques.",
-    },
-    services: {
-      title: "Interventions",
-      list: [
-        { title: "Formation à l’IA appliquée", description: "Parcours et ateliers adaptés au niveau des équipes, aux cas d’usage et aux données manipulées." },
-        { title: "Développement logiciel", description: "Prototypage, architecture et développement d’applications avec des choix documentés et maintenables." },
-        { title: "Usage sûr de l’IA", description: "Confidentialité, vérification des sorties, supervision humaine et identification des risques organisationnels." },
-        { title: "Transformation numérique", description: "Diagnostic, priorisation et feuille de route reliant les outils aux objectifs opérationnels." },
-        { title: "DevOps & Cloud", description: "Ateliers et accompagnement sur l’automatisation, le déploiement, l’observabilité et la continuité de service." },
-        { title: "Ingénierie pédagogique", description: "Analyse des besoins, objectifs mesurables, cas pratiques, projets et dispositif d’évaluation." },
+    ui: {
+      nav: { home: 'Ana sayfa', about: 'Profil', services: 'Hizmetler', projects: 'Çalışmalar', contact: 'İletişim' },
+      language: 'Dil seçimi', menu: 'Menüyü aç', close: 'Menüyü kapat', skip: 'İçeriğe geç', hub: 'mikail.net ana merkez', hubShort: 'mikail.net',
+      heroEyebrow: 'Portföy · uygulama · eğitim', heroKicker: 'Mikail Lekesiz', heroTitle: 'Karmaşık ihtiyaçları, anlaşılır ve işe yarar sistemlere dönüştürmek.',
+      heroLead: 'Yapay zekâ ve dijital dönüşüm eğitmeni olarak kurumların karar vermesine, uygulamaya geçmesine ve bilgiyi ekip içinde sürdürülebilir hâle getirmesine yardımcı oluyorum.',
+      heroDetail: 'Danışmanlık, yazılım geliştirme ve uygulamalı eğitim; veri gizliliği, çıktı doğrulama ve insan denetimiyle birlikte ele alınır.',
+      contactCta: 'Bir projeyi konuşalım', projectsCta: 'Çalışmaları gör', portraitAlt: 'Mikail Lekesiz portresi', portraitCaption: 'Fransa · Türkiye · Almanya',
+      stats: [['03', 'çalışma biçimi'], ['02', 'ana kurum'], ['05', 'dil'], ['01', 'ortak merkez']],
+      statsNote: 'Danışmanlık · uygulama · eğitim',
+      servicesEyebrow: '§ 01 · Hizmetler', servicesTitle: 'Karar vermekten bilgi aktarımına, üç net çalışma biçimi.', servicesLead: 'İhtiyaca göre ölçeklenen, sınırları ve beklenen çıktıları baştan belirlenmiş profesyonel çalışmalar.',
+      services: [
+        { tag: '01 — Danışmanlık', title: 'Dönüşümü çerçevelemek', description: 'Mevcut durumu, riskleri ve öncelikleri görünür kılar; yatırım öncesi karar zemini oluştururum.', bullets: ['İhtiyaç ve mevcut durum analizi', 'Öncelikli öneriler', 'Uygulanabilir yol haritası'] },
+        { tag: '02 — Uygulama', title: 'Güvenilir çözümler geliştirmek', description: 'Fikri, belgelenmiş kararlarla canlıya alınabilir ve sürdürülebilir bir ürüne dönüştürürüm.', bullets: ['Mimari ve prototipleme', 'Geliştirme ve otomasyon', 'Test, canlıya alma ve takip'] },
+        { tag: '03 — Eğitim', title: 'Ekipleri güçlendirmek', description: 'Teknolojiyi gerçek görevler, uygulamalar ve ölçülebilir kazanımlarla ekiplerin çalışma biçimine taşırım.', bullets: ['Uyarlanmış kullanım senaryoları', 'Yeniden kullanılabilir materyaller', 'Ölçme ve değerlendirme'] },
       ],
-    },
-    skills: {
-      title: "Domaines techniques",
-      subtitle: "Technologies utilisées selon le besoin, le contexte et le niveau de maturité du projet.",
-      languages: "Langages",
-      frontend: "Frontend",
-      backend: "Backend",
-      databases: "Données",
-      devops: "DevOps & Cloud",
-      tools: "Outils",
-    },
-    experience: {
-      title: "Rôles et parcours",
-      jobs: [
-        {
-          title: "Président",
-          company: "NETZ INFORMATIQUE",
-          period: "Société créée en 2016 · fonction actuelle",
-          location: "Haguenau, France",
-          description: "Pilotage d’une société française active dans les services informatiques et la formation professionnelle. L’identité légale et le statut de l’entreprise sont vérifiables dans les registres publics français.",
-        },
-        {
-          title: "Président du conseil d’administration & Responsable technique",
-          company: "Reflektif Bilişim A.Ş.",
-          period: "Fonction publiée en 2026 · actuelle",
-          location: "Türkiye",
-          description: "Rôle formulé conformément à la notice légale publique de Reflektif. Contribution à une plateforme d’orientation professionnelle et d’évaluation des compétences assistée par l’IA.",
-        },
-        {
-          title: "Parcours technologique international",
-          company: "Expériences présentées dans le CV",
-          period: "Depuis 2000 · déclaration de parcours",
-          location: "France · Türkiye · Allemagne",
-          description: "Le CV présente des responsabilités en développement logiciel, systèmes, cloud et opérations IT. Les justificatifs détaillés peuvent être fournis dans un cadre professionnel approprié.",
-        },
+      learnMore: 'Hizmet ayrıntıları', selection: 'Seçki', recentProjects: 'Seçili çalışmalar', allProjects: 'Tüm çalışmaları gör',
+      quote: 'Teknoloji, onu kullanan insanlar için anlaşılır, denetlenebilir ve gerçekten faydalı olduğunda değer üretir.', quoteBy: 'Mikail Lekesiz · eğitmen ve teknik sorumlu',
+      ctaTitle: 'Çerçevelenecek bir proje, eğitim veya dönüşüm mü var?', ctaText: 'Bağlamı paylaşın; ilk görüşmede hedefi, sınırları ve işe yarayacak sonraki adımı birlikte netleştirelim.', ctaButton: 'İletişime geç',
+      aboutEyebrow: '§ 02 · Profil', aboutTitle: 'Mikail Lekesiz', aboutLead: 'Yapay zekâ ve dijital dönüşüm eğitmeni; danışmanlık, uygulama ve mesleki öğrenme arasında köprü kurar.',
+      aboutParagraphs: [
+        'Çalışmalarım, kurumların gerçek iş akışlarını daha anlaşılır ve sürdürülebilir hâle getirmesine odaklanır. Yapay zekâ kullanımında görev sınırı, veri gizliliği, çıktı doğrulama ve insan onayı birlikte tasarlanır.',
+        'NETZ INFORMATIQUE Başkanı (Président) olarak Fransa’daki BT hizmetleri ve mesleki eğitim kuruluşunu yönetiyorum. Kuruluş France Num Activateur olarak kayıtlıdır; Qualiopi kuruma ve yayımlanan sertifika kapsamına aittir.',
+        'Reflektif Yönetim Kurulu Başkanı ve Teknik Sorumlu olarak yapay zekâ destekli kariyer yönlendirme ve yetkinlik değerlendirme platformunun teknik ve yönetsel çerçevesine katkı veriyorum.',
       ],
-    },
-    education: {
-      title: "Formation déclarée",
-      list: [
-        {
-          degree: "Licence Professionnelle — LP DWCA",
-          school: "Université de Strasbourg",
-          period: "2025–2026",
-          description: "Diplôme mentionné dans le CV 2026. Justificatif disponible sur demande dans un processus professionnel approprié.",
-        },
-        {
-          degree: "Gestion de l’information — diplôme de premier cycle",
-          school: "Anadolu Üniversitesi",
-          period: "2006–2008",
-          description: "Diplôme mentionné dans le CV 2026. Justificatif disponible sur demande dans un processus professionnel approprié.",
-        },
+      facts: [['Görev', 'NETZ INFORMATIQUE Başkanı (Président)'], ['Görev', 'Reflektif Yönetim Kurulu Başkanı ve Teknik Sorumlu'], ['Odak', 'YZ ve dijital dönüşüm eğitimi'], ['İlke', 'Gizlilik · doğrulama · insan denetimi']],
+      principlesTitle: 'Çalışma ilkeleri', principles: [
+        ['Sınırları baştan koymak', 'Her çalışma; hedef, veri sınırı, sorumluluk ve başarı ölçütüyle başlar.'],
+        ['Kanıtı görünür kılmak', 'Varsayım, gözlem ve ölçülmüş sonucu birbirine karıştırmam.'],
+        ['Bilgiyi devretmek', 'Dokümantasyon ve uygulama, ekiplerin bağımsızlığını destekleyecek şekilde hazırlanır.'],
       ],
-    },
-    certifications: {
-      title: "Qualifications sélectionnées",
-      list: [
-        {
-          name: "ChatGPT + Zapier: Automate Email Replies with AI",
-          issuer: "Vanderbilt University · Coursera",
-          date: "16 déc. 2024",
-          id: "Attestation publique vérifiable",
-        },
-        {
-          name: "CCE — Exercer la mission de formateur en entreprise",
-          issuer: "CCI France · CCI Alsace Eurométropole",
-          date: "Document 2021 · référentiel historique RS5365",
-          id: "Justificatif disponible sur demande",
-        },
+      servicesPageEyebrow: '§ 03 · Hizmetler', servicesPageTitle: 'İhtiyaca göre tasarlanan profesyonel çalışma alanları.', processEyebrow: 'Yöntem', processTitle: 'Bir çalışma nasıl ilerler?',
+      process: [['Adım 1', 'Dinleme ve çerçeveleme', 'Hedefler, bağlam, kısıtlar ve başarı ölçütleri netleştirilir.'], ['Adım 2', 'Mimari ve plan', 'İhtiyaca uygun çözüm, izlenebilir kararlarla tasarlanır.'], ['Adım 3', 'Uygulama ve test', 'Çıktılar kısa, test edilmiş ve onaylanmış aşamalarla geliştirilir.'], ['Adım 4', 'Bilgi aktarımı', 'Dokümantasyon, eğitim ve takip ile uzun vadeli bağımsızlık desteklenir.']],
+      faqEyebrow: 'Sık sorulan sorular', faqTitle: 'Bilmekte fayda var', faq: [['Uzaktan çalışıyor musunuz?', 'Evet. Çalışmalar uzaktan veya Fransa, Türkiye ve bağlama göre Almanya’da yerinde yürütülebilir.'], ['Hizmetleriniz kimlere yöneliktir?', 'Yapay zekâ ve dijital araçları kontrollü biçimde benimsemek isteyen KOBİ, dernek, eğitim kurumu ve proje ekiplerine.'], ['Bir iş birliği nasıl başlar?', 'İhtiyacı anlamak, uyumu doğrulamak ve en faydalı sonraki adımı belirlemek için kısa bir ön görüşmeyle.'], ['Eğitim hizmeti de veriyor musunuz?', 'Evet. Eğitimler somut kullanım senaryoları, uygulamalar ve ölçülebilir hedefler etrafında hazırlanır.']],
+      projectsEyebrow: '§ 04 · Çalışmalar', projectsTitle: 'Ürünler, platformlar ve açık teknik çalışmalar.', projectsLead: 'NETZ INFORMATIQUE ve Reflektif gibi kurumsal çalışmalardan açık kaynak deneylere uzanan seçki.', filters: { all: 'Tümü', product: 'Ürün ve kurum', ai: 'Yapay zekâ', automation: 'Otomasyon' }, live: 'Siteyi aç', code: 'Kodu gör',
+      projects: [
+        { ...commonProjects.netz, description: 'Fransa’daki BT hizmetleri ve mesleki eğitim kuruluşu. France Num Activateur olarak kayıtlıdır; Qualiopi kuruma ve yayımlanan sertifika kapsamına aittir.' },
+        { ...commonProjects.reflektif, description: 'Yapay zekâ destekli kariyer yönlendirme ve yetkinlik değerlendirme platformu. Kamuya açık hukukî bildirimde Mikail Lekesiz, Yönetim Kurulu Başkanı ve Teknik Sorumlu olarak yer alır.' },
+        { ...commonProjects.aiProfessionals, description: 'Kurumlarda güvenli yapay zekâ kullanımı için görev sınırı, veri sınıflandırma, insan onayı ve ölçüm yaklaşımını anlatan crawlable kaynak.' },
+        { ...commonProjects.aiOrchestrator, description: 'Birden çok yapay zekâ modelinin orkestrasyonu ve iş akışı otomasyonunu araştıran açık teknik çalışma; üretim hizmeti iddiası taşımaz.' },
+        { ...commonProjects.claudeChat, description: 'Dil modeli API’si kullanan konuşma arayüzü prototipi; açık teknik deney olarak sunulur.' },
+        { ...commonProjects.wedof, description: 'Wedof verilerini Google Sheets’e eşitleyerek tekrarlanan operasyonel işleri azaltmayı amaçlayan açık otomasyon çalışması.' },
       ],
+      ecosystemEyebrow: 'Mikail Lekesiz ekosistemi', ecosystemTitle: 'Ana merkezden dokuz bağımsız proje.', ecosystemLead: 'Her proje kendi rolünü taşır; ortak tasarım dili ve güncel proje haritası mikail.net’te bulunur.', ecosystemCta: 'mikail.net’te ekosistemi keşfet',
+      contactEyebrow: '§ 05 · İletişim', contactTitle: 'Bağlamı paylaşın, birlikte netleştirelim.', contactLead: 'Hedefi, mevcut durumu ve zamanlamayı birkaç cümleyle anlatın; ilk yönlendirmeyle dönüş yapayım.', name: 'Ad ve soyad', email: 'E-posta adresi', subject: 'Konu', message: 'Mesajınız', send: 'Mesajı hazırla', formNote: 'Buton, girdiğiniz bilgilerle e-posta uygulamanızı açar. Bu sitede hiçbir veri saklanmaz.', networks: 'Sosyal ağlar',
+      footerText: 'Yapay zekâ, güvenli yazılım ve bilgi aktarımı.', rights: 'Tüm hakları saklıdır.', footerLinks: 'Bağlantılar', organization: 'Kurumlar',
     },
-    projects: {
-      title: "Travaux sélectionnés",
-      list: [
-        {
-          name: "NETZ INFORMATIQUE",
-          description: "Site de la société française créée en 2016 et active dans les services informatiques et la formation professionnelle. Qualiopi concerne l’organisme et le périmètre publié du certificat.",
-          tech: ["Services IT", "Formation", "France"],
-          link: "https://www.netzinformatique.fr/",
-        },
-        {
-          name: "Reflektif",
-          description: "Plateforme d’orientation professionnelle et d’évaluation des compétences assistée par l’IA. La notice légale publique identifie Mikail Lekesiz comme président du conseil d’administration et responsable technique.",
-          tech: ["EdTech", "IA", "Évaluation"],
-          link: "https://reflektif.net/",
-        },
-        {
-          name: "AI Orchestrator",
-          description: "Dépôt public explorant l’orchestration de plusieurs modèles d’IA et l’automatisation de flux de travail. Travail technique ouvert, sans promesse de statut de production.",
-          tech: ["Python", "LLM", "API"],
-          github: "https://github.com/lekesiz/ai_orchestrator",
-        },
-        {
-          name: "Claude Chat App",
-          description: "Prototype public d’interface conversationnelle utilisant une API de modèle de langage. Le dépôt est présenté comme expérimentation technique.",
-          tech: ["JavaScript", "AI API", "React"],
-          github: "https://github.com/lekesiz/claude-chat-app",
-        },
-        {
-          name: "AI News Scraper",
-          description: "Outil public de collecte et de traitement de contenus sur l’intelligence artificielle, présenté comme travail technique ouvert.",
-          tech: ["Python", "Collecte", "Analyse"],
-          github: "https://github.com/lekesiz/ai_news_scraper",
-        },
-        {
-          name: "Wedof Sync Google Sheets",
-          description: "Automatisation publique de synchronisation de données Wedof vers Google Sheets, avec un objectif de réduction des tâches répétitives.",
-          tech: ["Python", "Google API", "Automatisation"],
-          github: "https://github.com/lekesiz/wedof-sync-google-sheets",
-        },
-      ],
-    },
-    contact: { title: "Échange professionnel" },
   },
 
   en: {
-    hero: {
-      greeting: "Hello, I’m",
-      description: "I am a technology entrepreneur and corporate trainer designing applied learning in artificial intelligence, software development and digital transformation for organisations.",
+    meta: { title: 'Mikail Lekesiz | AI and digital transformation trainer', description: 'Mikail Lekesiz works across advisory, delivery and professional training in artificial intelligence, software and digital transformation.', locale: 'en_US' },
+    ui: {
+      nav: { home: 'Home', about: 'Profile', services: 'Services', projects: 'Work', contact: 'Contact' }, language: 'Language', menu: 'Open menu', close: 'Close menu', skip: 'Skip to content', hub: 'mikail.net main hub', hubShort: 'mikail.net',
+      heroEyebrow: 'Portfolio · delivery · training', heroKicker: 'Mikail Lekesiz', heroTitle: 'Turning complex needs into clear, useful systems.', heroLead: 'As an AI and digital transformation trainer, I help organisations make decisions, move into delivery and make knowledge sustainable inside their teams.', heroDetail: 'Advisory, software delivery and applied training are framed together with data confidentiality, output verification and human oversight.', contactCta: 'Discuss a project', projectsCta: 'View the work', portraitAlt: 'Portrait of Mikail Lekesiz', portraitCaption: 'France · Türkiye · Germany', stats: [['03', 'ways of working'], ['02', 'main organisations'], ['05', 'languages'], ['01', 'shared hub']], statsNote: 'Advisory · delivery · training',
+      servicesEyebrow: '§ 01 · Services', servicesTitle: 'Three clear ways of working, from decisions to knowledge transfer.', servicesLead: 'Professional engagements scaled to the need, with boundaries and expected outputs defined from the start.', services: [{ tag: '01 — Advisory', title: 'Frame a transformation', description: 'Make the current state, risks and priorities visible before investment.', bullets: ['Needs and current-state assessment', 'Prioritised recommendations', 'Actionable roadmap'] }, { tag: '02 — Delivery', title: 'Build reliable solutions', description: 'Turn an idea into a deployable, maintainable product through documented decisions.', bullets: ['Architecture and prototyping', 'Development and automation', 'Testing, launch and follow-up'] }, { tag: '03 — Training', title: 'Strengthen teams', description: 'Bring technology into everyday work through real tasks, practice and measurable outcomes.', bullets: ['Tailored use cases', 'Reusable learning materials', 'Assessment and evaluation'] }], learnMore: 'Explore the service', selection: 'Selected work', recentProjects: 'Selected projects', allProjects: 'View all work', quote: 'Technology creates value when it becomes understandable, governable and genuinely useful to the people who use it.', quoteBy: 'Mikail Lekesiz · trainer and technical manager', ctaTitle: 'A project, training programme or transformation to frame?', ctaText: 'Share the context; in an initial conversation we can clarify the goal, boundaries and useful next step together.', ctaButton: 'Get in touch',
+      aboutEyebrow: '§ 02 · Profile', aboutTitle: 'Mikail Lekesiz', aboutLead: 'AI and digital transformation trainer, connecting advisory, delivery and professional learning.', aboutParagraphs: ['My work focuses on making real organisational workflows clearer and more sustainable. For AI use, task boundaries, data confidentiality, output verification and human approval are designed together.', 'As President of NETZ INFORMATIQUE (Président), I lead the French IT services and professional training organisation. It is registered as a France Num Activateur; Qualiopi belongs to the organisation and the published scope of its certificate.', 'As Reflektif Board Chair and Technical Manager, I contribute to the technical and governance framework of an AI-supported career-guidance and competency-assessment platform.'], facts: [['Role', 'President of NETZ INFORMATIQUE (Président)'], ['Role', 'Reflektif Board Chair and Technical Manager'], ['Focus', 'AI and digital transformation training'], ['Principle', 'Confidentiality · verification · human oversight']], principlesTitle: 'Working principles', principles: [['Set boundaries early', 'Every engagement starts with a goal, data boundary, responsibility and success measure.'], ['Make evidence visible', 'Assumptions, observations and measured results stay distinct.'], ['Transfer knowledge', 'Documentation and practice are designed to support team autonomy.']],
+      servicesPageEyebrow: '§ 03 · Services', servicesPageTitle: 'Professional work shaped around the need.', processEyebrow: 'Method', processTitle: 'How does an engagement work?', process: [['Step 1', 'Listen and frame', 'Objectives, context, constraints and success criteria are made explicit.'], ['Step 2', 'Architecture and plan', 'A proportionate solution is designed with traceable decisions.'], ['Step 3', 'Delivery and testing', 'Deliverables progress through short, tested and validated stages.'], ['Step 4', 'Transfer knowledge', 'Documentation, training and follow-up support long-term autonomy.']], faqEyebrow: 'Frequently asked questions', faqTitle: 'Good to know', faq: [['Do you work remotely?', 'Yes. Engagements can be delivered remotely or on site in France, Türkiye and, depending on the context, Germany.'], ['Who are your services for?', 'SMEs, associations, training organisations and project teams seeking a controlled adoption of AI and digital tools.'], ['How does a collaboration begin?', 'With a discovery call to understand the need, verify fit and define the most useful next step.'], ['Do you also provide training?', 'Yes. Training is built around concrete use cases, hands-on exercises and measurable objectives.']],
+      projectsEyebrow: '§ 04 · Work', projectsTitle: 'Products, platforms and open technical work.', projectsLead: 'A selection ranging from organisational work such as NETZ INFORMATIQUE and Reflektif to open technical experiments.', filters: { all: 'All', product: 'Products and organisations', ai: 'AI', automation: 'Automation' }, live: 'Visit site', code: 'View code', projects: [{ ...commonProjects.netz, description: 'French IT services and professional training organisation. Registered as a France Num Activateur; Qualiopi belongs to the organisation and its published certificate scope.' }, { ...commonProjects.reflektif, description: 'AI-supported career-guidance and competency-assessment platform. Its public legal notice identifies Mikail Lekesiz as Board Chair and Technical Manager.' }, { ...commonProjects.aiProfessionals, description: 'Crawlable resource on task boundaries, data classification, human approval and measurement for safer organisational AI use.' }, { ...commonProjects.aiOrchestrator, description: 'Open technical work exploring multi-model AI orchestration and workflow automation; it makes no production-service claim.' }, { ...commonProjects.claudeChat, description: 'Conversational interface prototype using a language-model API, presented as an open technical experiment.' }, { ...commonProjects.wedof, description: 'Open automation work designed to reduce repetitive operations by synchronising Wedof data to Google Sheets.' }], ecosystemEyebrow: 'Mikail Lekesiz ecosystem', ecosystemTitle: 'Nine independent projects from the main hub.', ecosystemLead: 'Each project has its own role; the shared design language and current project map live at mikail.net.', ecosystemCta: 'Explore the ecosystem at mikail.net',
+      contactEyebrow: '§ 05 · Contact', contactTitle: 'Share the context; let’s make it clear together.', contactLead: 'Describe the goal, current state and timeline in a few sentences; I will reply with an initial direction.', name: 'Full name', email: 'Email address', subject: 'Subject', message: 'Your message', send: 'Prepare message', formNote: 'The button opens your email application with the information entered. No data is stored on this website.', networks: 'Social profiles', footerText: 'AI, secure software and knowledge transfer.', rights: 'All rights reserved.', footerLinks: 'Links', organization: 'Organisations',
     },
-    about: {
-      content: "I am a technology entrepreneur and corporate trainer. I design applied learning in artificial intelligence, software development and digital transformation around the real needs of organisations.",
-      content2: "I am President of NETZ INFORMATIQUE, a French company created in 2016. Reflektif Bilişim A.Ş.’s public legal notice identifies me as Board Chair and Technical Manager.",
-      content3: "My method combines needs analysis, measurable learning outcomes, hands-on workshops, case studies and project-based assessment. I frame generative AI through confidentiality, verification, human oversight and organisational risk.",
-    },
-    services: {
-      title: "Engagements",
-      list: [
-        { title: "Applied AI training", description: "Learning programmes and workshops adapted to team maturity, use cases and the data being handled." },
-        { title: "Software development", description: "Prototyping, architecture and application development with documented, maintainable decisions." },
-        { title: "Safer AI use", description: "Confidentiality, output verification, human oversight and organisational risk identification." },
-        { title: "Digital transformation", description: "Assessment, prioritisation and roadmaps connecting technology choices to operational outcomes." },
-        { title: "DevOps & Cloud", description: "Training and support in automation, delivery, observability and service continuity." },
-        { title: "Learning design", description: "Needs analysis, measurable objectives, practical cases, projects and assessment design." },
-      ],
-    },
-    skills: {
-      title: "Technical areas",
-      subtitle: "Technologies selected according to the need, context and maturity of each engagement.",
-      languages: "Languages",
-      frontend: "Frontend",
-      backend: "Backend",
-      databases: "Data",
-      devops: "DevOps & Cloud",
-      tools: "Tools",
-    },
-    experience: {
-      title: "Roles and career",
-      jobs: [
-        {
-          title: "President",
-          company: "NETZ INFORMATIQUE",
-          period: "Company created in 2016 · current role",
-          location: "Haguenau, France",
-          description: "Leadership of a French company active in IT services and professional training. Its legal identity and current status are available in France’s public business registers.",
-        },
-        {
-          title: "Board Chair & Technical Manager",
-          company: "Reflektif Bilişim A.Ş.",
-          period: "Role published in 2026 · current",
-          location: "Türkiye",
-          description: "Role stated in Reflektif’s public legal notice. Contributing to an AI-supported career-guidance and competency-assessment platform.",
-        },
-        {
-          title: "International technology career",
-          company: "Experience stated in the CV",
-          period: "Since 2000 · career statement",
-          location: "France · Türkiye · Germany",
-          description: "The CV describes responsibilities across software development, systems, cloud and IT operations. Supporting records can be provided in an appropriate professional process.",
-        },
-      ],
-    },
-    education: {
-      title: "Stated education",
-      list: [
-        {
-          degree: "Professional Bachelor — LP DWCA",
-          school: "University of Strasbourg",
-          period: "2025–2026",
-          description: "Qualification listed in the 2026 CV. Supporting record available on request in an appropriate professional process.",
-        },
-        {
-          degree: "Information Management — associate degree",
-          school: "Anadolu University",
-          period: "2006–2008",
-          description: "Qualification listed in the 2026 CV. Supporting record available on request in an appropriate professional process.",
-        },
-      ],
-    },
-    certifications: {
-      title: "Selected qualifications",
-      list: [
-        {
-          name: "ChatGPT + Zapier: Automate Email Replies with AI",
-          issuer: "Vanderbilt University · Coursera",
-          date: "16 Dec 2024",
-          id: "Publicly verifiable record",
-        },
-        {
-          name: "CCE — Corporate Trainer Mission",
-          issuer: "CCI France · CCI Alsace Eurométropole",
-          date: "2021 document · historical RS5365 framework",
-          id: "Supporting record available on request",
-        },
-      ],
-    },
-    projects: {
-      title: "Selected work",
-      list: [
-        {
-          name: "NETZ INFORMATIQUE",
-          description: "Website of the French company created in 2016 and active in IT services and professional training. Qualiopi applies to the organisation and the certificate’s published scope.",
-          tech: ["IT Services", "Training", "France"],
-          link: "https://www.netzinformatique.fr/",
-        },
-        {
-          name: "Reflektif",
-          description: "AI-supported career-guidance and competency-assessment platform. Its public legal notice identifies Mikail Lekesiz as Board Chair and Technical Manager.",
-          tech: ["EdTech", "AI", "Assessment"],
-          link: "https://reflektif.net/",
-        },
-        {
-          name: "AI Orchestrator",
-          description: "Public repository exploring multi-model AI orchestration and workflow automation. Presented as open technical work without claiming production-service status.",
-          tech: ["Python", "LLM", "API"],
-          github: "https://github.com/lekesiz/ai_orchestrator",
-        },
-        {
-          name: "Claude Chat App",
-          description: "Public prototype of a conversational interface using a language-model API. The repository is presented as a technical experiment.",
-          tech: ["JavaScript", "AI API", "React"],
-          github: "https://github.com/lekesiz/claude-chat-app",
-        },
-        {
-          name: "AI News Scraper",
-          description: "Public tool for collecting and processing artificial-intelligence content, presented as open technical work.",
-          tech: ["Python", "Collection", "Analysis"],
-          github: "https://github.com/lekesiz/ai_news_scraper",
-        },
-        {
-          name: "Wedof Sync Google Sheets",
-          description: "Public automation for synchronising Wedof data to Google Sheets, designed to reduce repetitive operational work.",
-          tech: ["Python", "Google API", "Automation"],
-          github: "https://github.com/lekesiz/wedof-sync-google-sheets",
-        },
-      ],
-    },
-    contact: { title: "Professional enquiry" },
   },
 
-  tr: {
-    hero: {
-      greeting: "Merhaba, ben",
-      description: "Teknoloji girişimcisi ve kurumsal eğitmen olarak yapay zekâ, yazılım geliştirme ve dijital dönüşüm alanlarında kurumlara yönelik uygulamalı öğrenme programları tasarlıyorum.",
+  fr: {
+    meta: { title: 'Mikail Lekesiz | Formateur en IA et transformation numérique', description: 'Mikail Lekesiz intervient en conseil, réalisation et formation professionnelle dans les domaines de l’IA, du logiciel et de la transformation numérique.', locale: 'fr_FR' },
+    ui: {
+      nav: { home: 'Accueil', about: 'Profil', services: 'Services', projects: 'Travaux', contact: 'Contact' }, language: 'Langue', menu: 'Ouvrir le menu', close: 'Fermer le menu', skip: 'Aller au contenu', hub: 'hub principal mikail.net', hubShort: 'mikail.net',
+      heroEyebrow: 'Portfolio · réalisation · formation', heroKicker: 'Mikail Lekesiz', heroTitle: 'Transformer les besoins complexes en systèmes clairs et utiles.', heroLead: 'Formateur en IA et transformation numérique, j’aide les organisations à décider, à passer à la réalisation et à transmettre les compétences au sein des équipes.', heroDetail: 'Conseil, développement logiciel et formation appliquée sont abordés avec confidentialité des données, vérification des résultats et supervision humaine.', contactCta: 'Parlons d’un projet', projectsCta: 'Voir les travaux', portraitAlt: 'Portrait de Mikail Lekesiz', portraitCaption: 'France · Türkiye · Allemagne', stats: [['03', 'modes d’intervention'], ['02', 'organisations principales'], ['05', 'langues'], ['01', 'hub commun']], statsNote: 'Conseil · réalisation · formation',
+      servicesEyebrow: '§ 01 · Services', servicesTitle: 'Trois modes d’intervention, de la décision au transfert des compétences.', servicesLead: 'Des interventions professionnelles adaptées au besoin, avec périmètre et livrables définis dès le départ.', services: [{ tag: '01 — Conseil', title: 'Cadrer une transformation', description: 'Rendre visibles l’existant, les risques et les priorités avant d’investir.', bullets: ['Analyse du besoin et de l’existant', 'Recommandations priorisées', 'Feuille de route actionnable'] }, { tag: '02 — Réalisation', title: 'Concevoir des solutions fiables', description: 'Transformer une idée en produit déployable et maintenable, avec des choix documentés.', bullets: ['Architecture et prototypage', 'Développement et automatisation', 'Tests, mise en service et suivi'] }, { tag: '03 — Formation', title: 'Renforcer les équipes', description: 'Inscrire la technologie dans les usages par la pratique et des résultats mesurables.', bullets: ['Cas d’usage adaptés', 'Supports réutilisables', 'Évaluation des acquis'] }], learnMore: 'Découvrir le service', selection: 'Sélection', recentProjects: 'Travaux sélectionnés', allProjects: 'Voir tous les travaux', quote: 'La technologie crée de la valeur lorsqu’elle devient compréhensible, maîtrisable et réellement utile aux personnes qui l’utilisent.', quoteBy: 'Mikail Lekesiz · formateur et responsable technique', ctaTitle: 'Un projet, une formation ou une transformation à cadrer ?', ctaText: 'Présentez le contexte ; un premier échange permettra de clarifier ensemble l’objectif, le périmètre et la prochaine étape utile.', ctaButton: 'Prendre contact',
+      aboutEyebrow: '§ 02 · Profil', aboutTitle: 'Mikail Lekesiz', aboutLead: 'Formateur en IA et transformation numérique, reliant conseil, réalisation et apprentissage professionnel.', aboutParagraphs: ['Mon travail vise à rendre les flux de travail réels des organisations plus clairs et plus durables. Pour l’IA, le périmètre de la tâche, la confidentialité des données, la vérification des résultats et la validation humaine sont conçus ensemble.', 'En tant que Président de NETZ INFORMATIQUE (Président), je dirige l’organisation française de services informatiques et de formation professionnelle. Elle est enregistrée comme Activateur France Num ; Qualiopi concerne l’organisation et le périmètre publié de son certificat.', 'En tant que Président du conseil d’administration et responsable technique de Reflektif, je contribue au cadre technique et de gouvernance d’une plateforme d’orientation professionnelle et d’évaluation des compétences assistée par l’IA.'], facts: [['Fonction', 'Président de NETZ INFORMATIQUE'], ['Fonction', 'Reflektif · Président du conseil et responsable technique'], ['Focus', 'Formation en IA et transformation numérique'], ['Principe', 'Confidentialité · vérification · supervision humaine']], principlesTitle: 'Principes de travail', principles: [['Poser le périmètre', 'Chaque intervention commence par un objectif, une limite de données, une responsabilité et un indicateur de réussite.'], ['Rendre les preuves visibles', 'Hypothèses, observations et résultats mesurés restent distincts.'], ['Transmettre les compétences', 'Documentation et pratique soutiennent l’autonomie des équipes.']],
+      servicesPageEyebrow: '§ 03 · Services', servicesPageTitle: 'Des interventions professionnelles conçues autour du besoin.', processEyebrow: 'Méthode', processTitle: 'Comment se déroule une intervention ?', process: [['Étape 1', 'Écoute et cadrage', 'Objectifs, contexte, contraintes et critères de réussite sont explicités.'], ['Étape 2', 'Architecture et plan', 'Une solution proportionnée est conçue avec des choix traçables.'], ['Étape 3', 'Réalisation et tests', 'Les livrables avancent par étapes courtes, testées et validées.'], ['Étape 4', 'Transfert', 'Documentation, formation et suivi soutiennent l’autonomie dans la durée.']], faqEyebrow: 'Questions fréquentes', faqTitle: 'Bon à savoir', faq: [['Travaillez-vous à distance ?', 'Oui. Les missions peuvent être menées à distance ou sur site en France, en Türkiye et selon le contexte en Allemagne.'], ['À qui s’adressent vos services ?', 'Aux PME, associations, organismes de formation et équipes projet qui souhaitent adopter l’IA et le numérique de façon maîtrisée.'], ['Comment démarre une collaboration ?', 'Par un échange de cadrage afin de comprendre le besoin, vérifier l’adéquation et définir la prochaine étape utile.'], ['Intervenez-vous aussi en formation ?', 'Oui. Les formations sont construites autour de cas d’usage concrets, d’exercices et d’objectifs mesurables.']],
+      projectsEyebrow: '§ 04 · Travaux', projectsTitle: 'Produits, plateformes et travaux techniques ouverts.', projectsLead: 'Une sélection allant des organisations NETZ INFORMATIQUE et Reflektif aux expérimentations techniques ouvertes.', filters: { all: 'Tous', product: 'Produits et organisations', ai: 'IA', automation: 'Automatisation' }, live: 'Voir le site', code: 'Voir le code', projects: [{ ...commonProjects.netz, description: 'Organisation française de services informatiques et de formation professionnelle. Enregistrée comme Activateur France Num ; Qualiopi concerne l’organisation et le périmètre publié du certificat.' }, { ...commonProjects.reflektif, description: 'Plateforme d’orientation professionnelle et d’évaluation des compétences assistée par l’IA. La notice légale publique identifie Mikail Lekesiz comme président du conseil et responsable technique.' }, { ...commonProjects.aiProfessionals, description: 'Ressource accessible sur le périmètre des tâches, la classification des données, la validation humaine et la mesure pour un usage plus sûr de l’IA.' }, { ...commonProjects.aiOrchestrator, description: 'Travail technique ouvert sur l’orchestration de plusieurs modèles d’IA et l’automatisation des flux ; sans revendication de service en production.' }, { ...commonProjects.claudeChat, description: 'Prototype d’interface conversationnelle utilisant une API de modèle de langage, présenté comme expérimentation technique ouverte.' }, { ...commonProjects.wedof, description: 'Automatisation ouverte destinée à réduire les tâches répétitives en synchronisant des données Wedof vers Google Sheets.' }], ecosystemEyebrow: 'Écosystème Mikail Lekesiz', ecosystemTitle: 'Neuf projets indépendants depuis le hub principal.', ecosystemLead: 'Chaque projet garde son rôle ; le langage visuel commun et la carte actualisée sont disponibles sur mikail.net.', ecosystemCta: 'Explorer l’écosystème sur mikail.net',
+      contactEyebrow: '§ 05 · Contact', contactTitle: 'Présentez le contexte, clarifions-le ensemble.', contactLead: 'Décrivez l’objectif, l’existant et le calendrier en quelques phrases ; je vous répondrai avec une première orientation.', name: 'Nom et prénom', email: 'Adresse e-mail', subject: 'Sujet', message: 'Votre message', send: 'Préparer le message', formNote: 'Le bouton ouvre votre messagerie avec les informations saisies. Aucune donnée n’est stockée sur ce site.', networks: 'Profils sociaux', footerText: 'IA, logiciel sécurisé et transfert des compétences.', rights: 'Tous droits réservés.', footerLinks: 'Liens', organization: 'Organisations',
     },
-    about: {
-      content: "Teknoloji girişimcisi ve kurumsal eğitmenim. Yapay zekâ, yazılım geliştirme ve dijital dönüşüm alanlarında kurumların gerçek ihtiyaçlarına göre uygulamalı öğrenme programları tasarlıyorum.",
-      content2: "2016’da kurulmuş Fransız şirketi NETZ INFORMATIQUE’in başkanıyım. Reflektif Bilişim A.Ş.’nin kamuya açık hukukî bildiriminde Yönetim Kurulu Başkanı ve Teknik Sorumlu olarak yer alıyorum.",
-      content3: "Çalışma yöntemim; ihtiyaç analizi, ölçülebilir öğrenme hedefleri, uygulamalı atölyeler, vaka çalışmaları ve proje temelli değerlendirmeyi birleştirir. Üretken yapay zekâyı veri gizliliği, doğrulama, insan denetimi ve kurumsal riskler çerçevesinde ele alırım.",
+  },
+
+  de: {
+    meta: { title: 'Mikail Lekesiz | Trainer für KI und digitale Transformation', description: 'Mikail Lekesiz arbeitet in Beratung, Umsetzung und beruflicher Weiterbildung zu künstlicher Intelligenz, Software und digitaler Transformation.', locale: 'de_DE' },
+    ui: {
+      nav: { home: 'Startseite', about: 'Profil', services: 'Leistungen', projects: 'Arbeiten', contact: 'Kontakt' }, language: 'Sprache', menu: 'Menü öffnen', close: 'Menü schließen', skip: 'Zum Inhalt', hub: 'mikail.net Hauptzentrum', hubShort: 'mikail.net',
+      heroEyebrow: 'Portfolio · Umsetzung · Weiterbildung', heroKicker: 'Mikail Lekesiz', heroTitle: 'Komplexe Anforderungen in klare, nützliche Systeme übersetzen.', heroLead: 'Als Trainer für KI und digitale Transformation unterstütze ich Organisationen bei Entscheidungen, der Umsetzung und dem nachhaltigen Wissenstransfer in Teams.', heroDetail: 'Beratung, Softwareentwicklung und praxisnahe Weiterbildung werden mit Datenschutz, Ergebnisprüfung und menschlicher Aufsicht verbunden.', contactCta: 'Projekt besprechen', projectsCta: 'Arbeiten ansehen', portraitAlt: 'Porträt von Mikail Lekesiz', portraitCaption: 'Frankreich · Türkiye · Deutschland', stats: [['03', 'Arbeitsweisen'], ['02', 'zentrale Organisationen'], ['05', 'Sprachen'], ['01', 'gemeinsames Zentrum']], statsNote: 'Beratung · Umsetzung · Weiterbildung',
+      servicesEyebrow: '§ 01 · Leistungen', servicesTitle: 'Drei klare Arbeitsweisen – von der Entscheidung bis zum Wissenstransfer.', servicesLead: 'Professionelle Arbeit, die sich am Bedarf orientiert und deren Grenzen und Ergebnisse von Beginn an feststehen.', services: [{ tag: '01 — Beratung', title: 'Transformation einordnen', description: 'Ausgangslage, Risiken und Prioritäten werden vor einer Investition sichtbar.', bullets: ['Bedarfs- und Bestandsanalyse', 'Priorisierte Empfehlungen', 'Umsetzbare Roadmap'] }, { tag: '02 — Umsetzung', title: 'Zuverlässige Lösungen entwickeln', description: 'Aus einer Idee wird durch dokumentierte Entscheidungen ein betreibbares, wartbares Produkt.', bullets: ['Architektur und Prototyping', 'Entwicklung und Automatisierung', 'Tests, Einführung und Begleitung'] }, { tag: '03 — Weiterbildung', title: 'Teams stärken', description: 'Technologie wird durch reale Aufgaben, Praxis und messbare Ergebnisse Teil des Arbeitsalltags.', bullets: ['Passende Anwendungsfälle', 'Wiederverwendbare Lernmaterialien', 'Lernstands- und Ergebnismessung'] }], learnMore: 'Leistung entdecken', selection: 'Auswahl', recentProjects: 'Ausgewählte Arbeiten', allProjects: 'Alle Arbeiten ansehen', quote: 'Technologie schafft Wert, wenn sie für die Menschen, die sie nutzen, verständlich, steuerbar und wirklich nützlich wird.', quoteBy: 'Mikail Lekesiz · Trainer und technischer Verantwortlicher', ctaTitle: 'Ein Projekt, eine Weiterbildung oder eine Transformation zu strukturieren?', ctaText: 'Schildern Sie den Kontext; in einem ersten Gespräch klären wir gemeinsam Ziel, Grenzen und den sinnvollen nächsten Schritt.', ctaButton: 'Kontakt aufnehmen',
+      aboutEyebrow: '§ 02 · Profil', aboutTitle: 'Mikail Lekesiz', aboutLead: 'Trainer für KI und digitale Transformation, der Beratung, Umsetzung und berufliches Lernen verbindet.', aboutParagraphs: ['Meine Arbeit macht reale Organisationsabläufe verständlicher und nachhaltiger. Bei der KI-Nutzung werden Aufgabengrenzen, Datenschutz, Ergebnisprüfung und menschliche Freigabe gemeinsam gestaltet.', 'Als Präsident von NETZ INFORMATIQUE (Président) leite ich die französische Organisation für IT-Dienstleistungen und berufliche Weiterbildung. Sie ist als France Num Activateur registriert; Qualiopi bezieht sich auf die Organisation und den veröffentlichten Zertifikatsumfang.', 'Als Vorsitzender des Verwaltungsrats und technischer Verantwortlicher von Reflektif wirke ich am technischen und organisatorischen Rahmen einer KI-gestützten Plattform für Berufsorientierung und Kompetenzbewertung mit.'], facts: [['Rolle', 'Präsident von NETZ INFORMATIQUE (Président)'], ['Rolle', 'Reflektif · Verwaltungsratsvorsitz und technische Verantwortung'], ['Fokus', 'KI- und Weiterbildung für digitale Transformation'], ['Prinzip', 'Datenschutz · Prüfung · menschliche Aufsicht']], principlesTitle: 'Arbeitsprinzipien', principles: [['Grenzen früh setzen', 'Jeder Auftrag beginnt mit Ziel, Datengrenze, Verantwortung und Erfolgsmaß.'], ['Evidenz sichtbar machen', 'Annahmen, Beobachtungen und gemessene Ergebnisse bleiben getrennt.'], ['Wissen weitergeben', 'Dokumentation und Praxis fördern die Selbstständigkeit der Teams.']],
+      servicesPageEyebrow: '§ 03 · Leistungen', servicesPageTitle: 'Professionelle Arbeit, am Bedarf ausgerichtet.', processEyebrow: 'Methode', processTitle: 'Wie läuft eine Zusammenarbeit ab?', process: [['Schritt 1', 'Zuhören und einordnen', 'Ziele, Kontext, Einschränkungen und Erfolgskriterien werden konkret.'], ['Schritt 2', 'Architektur und Plan', 'Eine passende Lösung wird mit nachvollziehbaren Entscheidungen entworfen.'], ['Schritt 3', 'Umsetzung und Test', 'Ergebnisse entstehen in kurzen, geprüften und bestätigten Etappen.'], ['Schritt 4', 'Wissenstransfer', 'Dokumentation, Weiterbildung und Begleitung sichern langfristige Selbstständigkeit.']], faqEyebrow: 'Häufige Fragen', faqTitle: 'Gut zu wissen', faq: [['Arbeiten Sie remote?', 'Ja. Aufträge können remote oder vor Ort in Frankreich, Türkiye und je nach Kontext in Deutschland durchgeführt werden.'], ['Für wen sind die Leistungen gedacht?', 'Für KMU, Vereine, Bildungsträger und Projektteams, die KI und digitale Werkzeuge kontrolliert einsetzen möchten.'], ['Wie beginnt eine Zusammenarbeit?', 'Mit einem Orientierungsgespräch, um den Bedarf und die Passung zu klären und den nächsten sinnvollen Schritt zu definieren.'], ['Bieten Sie auch Weiterbildungen an?', 'Ja. Weiterbildungen basieren auf konkreten Anwendungsfällen, Übungen und messbaren Zielen.']],
+      projectsEyebrow: '§ 04 · Arbeiten', projectsTitle: 'Produkte, Plattformen und offene technische Arbeiten.', projectsLead: 'Eine Auswahl von Organisationen wie NETZ INFORMATIQUE und Reflektif bis zu offenen technischen Experimenten.', filters: { all: 'Alle', product: 'Produkte und Organisationen', ai: 'KI', automation: 'Automatisierung' }, live: 'Website öffnen', code: 'Code ansehen', projects: [{ ...commonProjects.netz, description: 'Französische Organisation für IT-Dienstleistungen und berufliche Weiterbildung. Als France Num Activateur registriert; Qualiopi bezieht sich auf Organisation und veröffentlichten Zertifikatsumfang.' }, { ...commonProjects.reflektif, description: 'KI-gestützte Plattform für Berufsorientierung und Kompetenzbewertung. Die öffentliche Rechtsinformation nennt Mikail Lekesiz als Verwaltungsratsvorsitz und technischen Verantwortlichen.' }, { ...commonProjects.aiProfessionals, description: 'Zugängliche Ressource zu Aufgabengrenzen, Datenklassifizierung, menschlicher Freigabe und Messung für einen sichereren KI-Einsatz.' }, { ...commonProjects.aiOrchestrator, description: 'Offene technische Arbeit zur Orchestrierung mehrerer KI-Modelle und zur Workflow-Automatisierung; ohne Anspruch auf einen Produktionsdienst.' }, { ...commonProjects.claudeChat, description: 'Prototyp einer Gesprächsoberfläche mit Sprachmodell-API, als offenes technisches Experiment präsentiert.' }, { ...commonProjects.wedof, description: 'Offene Automatisierung zur Reduzierung wiederkehrender Arbeit durch die Synchronisierung von Wedof-Daten mit Google Sheets.' }], ecosystemEyebrow: 'Mikail-Lekesiz-Ökosystem', ecosystemTitle: 'Neun eigenständige Projekte aus dem Hauptzentrum.', ecosystemLead: 'Jedes Projekt behält seine Rolle; gemeinsame Gestaltungssprache und aktuelle Projektkarte finden Sie auf mikail.net.', ecosystemCta: 'Ökosystem auf mikail.net entdecken',
+      contactEyebrow: '§ 05 · Kontakt', contactTitle: 'Kontext teilen, gemeinsam Klarheit schaffen.', contactLead: 'Beschreiben Sie Ziel, Ausgangslage und Zeitplan in wenigen Sätzen; ich antworte mit einer ersten Orientierung.', name: 'Vor- und Nachname', email: 'E-Mail-Adresse', subject: 'Betreff', message: 'Ihre Nachricht', send: 'Nachricht vorbereiten', formNote: 'Die Schaltfläche öffnet Ihr E-Mail-Programm mit den eingegebenen Angaben. Auf dieser Website werden keine Daten gespeichert.', networks: 'Soziale Profile', footerText: 'KI, sichere Software und Wissenstransfer.', rights: 'Alle Rechte vorbehalten.', footerLinks: 'Links', organization: 'Organisationen',
     },
-    services: {
-      title: "Çalışma alanları",
-      list: [
-        { title: "Uygulamalı yapay zekâ eğitimi", description: "Ekip düzeyi, kullanım senaryoları ve işlenen veri türüne göre uyarlanan öğrenme programları ve atölyeler." },
-        { title: "Yazılım geliştirme", description: "Belgelenebilir ve sürdürülebilir tercihlerle prototipleme, mimari ve uygulama geliştirme." },
-        { title: "Güvenli yapay zekâ kullanımı", description: "Veri gizliliği, çıktı doğrulama, insan denetimi ve kurumsal risklerin belirlenmesi." },
-        { title: "Dijital dönüşüm", description: "Teknoloji tercihlerini operasyonel hedeflerle bağlayan mevcut durum analizi, önceliklendirme ve yol haritası." },
-        { title: "DevOps ve bulut", description: "Otomasyon, dağıtım, gözlemlenebilirlik ve hizmet sürekliliği üzerine eğitim ve teknik destek." },
-        { title: "Eğitim tasarımı", description: "İhtiyaç analizi, ölçülebilir hedefler, uygulamalı vakalar, proje ve değerlendirme tasarımı." },
-      ],
+  },
+
+  es: {
+    meta: { title: 'Mikail Lekesiz | Formador en IA y transformación digital', description: 'Mikail Lekesiz trabaja en consultoría, implementación y formación profesional sobre inteligencia artificial, software y transformación digital.', locale: 'es_ES' },
+    ui: {
+      nav: { home: 'Inicio', about: 'Perfil', services: 'Servicios', projects: 'Trabajos', contact: 'Contacto' }, language: 'Idioma', menu: 'Abrir menú', close: 'Cerrar menú', skip: 'Ir al contenido', hub: 'centro principal mikail.net', hubShort: 'mikail.net',
+      heroEyebrow: 'Portafolio · implementación · formación', heroKicker: 'Mikail Lekesiz', heroTitle: 'Convertir necesidades complejas en sistemas claros y útiles.', heroLead: 'Como formador en IA y transformación digital, ayudo a las organizaciones a decidir, pasar a la práctica y hacer sostenible el conocimiento dentro de sus equipos.', heroDetail: 'La consultoría, el desarrollo de software y la formación aplicada se abordan junto con la confidencialidad de los datos, la verificación de resultados y la supervisión humana.', contactCta: 'Hablemos de un proyecto', projectsCta: 'Ver los trabajos', portraitAlt: 'Retrato de Mikail Lekesiz', portraitCaption: 'Francia · Türkiye · Alemania', stats: [['03', 'formas de trabajo'], ['02', 'organizaciones principales'], ['05', 'idiomas'], ['01', 'centro común']], statsNote: 'Consultoría · implementación · formación',
+      servicesEyebrow: '§ 01 · Servicios', servicesTitle: 'Tres formas claras de trabajar, desde la decisión hasta la transferencia de conocimiento.', servicesLead: 'Intervenciones profesionales adaptadas a la necesidad, con límites y resultados definidos desde el principio.', services: [{ tag: '01 — Consultoría', title: 'Enmarcar una transformación', description: 'Hacer visibles la situación actual, los riesgos y las prioridades antes de invertir.', bullets: ['Análisis de necesidades y situación', 'Recomendaciones priorizadas', 'Hoja de ruta accionable'] }, { tag: '02 — Implementación', title: 'Desarrollar soluciones fiables', description: 'Convertir una idea en un producto desplegable y mantenible mediante decisiones documentadas.', bullets: ['Arquitectura y prototipado', 'Desarrollo y automatización', 'Pruebas, lanzamiento y seguimiento'] }, { tag: '03 — Formación', title: 'Fortalecer los equipos', description: 'Incorporar la tecnología al trabajo diario mediante tareas reales, práctica y resultados medibles.', bullets: ['Casos de uso adaptados', 'Materiales reutilizables', 'Evaluación de resultados'] }], learnMore: 'Conocer el servicio', selection: 'Selección', recentProjects: 'Trabajos seleccionados', allProjects: 'Ver todos los trabajos', quote: 'La tecnología crea valor cuando se vuelve comprensible, gobernable y realmente útil para las personas que la utilizan.', quoteBy: 'Mikail Lekesiz · formador y responsable técnico', ctaTitle: '¿Un proyecto, una formación o una transformación que estructurar?', ctaText: 'Comparta el contexto; en una primera conversación aclararemos juntos el objetivo, los límites y el siguiente paso útil.', ctaButton: 'Contactar',
+      aboutEyebrow: '§ 02 · Perfil', aboutTitle: 'Mikail Lekesiz', aboutLead: 'Formador en IA y transformación digital, conectando consultoría, implementación y aprendizaje profesional.', aboutParagraphs: ['Mi trabajo busca hacer más claros y sostenibles los flujos de trabajo reales de las organizaciones. En el uso de la IA se diseñan conjuntamente los límites de la tarea, la confidencialidad de los datos, la verificación de resultados y la aprobación humana.', 'Como Presidente de NETZ INFORMATIQUE (Président), dirijo la organización francesa de servicios informáticos y formación profesional. Está registrada como France Num Activateur; Qualiopi corresponde a la organización y al alcance publicado de su certificado.', 'Como Presidente del Consejo de Administración y Responsable Técnico de Reflektif, contribuyo al marco técnico y de gobernanza de una plataforma de orientación profesional y evaluación de competencias asistida por IA.'], facts: [['Cargo', 'Presidente de NETZ INFORMATIQUE (Président)'], ['Cargo', 'Reflektif · Presidente del Consejo y Responsable Técnico'], ['Enfoque', 'Formación en IA y transformación digital'], ['Principio', 'Confidencialidad · verificación · supervisión humana']], principlesTitle: 'Principios de trabajo', principles: [['Definir límites pronto', 'Cada trabajo comienza con un objetivo, un límite de datos, una responsabilidad y una medida de éxito.'], ['Hacer visible la evidencia', 'Las hipótesis, observaciones y resultados medidos permanecen diferenciados.'], ['Transferir conocimiento', 'La documentación y la práctica apoyan la autonomía de los equipos.']],
+      servicesPageEyebrow: '§ 03 · Servicios', servicesPageTitle: 'Trabajo profesional diseñado alrededor de la necesidad.', processEyebrow: 'Método', processTitle: '¿Cómo se desarrolla un trabajo?', process: [['Paso 1', 'Escuchar y enmarcar', 'Se hacen explícitos los objetivos, el contexto, las limitaciones y los criterios de éxito.'], ['Paso 2', 'Arquitectura y plan', 'Se diseña una solución proporcionada con decisiones trazables.'], ['Paso 3', 'Implementación y pruebas', 'Los resultados avanzan mediante etapas breves, probadas y validadas.'], ['Paso 4', 'Transferencia', 'La documentación, la formación y el seguimiento sostienen la autonomía a largo plazo.']], faqEyebrow: 'Preguntas frecuentes', faqTitle: 'Conviene saberlo', faq: [['¿Trabaja a distancia?', 'Sí. Los trabajos pueden realizarse a distancia o presencialmente en Francia, Türkiye y, según el contexto, Alemania.'], ['¿A quién se dirigen sus servicios?', 'A pymes, asociaciones, organizaciones formativas y equipos de proyecto que quieran adoptar la IA y las herramientas digitales de forma controlada.'], ['¿Cómo comienza una colaboración?', 'Con una conversación inicial para entender la necesidad, comprobar el encaje y definir el siguiente paso más útil.'], ['¿También ofrece formación?', 'Sí. La formación se construye alrededor de casos de uso concretos, ejercicios prácticos y objetivos medibles.']],
+      projectsEyebrow: '§ 04 · Trabajos', projectsTitle: 'Productos, plataformas y trabajos técnicos abiertos.', projectsLead: 'Una selección que va de organizaciones como NETZ INFORMATIQUE y Reflektif a experimentos técnicos abiertos.', filters: { all: 'Todos', product: 'Productos y organizaciones', ai: 'IA', automation: 'Automatización' }, live: 'Visitar sitio', code: 'Ver código', projects: [{ ...commonProjects.netz, description: 'Organización francesa de servicios informáticos y formación profesional. Registrada como France Num Activateur; Qualiopi corresponde a la organización y al alcance publicado del certificado.' }, { ...commonProjects.reflektif, description: 'Plataforma de orientación profesional y evaluación de competencias asistida por IA. Su aviso legal público identifica a Mikail Lekesiz como Presidente del Consejo y Responsable Técnico.' }, { ...commonProjects.aiProfessionals, description: 'Recurso accesible sobre límites de tareas, clasificación de datos, aprobación humana y medición para un uso más seguro de la IA.' }, { ...commonProjects.aiOrchestrator, description: 'Trabajo técnico abierto que explora la orquestación de varios modelos de IA y la automatización de flujos; sin afirmar que sea un servicio de producción.' }, { ...commonProjects.claudeChat, description: 'Prototipo de interfaz conversacional con una API de modelo de lenguaje, presentado como experimento técnico abierto.' }, { ...commonProjects.wedof, description: 'Automatización abierta para reducir tareas repetitivas sincronizando datos de Wedof con Google Sheets.' }], ecosystemEyebrow: 'Ecosistema Mikail Lekesiz', ecosystemTitle: 'Nueve proyectos independientes desde el centro principal.', ecosystemLead: 'Cada proyecto conserva su función; el lenguaje visual común y el mapa actualizado están en mikail.net.', ecosystemCta: 'Explorar el ecosistema en mikail.net',
+      contactEyebrow: '§ 05 · Contacto', contactTitle: 'Comparta el contexto; aclaremos juntos.', contactLead: 'Describa el objetivo, la situación actual y el calendario en unas frases; responderé con una primera orientación.', name: 'Nombre y apellidos', email: 'Dirección de correo', subject: 'Asunto', message: 'Su mensaje', send: 'Preparar mensaje', formNote: 'El botón abre su aplicación de correo con la información introducida. Este sitio no almacena ningún dato.', networks: 'Perfiles sociales', footerText: 'IA, software seguro y transferencia de conocimiento.', rights: 'Todos los derechos reservados.', footerLinks: 'Enlaces', organization: 'Organizaciones',
     },
-    skills: {
-      title: "Teknik çalışma alanları",
-      subtitle: "Her çalışmanın ihtiyacına, bağlamına ve olgunluk düzeyine göre seçilen teknolojiler.",
-      languages: "Diller",
-      frontend: "Frontend",
-      backend: "Backend",
-      databases: "Veri",
-      devops: "DevOps ve Bulut",
-      tools: "Araçlar",
-    },
-    experience: {
-      title: "Görevler ve kariyer",
-      jobs: [
-        {
-          title: "Başkan",
-          company: "NETZ INFORMATIQUE",
-          period: "Şirket 2016’da kuruldu · güncel görev",
-          location: "Haguenau, Fransa",
-          description: "BT hizmetleri ve mesleki eğitim alanlarında çalışan Fransız şirketinin yönetimi. Şirketin hukukî kimliği ve güncel durumu Fransa’nın resmî işletme kayıtlarından doğrulanabilir.",
-        },
-        {
-          title: "Yönetim Kurulu Başkanı & Teknik Sorumlu",
-          company: "Reflektif Bilişim A.Ş.",
-          period: "2026’da yayımlanan görev · güncel",
-          location: "Türkiye",
-          description: "Görev, Reflektif’in kamuya açık hukukî bildirimindeki ifadeye göre sunulmaktadır. Yapay zekâ destekli kariyer yönlendirme ve yetkinlik değerlendirme platformuna teknik katkı.",
-        },
-        {
-          title: "Uluslararası teknoloji kariyeri",
-          company: "CV’de sunulan deneyimler",
-          period: "2000’den beri · kariyer beyanı",
-          location: "Fransa · Türkiye · Almanya",
-          description: "CV; yazılım geliştirme, sistemler, bulut ve BT operasyonları alanlarında sorumluluklar içerir. Ayrıntılı dayanak belgeler uygun profesyonel süreçte paylaşılabilir.",
-        },
-      ],
-    },
-    education: {
-      title: "CV’de belirtilen eğitim",
-      list: [
-        {
-          degree: "Licence Professionnelle — LP DWCA",
-          school: "Strasbourg Üniversitesi",
-          period: "2025–2026",
-          description: "2026 CV’sinde belirtilen diploma. Dayanak belge, uygun profesyonel süreçte talep üzerine paylaşılabilir.",
-        },
-        {
-          degree: "Bilgi Yönetimi — ön lisans",
-          school: "Anadolu Üniversitesi",
-          period: "2006–2008",
-          description: "2026 CV’sinde belirtilen diploma. Dayanak belge, uygun profesyonel süreçte talep üzerine paylaşılabilir.",
-        },
-      ],
-    },
-    certifications: {
-      title: "Seçili yeterlilikler",
-      list: [
-        {
-          name: "ChatGPT + Zapier: Automate Email Replies with AI",
-          issuer: "Vanderbilt University · Coursera",
-          date: "16 Aralık 2024",
-          id: "Kamuya açık doğrulanabilir kayıt",
-        },
-        {
-          name: "CCE — İşletmede eğitmenlik görevi",
-          issuer: "CCI France · CCI Alsace Eurométropole",
-          date: "2021 belgesi · tarihsel RS5365 çerçevesi",
-          id: "Dayanak belge talep üzerine paylaşılır",
-        },
-      ],
-    },
-    projects: {
-      title: "Seçili çalışmalar",
-      list: [
-        {
-          name: "NETZ INFORMATIQUE",
-          description: "2016’da kurulmuş, BT hizmetleri ve mesleki eğitim alanlarında çalışan Fransız şirketinin sitesi. Qualiopi, kurum ve yayımlanan sertifika kapsamına ilişkindir.",
-          tech: ["BT Hizmetleri", "Eğitim", "Fransa"],
-          link: "https://www.netzinformatique.fr/",
-        },
-        {
-          name: "Reflektif",
-          description: "Yapay zekâ destekli kariyer yönlendirme ve yetkinlik değerlendirme platformu. Kamuya açık hukukî bildirim, Mikail Lekesiz’i Yönetim Kurulu Başkanı ve Teknik Sorumlu olarak belirtir.",
-          tech: ["Eğitim Teknolojisi", "Yapay Zekâ", "Değerlendirme"],
-          link: "https://reflektif.net/",
-        },
-        {
-          name: "AI Orchestrator",
-          description: "Birden çok yapay zekâ modelinin orkestrasyonu ve iş akışı otomasyonunu araştıran açık kaynak deposu. Üretim hizmeti iddiası olmadan açık teknik çalışma olarak sunulur.",
-          tech: ["Python", "LLM", "API"],
-          github: "https://github.com/lekesiz/ai_orchestrator",
-        },
-        {
-          name: "Claude Chat App",
-          description: "Dil modeli API’si kullanan konuşma arayüzü prototipi. Depo, açık teknik deney olarak sunulur.",
-          tech: ["JavaScript", "AI API", "React"],
-          github: "https://github.com/lekesiz/claude-chat-app",
-        },
-        {
-          name: "AI News Scraper",
-          description: "Yapay zekâ içeriklerini toplama ve işleme için geliştirilen, açık teknik çalışma olarak sunulan araç.",
-          tech: ["Python", "Veri Toplama", "Analiz"],
-          github: "https://github.com/lekesiz/ai_news_scraper",
-        },
-        {
-          name: "Wedof Sync Google Sheets",
-          description: "Tekrarlanan operasyonel işleri azaltmak amacıyla Wedof verilerini Google Sheets’e eşitleyen açık otomasyon çalışması.",
-          tech: ["Python", "Google API", "Otomasyon"],
-          github: "https://github.com/lekesiz/wedof-sync-google-sheets",
-        },
-      ],
-    },
-    contact: { title: "Profesyonel iletişim" },
   },
 }

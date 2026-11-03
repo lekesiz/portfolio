@@ -1,11 +1,11 @@
 {
-  "name": "Mikail Lekesiz — Yapay Zekâ ve Dijital Dönüşüm Eğitmeni",
+  "name": "Mikail Lekesiz — Yapay zekâ ve dijital dönüşüm eğitmeni",
   "short_name": "Mikail Lekesiz",
-  "description": "Uygulamalı yapay zekâ, yazılım geliştirme ve dijital dönüşüm eğitimleri.",
+  "description": "Yapay zekâ, yazılım ve dijital dönüşüm alanlarında danışmanlık, uygulama ve kurumsal eğitim çalışmaları.",
   "start_url": "/?lang=tr",
   "display": "standalone",
-  "background_color": "#f4f7fb",
-  "theme_color": "#0a2440",
+  "background_color": "#F3EFE6",
+  "theme_color": "#15171B",
   "icons": [
     {"src": "/favicon.ico", "sizes": "any", "type": "image/x-icon"}
   ]
