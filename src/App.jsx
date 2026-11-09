@@ -260,6 +260,10 @@ function buildIdentityData(meta, languageUrl) {
         url: 'https://mikail.net/',
         jobTitle: 'Yapay zekâ ve dijital dönüşüm eğitmeni',
         description: meta.description,
+        worksFor: [
+          { '@type': 'Organization', name: 'NETZ INFORMATIQUE', url: 'https://www.netzinformatique.fr/', vatID: 'FR83818347346', identifier: 'SIREN 818 347 346' },
+          { '@type': 'Organization', name: 'REFLEKTİF BİLİŞİM A.Ş.', url: 'https://www.reflektif.net/' },
+        ],
         sameAs: ['https://lekesiz.org/', 'https://github.com/lekesiz', 'https://www.linkedin.com/in/mikail-lekesiz/'],
       },
       {
